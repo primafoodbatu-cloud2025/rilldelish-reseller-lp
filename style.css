@@ -304,25 +304,43 @@ body {
 }
 
 
-/* 6.3. STYLING TABEL SATUAN */
+/* ========================================= */
+/* 6.3. STYLING TABEL SATUAN (KOREKSI PERATAAN) */
+/* ========================================= */
 .catalog-table {
     width: 100%;
     border-collapse: collapse;
     margin-top: 20px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
     background-color: white;
+    font-size: 0.95em; /* Sedikit memperkecil font agar muat rapi */
 }
 
-.catalog-table th, .catalog-table td {
+/* KOREKSI 2: Judul Tabel (Produk, Harga) Rata Tengah */
+.catalog-table th {
     padding: 12px 15px;
     border: 1px solid #eee;
-    text-align: left;
-}
-
-.catalog-table th {
     background-color: #e6ffe6;
     color: var(--color-text);
     font-weight: 600;
+    text-align: center; 
+}
+
+/* KOREKSI 3: Data Sel (Default Rata Kiri) */
+.catalog-table td {
+    padding: 12px 15px;
+    border: 1px solid #eee;
+    text-align: left;
+    vertical-align: top; /* Jaga agar teks rata atas jika beda baris */
+}
+
+/* KOREKSI 3: Kolom Harga (Kolom 2 & 3) Rata Kanan */
+.catalog-table td:nth-child(2),
+.catalog-table td:nth-child(3) {
+    text-align: right;
+    font-weight: 600; /* Membuat angka harga sedikit tebal */
+    color: #333;
+    white-space: nowrap; /* Mencegah harga terpotong (wrap) */
 }
 
 /* 6.4. STYLING TOMBOL ORDER SATUAN DALAM TABEL */
