@@ -38,7 +38,13 @@ body {
     font-size: 2.2em;
     color: var(--color-primary);
     border-bottom: 3px solid var(--color-secondary);
-    display: inline-block;
+    
+    /* KOREKSI RATA TENGAH */
+    display: table; /* Trik agar 'inline-block' tetap center */
+    margin-left: auto;
+    margin-right: auto;
+    /* AKHIR KOREKSI */
+
     padding-bottom: 10px;
 }
 
