@@ -567,7 +567,7 @@ body {
     font-size: 0.8em !important;
     color: #4CAF50 !important;
     text-align: right !important; 
-    margin-top: -5px !important; /* KOREKSI: Mengurangi tumpang tindih */
+    margin-top: -10px !important; /* Tarik ke atas agar dekat nominal diskon */
     padding-right: 10px;
     margin-bottom: 10px !important;
     line-height: 1.2;
