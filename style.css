@@ -633,20 +633,63 @@ body {
 }
 
 /* ========================================= */
-/* 11. FOOTER */
+/* 11. FOOTER (REVISI DETAIL) */
 /* ========================================= */
 footer {
     background-color: #333;
     color: white;
-    padding: 30px 0;
+    padding: 40px 20px;
     font-size: 0.9em;
+    text-align: center;
+}
+
+footer h4 {
+    font-size: 1.2em;
+    color: white;
+    margin-bottom: 10px;
+    font-weight: 600;
+}
+
+footer p {
+    color: #ccc;
+    margin-bottom: 5px;
+    line-height: 1.5;
 }
 
 footer a {
-    color: var(--color-cta);
+    color: var(--color-cta); /* Warna merah/salmon */
     text-decoration: none;
+    font-weight: 600;
 }
 
+footer a:hover {
+    text-decoration: underline;
+}
+
+/* Styling Link Sosial Media */
+.footer-social-links {
+    margin: 20px 0;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 10px;
+}
+
+.footer-social-links a {
+    display: inline-block;
+    padding: 8px 15px;
+    margin: 0 5px;
+    border: 1px solid var(--color-cta);
+    border-radius: 20px;
+    transition: background-color 0.3s, color 0.3s;
+    font-size: 0.9em;
+}
+
+.footer-social-links a:hover {
+    background-color: var(--color-cta);
+    color: white;
+    text-decoration: none;
+}
 
 /* ========================================= */
 /* 12. MEDIA QUERIES (RESPONSIVITAS) */
