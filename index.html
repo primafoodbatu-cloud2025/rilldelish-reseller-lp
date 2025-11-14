@@ -156,39 +156,38 @@
     </section>
 
     <section id="order-form" class="conversion-form">
-        <div class="container" style="max-width: 600px;">
-            <h2 class="section-title">🎁 Dapatkan Price List Lengkap & Diskon Reseller!</h2>
-            
-            <div id="flash-sale-banner" style="background-color: #ffcccc; color: #cc0000; padding: 15px; border-radius: 8px; margin-bottom: 25px; border: 2px dashed #ff0000; display: none;">
-                <p style="font-weight: 700; font-size: 1.1em;">
-                    ⚡ DAFTAR SEKARANG & KUNCI DISKON TAMBAHAN 5% (FLASH SALE)!
-                </p>
-                <p>Waktu Tersisa: <span id="countdown-timer" style="font-weight: 800; color: #cc0000; font-size: 1.4em;">00:00:00</span></p>
+    <div class="container" style="max-width: 600px;">
+        <h2 class="section-title">🎁 Daftar Reseller & Kunci Diskon Anda!</h2>
+        
+        <div id="flash-sale-banner" style="background-color: #ffcccc; color: #cc0000; padding: 15px; border-radius: 8px; margin-bottom: 25px; border: 2px dashed #ff0000; display: none;">
+            <p style="font-weight: 700; font-size: 1.1em;">
+                ⚡ DAFTAR SEKARANG & KUNCI DISKON TAMBAHAN 5% (FLASH SALE)!
+            </p>
+            <p>Waktu Tersisa: <span id="countdown-timer" style="font-weight: 800; color: #cc0000; font-size: 1.4em;">00:00:00</span></p>
+        </div>
+        
+        <p style="font-size: 1.1em; margin-bottom: 30px;">
+            Isi data singkat di bawah ini. Tim kami akan segera menghubungi Anda via WhatsApp untuk konfirmasi diskon dan info order.
+        </p>
+
+        <form id="whatsappForm" class="contact-form">
+            <div class="form-group">
+                <label for="nama">Nama Anda *</label>
+                <input type="text" id="nama" name="nama" placeholder="Tuliskan Nama Lengkap Anda" required>
+            </div>
+            <div class="form-group">
+                <label for="telepon">No. WhatsApp Aktif *</label>
+                <input type="tel" id="telepon" name="telepon" placeholder="Contoh: 08123456789 (Untuk kami kirim konfirmasi)" required>
+            </div>
+            <div class="form-group">
+                <label for="kota">Kota/Kabupaten *</label>
+                <input type="text" id="kota" name="kota" placeholder="Contoh: Surabaya / Jakarta Selatan" required>
             </div>
             
-            <p style="font-size: 1.1em; margin-bottom: 30px;">
-                Isi data singkat di bawah ini. Tim kami akan segera mengirimkan *Price List* Grosir Lengkap via WhatsApp.
-            </p>
-
-            <form id="whatsappForm" class="contact-form">
-                <div class="form-group">
-                    <label for="nama">Nama Anda *</label>
-                    <input type="text" id="nama" name="nama" placeholder="Tuliskan Nama Lengkap Anda" required>
-                </div>
-                <div class="form-group">
-                    <label for="telepon">No. WhatsApp Aktif *</label>
-                    <input type="tel" id="telepon" name="telepon" placeholder="Contoh: 08123456789 (Untuk kami kirim Price List)" required>
-                </div>
-                <div class="form-group">
-                    <label for="kota">Kota/Kabupaten *</label>
-                    <input type="text" id="kota" name="kota" placeholder="Contoh: Surabaya / Jakarta Selatan" required>
-                </div>
-                
-                <button type="submit" class="cta-button" style="width: 100%;">KIRIM SAYA PRICE LIST GROSIR SEKARANG!</button>
-            </form>
-        </div>
-    </section>
-
+            <button type="submit" class="cta-button" style="width: 100%; background-color: #cc0000;">KUNCI DISKON SAYA SEKARANG!</button>
+        </form>
+    </div>
+</section>
     <section class="faq-section">
         <div class="container" style="max-width: 800px;">
             <h2 class="section-title">❓ Pertanyaan Umum (FAQ)</h2>
@@ -265,7 +264,7 @@
         updateTimer();
     }
 
-    // --- Fungsionalitas WhatsApp (FORM SEDERHANA) ---
+ // --- Fungsionalitas WhatsApp (FORM KLAIM DISKON) ---
     function sendWhatsAppOrder(event) {
         event.preventDefault();
 
@@ -274,18 +273,17 @@
         const kota = document.getElementById('kota').value;
 
         // Cek jika Flash Sale masih aktif saat submit
-        let flashSaleNote = isFlashSaleActive ? "\n\nMohon sertakan Diskon Flash Sale 5% saya (jika berlaku untuk ritel)!" : "";
+        let flashSaleNote = isFlashSaleActive ? "\n\nMohon konfirmasi Diskon Flash Sale 5% saya (terkunci saat mendaftar)." : "";
 
         // Format pesan WhatsApp
         const message = `
 Halo Primafood Rilldelish! 👋
-Saya (Nama: ${nama}) tertarik untuk menjadi Reseller/Grosir.
+Saya (Nama: ${nama}) telah mendaftar sebagai Reseller/Grosir via Landing Page.
 
 No. WhatsApp: ${telepon}
 Lokasi Saya: ${kota}
 
-Mohon kirimkan Price List Grosir Lengkap dan info kemitraan.
-${flashSaleNote}
+Mohon kirimkan info langkah order selanjutnya.${flashSaleNote}
 
 Terima kasih!
         `.trim(); 
@@ -339,3 +337,4 @@ Terima kasih!
     </script>
 </body>
 </html>
+
