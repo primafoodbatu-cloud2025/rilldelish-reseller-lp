@@ -9,12 +9,15 @@
     --color-text: #333333;
     --color-bg-light: #f7f7f7;
     --color-bg-mix: #e6f7ff;
+
+    /* KOREKSI AKSESIBILITAS: Warna teks abu-abu yang lebih gelap (kontras tinggi) */
+    --color-text-accessible: #555; 
 }
 
 * {
     margin: 0;
     padding: 0;
-    box-sizing: border-box; /* PENTING: Untuk lebar konsisten */
+    box-sizing: border-box; 
 }
 
 body {
@@ -39,11 +42,9 @@ body {
     color: var(--color-primary);
     border-bottom: 3px solid var(--color-secondary);
     
-    /* KOREKSI RATA TENGAH */
-    display: table; /* Trik agar 'inline-block' tetap center */
+    display: table;
     margin-left: auto;
     margin-right: auto;
-    /* AKHIR KOREKSI */
 
     padding-bottom: 10px;
 }
@@ -228,11 +229,17 @@ body {
     margin-bottom: 20px;
 }
 
+/* KOREKSI AKSESIBILITAS: Teks abu-abu di bawah video */
+.video-embed + p {
+    color: var(--color-text-accessible) !important;
+}
+
 
 /* ========================================= */
 /* 6. KATALOG PRODUK TUNGGAL & MIX */
 /* ========================================= */
 .single-product-catalog {
+    padding: 60px 0;
     background-color: #f0fff0;
 }
 
@@ -303,20 +310,28 @@ body {
     padding-bottom: 5px;
 }
 
+/* KOREKSI AKSESIBILITAS: Teks abu-abu di subjudul katalog */
+.single-product-catalog p {
+    color: var(--color-text-accessible);
+}
 
-/* ========================================= */
+/* KOREKSI AKSESIBILITAS: Teks abu-abu di judul H3 katalog */
+.product-list h3 span {
+    color: var(--color-text-accessible);
+}
+
+
 /* 6.3. STYLING TABEL SATUAN (KOREKSI PERATAAN) */
-/* ========================================= */
 .catalog-table {
     width: 100%;
     border-collapse: collapse;
     margin-top: 20px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
     background-color: white;
-    font-size: 0.95em; /* Sedikit memperkecil font agar muat rapi */
+    font-size: 0.95em;
 }
 
-/* KOREKSI 2: Judul Tabel (Produk, Harga) Rata Tengah */
+/* KOREKSI: Judul Tabel Rata Tengah */
 .catalog-table th {
     padding: 12px 15px;
     border: 1px solid #eee;
@@ -326,24 +341,23 @@ body {
     text-align: center; 
 }
 
-/* KOREKSI 3: Data Sel (Default Rata Kiri) */
+/* KOREKSI: Data Sel Default Rata Kiri */
 .catalog-table td {
     padding: 12px 15px;
     border: 1px solid #eee;
     text-align: left;
-    vertical-align: top; /* Jaga agar teks rata atas jika beda baris */
+    vertical-align: top;
 }
 
-/* KOREKSI 3: Kolom Harga (Kolom 2 & 3) Rata Kanan */
+/* KOREKSI: Kolom Harga (Kolom 2 & 3) Rata Kanan */
 .catalog-table td:nth-child(2),
 .catalog-table td:nth-child(3) {
     text-align: right;
-    font-weight: 600; /* Membuat angka harga sedikit tebal */
+    font-weight: 600;
     color: #333;
-    white-space: nowrap; /* Mencegah harga terpotong (wrap) */
+    white-space: nowrap;
 }
 
-/* 6.4. STYLING TOMBOL ORDER SATUAN DALAM TABEL */
 .catalog-table .order-btn {
     background-color: var(--color-cta);
     color: white;
@@ -361,11 +375,6 @@ body {
 .catalog-table .order-btn:hover {
     background-color: #e55337;
     transform: translateY(-1px);
-}
-
-.catalog-table td:last-child {
-    text-align: center;
-    white-space: nowrap;
 }
 
 .catalog-table td strong {
@@ -533,6 +542,17 @@ body {
     align-items: flex-end;
 }
 
+/* KOREKSI LEBAR INPUT/SELECT FORM DINAMIS */
+.product-quantity {
+    width: 60px !important; 
+    min-width: 60px !important;
+}
+.unit-select {
+    width: 40% !important; 
+    min-width: 80px !important;
+}
+
+
 .remove-product-btn {
     border: none;
     padding: 8px 12px;
@@ -585,7 +605,7 @@ body {
     font-size: 0.8em !important;
     color: #4CAF50 !important;
     text-align: right !important; 
-    margin-top: -10px !important; /* Tarik ke atas agar dekat nominal diskon */
+    margin-top: -10px !important; 
     padding-right: 10px;
     margin-bottom: 10px !important;
     line-height: 1.2;
@@ -615,7 +635,7 @@ body {
 /* Keterangan Bawah Total */
 #total-discount-keterangan {
     font-size: 0.85em !important;
-    color: #777 !important;
+    color: var(--color-text-accessible) !important;
     padding: 10px;
     margin-top: 10px;
     text-align: left;
@@ -623,6 +643,13 @@ body {
     line-height: 1.4;
 }
 
+
+/* ========================================= */
+/* 10. FAQ (KODE INI DIHAPUS) */
+/* ========================================= */
+.faq-section {
+   display: none; /* Dihapus dari HTML, jadi kita sembunyikan saja */
+}
 
 /* ========================================= */
 /* 11. FOOTER (REVISI DETAIL) */
@@ -648,8 +675,14 @@ footer p {
     line-height: 1.5;
 }
 
+/* KOREKSI AKSESIBILITAS: Teks copyright di footer */
+footer p[style*="font-size: 0.8em"] {
+    color: #aaa !important; 
+    opacity: 0.8;
+}
+
 footer a {
-    color: var(--color-cta); /* Warna merah/salmon */
+    color: var(--color-cta); 
     text-decoration: none;
     font-weight: 600;
 }
@@ -682,6 +715,7 @@ footer a:hover {
     color: white;
     text-decoration: none;
 }
+
 
 /* ========================================= */
 /* 12. MEDIA QUERIES (RESPONSIVITAS) */
