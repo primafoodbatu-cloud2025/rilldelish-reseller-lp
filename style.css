@@ -5,7 +5,7 @@
     /* Warna Brand Rilldelish */
     --color-primary: #4CAF50; /* Hijau Sayur/Segar */
     --color-secondary: #ff8c00; /* Oranye/Kuning (Energi & Rasa) */
-    --color-cta: #ff6347; /* Merah Muda/Salmon (Action) */
+    --color-cta: #D95333; /* KOREKSI KONTRA: Merah/CTA yang lebih gelap */
     --color-text: #333333;
     --color-bg-light: #f7f7f7;
     --color-bg-mix: #e6f7ff;
@@ -76,7 +76,7 @@ body {
 }
 
 .cta-button:hover {
-    background-color: #e55337;
+    background-color: #e55337; /* Ini adalah warna yang lebih gelap dari CTA, jadi kontrasnya aman */
     transform: translateY(-2px);
 }
 
@@ -104,6 +104,14 @@ body {
     margin-top: 15px;
 }
 
+/* KOREKSI AKSESIBILITAS: Kontras H3 di Header */
+.hero-section h3 {
+    font-size: 1.2em; 
+    font-weight: 600; 
+    color: var(--color-cta); /* Menggunakan variabel CTA yang sudah digelapkan */
+    margin-top: 10px;
+}
+
 /* Styling Kutipan Ahli di Hero Section */
 .expert-quote-hero {
     background: rgba(255, 255, 255, 0.85);
@@ -126,114 +134,6 @@ body {
     font-weight: 600;
     color: #333;
 }
-
-
-/* ========================================= */
-/* 4. MASALAH & SOLUSI */
-/* ========================================= */
-.problem-solution {
-    padding: 60px 0;
-    background-color: white;
-    text-align: center;
-}
-
-.problem-solution h3 {
-    margin-top: 20px;
-    font-size: 1.8em;
-}
-
-.problem-solution .solusi-rilldelish {
-    color: var(--color-primary);
-}
-
-/* Styling Quote Masalah */
-.expert-quote-problem {
-    margin: 20px 0;
-    padding: 15px;
-    border-left: 5px solid #cc0000;
-    background: #fffafa;
-    font-style: italic;
-    font-size: 1.1em;
-    border-radius: 4px;
-    text-align: left !important;
-}
-
-.expert-quote-problem cite {
-    display: block;
-    margin-top: 10px;
-    font-size: 0.9em;
-    font-style: normal;
-    font-weight: 600;
-    color: #8b0000;
-}
-
-/* ========================================= */
-/* 5. DUKUNGAN PENELITIAN ILMIAH */
-/* ========================================= */
-.research-proof {
-    padding: 60px 0;
-    background-color: var(--color-bg-light);
-}
-
-.research-proof > .container > div {
-    display: flex;
-    gap: 30px;
-    text-align: center;
-    justify-content: center;
-}
-
-.benefit-card {
-    flex: 1;
-    padding: 20px;
-    background: white;
-    border-radius: 10px;
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
-}
-
-.benefit-card h4 {
-    color: var(--color-secondary);
-    margin-bottom: 10px;
-}
-
-/* ========================================= */
-/* 5.1. STYLING VIDEO PROSES PRODUKSI (16:9) */
-/* ========================================= */
-.production-video {
-    padding: 60px 0;
-    background-color: white;
-}
-
-.video-embed {
-    position: relative;
-    padding-bottom: 56.25%; /* Rasio 16:9 */
-    height: 0;
-    overflow: hidden;
-    max-width: 800px;
-    margin: 0 auto;
-    border-radius: 10px;
-    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
-}
-
-.video-embed iframe {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    border: none;
-    background: #000;
-}
-
-.production-video h2 {
-    color: var(--color-primary);
-    margin-bottom: 20px;
-}
-
-/* KOREKSI AKSESIBILITAS: Teks abu-abu di bawah video */
-.video-embed + p {
-    color: var(--color-text-accessible) !important;
-}
-
 
 /* ========================================= */
 /* 6. KATALOG PRODUK TUNGGAL & MIX */
@@ -382,43 +282,6 @@ body {
     font-weight: 700;
 }
 
-/* 6.5. STYLING PAKET MIX CARD */
-.package-mix {
-    padding: 80px 0;
-    background-color: var(--color-bg-mix);
-}
-
-.package-mix .container > div {
-    display: flex;
-    justify-content: center;
-    gap: 30px;
-}
-
-.mix-card {
-    width: 30%;
-    background-color: white;
-    padding: 30px;
-    border-radius: 10px;
-    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
-    transition: transform 0.3s;
-}
-
-.mix-card:hover {
-    transform: translateY(-5px);
-}
-
-.mix-card h3 {
-    font-size: 1.6em;
-    margin-bottom: 10px;
-}
-
-.mix-card p:first-of-type {
-    font-size: 2em;
-    font-weight: 700;
-    margin: 10px 0;
-}
-
-
 /* ========================================= */
 /* 7. SKEMA DISKON GROSIR (BULK ORDER) */
 /* ========================================= */
@@ -443,14 +306,7 @@ body {
 }
 
 /* ========================================= */
-/* 8. TESTIMONI */
-/* ========================================= */
-.testimonial-video {
-    padding: 60px 0;
-}
-
-/* ========================================= */
-/* 9. FORM PENDAFTARAN (ORDER CEPAT) - REVISI TOTAL & TINGGI */
+/* 9. FORM PENDAFTARAN (ORDER CEPAT) */
 /* ========================================= */
 .conversion-form {
     padding: 60px 0;
@@ -508,148 +364,11 @@ body {
     outline: none;
 }
 
-/* === Styling Keranjang Dinamis (Multi-Item) === */
-.product-item {
-    border: 1px solid #e0e0e0;
-    padding: 15px;
-    margin-bottom: 20px;
-    border-radius: 6px;
-    background-color: #ffffff;
-}
-
-/* Wadah untuk Jumlah dan Subtotal */
-.form-group-inline {
-    display: flex;
-    gap: 15px;
-    align-items: flex-end;
-    margin-top: 10px;
-}
-
-/* KOREKSI LEBAR UNTUK FORM DINAMIS */
-.form-group-inline .form-group {
-    width: 35%;
-    flex-grow: 0; 
-    min-width: 120px;
-    margin-bottom: 0; 
-}
-
-.form-group-inline > div:last-child {
-    width: 65%;
-    text-align: right;
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-end;
-    align-items: flex-end;
-}
-
-/* KOREKSI LEBAR INPUT/SELECT FORM DINAMIS */
-.product-quantity {
-    width: 60px !important; 
-    min-width: 60px !important;
-}
-.unit-select {
-    width: 40% !important; 
-    min-width: 80px !important;
-}
-
-
-.remove-product-btn {
-    border: none;
-    padding: 8px 12px;
-    border-radius: 4px;
-    color: white;
-    cursor: pointer;
-    font-weight: 600;
-    transition: background-color 0.3s;
-    background-color: #f44336;
-    margin-top: 5px;
-}
-
-.remove-product-btn:hover {
-    background-color: #d32f2f !important;
-}
-
-/* === STYLING STRUK DINAMIS FINAL (FIXED ALIGNMENT) === */
-
-/* Wadah Baris Struk */
-.conversion-form .form-group p {
-    display: flex;
-    justify-content: space-between;
-    width: 100%;
-    margin-bottom: 0;
-    padding: 3px 10px; 
-    font-size: 1em;
-    position: relative; 
-}
-
-/* Label Nominal (misal: "Harga Normal:", "Potongan Diskon:") */
-.struk-label {
-    width: 60%; 
-    min-width: 180px;
-    text-align: left;
-    font-weight: 600;
-    line-height: 1.4;
-}
-
-/* Nominal Angka (Rata Kanan) */
-.struk-nominal {
-    text-align: right;
-    font-weight: 700;
-    flex-grow: 1; 
-    padding-left: 10px; 
-    line-height: 1.4;
-}
-
-/* KOREKSI: Styling Keterangan Potongan Diskon (DI BAWAH NOMINAL) */
-#discount-tier-note {
-    font-size: 0.8em !important;
-    color: #4CAF50 !important;
-    text-align: right !important; 
-    margin-top: -10px !important; 
-    padding-right: 10px;
-    margin-bottom: 10px !important;
-    line-height: 1.2;
-    width: 100%;
-    display: block; 
-}
-
-/* Styling Total Bayar (Dikuatkan) */
-.struk-grand-total {
-    padding-top: 10px;
-    margin-top: 10px; 
-    border-top: 2px solid #ccc !important;
-}
-
-.grand-total-line {
-    font-size: 1.4em !important;
-    color: #cc0000 !important;
-    font-weight: 800;
-    padding: 0 10px !important;
-}
-
-.ikon-uang {
-    margin-left: 5px;
-    color: #ff8c00;
-}
-
-/* Keterangan Bawah Total */
-#total-discount-keterangan {
-    font-size: 0.85em !important;
-    color: var(--color-text-accessible) !important;
-    padding: 10px;
-    margin-top: 10px;
-    text-align: left;
-    white-space: pre-wrap;
-    line-height: 1.4;
-}
-
-
 /* ========================================= */
-/* 10. FAQ (KODE INI DIHAPUS) */
+/* 10. FAQ (DIHAPUS DARI CSS) */
 /* ========================================= */
-.faq-section {
-   display: none; /* Dihapus dari HTML, jadi kita sembunyikan saja */
-}
+/* .faq-section { ... } (Kode sengaja dihapus) */
+
 
 /* ========================================= */
 /* 11. FOOTER (REVISI DETAIL) */
@@ -662,7 +381,8 @@ footer {
     text-align: center;
 }
 
-footer h4 {
+/* KOREKSI AKSESIBILITAS: Mengganti <h4> dengan <p> */
+.footer-brand-name {
     font-size: 1.2em;
     color: white;
     margin-bottom: 10px;
