@@ -34,17 +34,16 @@
 }
 </script>
 
-<script async defer src="https://www.googletagmanager.com/gtag/js?id=G-M4C764ED4G"></script>
-<script>
-window.dataLayer = window.dataLayer || [];
-function gtag(){dataLayer.push(arguments);}
-gtag('js', new Date());
-gtag('config', 'G-M4C764ED4G');
-</script>
+<!-- Preconnect untuk resource eksternal -->
+<link rel="preconnect" href="https://www.googletagmanager.com">
+<link rel="preconnect" href="https://connect.facebook.net">
 
+<link rel="stylesheet" href="style.css">
+
+<!-- Facebook Pixel -->
 <script defer>
-!function(f,b,e,v,n,t,s){
-if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+!function(f,b,e,v,n,t,s)
+{if(f.fbq)return;n=f.fbq=function(){n.callMethod?
 n.callMethod.apply(n,arguments):n.queue.push(arguments)};
 if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
 n.queue=[];t=b.createElement(e);t.async=!0;
@@ -59,120 +58,120 @@ fbq('track', 'PageView');
 src="https://www.facebook.com/tr?id=2037326590352817&ev=PageView&noscript=1"
 /></noscript>
 
-<link rel="stylesheet" href="style.css">
+<!-- Google Analytics -->
+<script async defer src="https://www.googletagmanager.com/gtag/js?id=G-M4C764ED4G"></script>
+<script defer>
+window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+gtag('config', 'G-M4C764ED4G');
+</script>
 </head>
 <body>
 
 <main>
-
 <header class="hero-section">
-  <div class="container">
-    <h1>JADI RESELLER RESMI PRIMAFOOD</h1>
-    <h2>(Merk: Rilldelish | Metode Vacuum Frying | 0% MSG)</h2>
-    <p class="sub-headline">Dapatkan Harga Pabrik & Diskon Grosir Bertingkat s/d 30%!</p>
-    <a href="#order-form" class="cta-button">SAYA BERMINAT JADI RESELLER</a>
-  </div>
+    <div class="container">
+        <h1>JADI RESELLER RESMI PRIMAFOOD</h1>
+        <h2>(Merk: Rilldelish | Metode Vacuum Frying | 0% MSG)</h2>
+        <p class="sub-headline">Dapatkan Harga Pabrik & Diskon Grosir Bertingkat s/d 30%!</p>
+        <a href="#order-form" class="cta-button">SAYA BERMINAT JADI RESELLER</a>
+    </div>
 </header>
 
-<section class="single-product-catalog" aria-labelledby="catalog-title">
-  <div class="container">
-    <h2 class="section-title" id="catalog-title">🛒 Price List Terbuka Rilldelish (Harga Jual Eceran)</h2>
-    <p class="catalog-note">Harga eceran ditampilkan transparan. Diskon grosir dihitung dari harga ini.</p>
+<section class="single-product-catalog">
+    <div class="container">
+        <h2 class="section-title">🛒 Price List Terbuka Rilldelish (Harga Jual Eceran)</h2>
+        <p class="catalog-note">Harga eceran ditampilkan transparan. Diskon grosir dihitung dari harga ini.</p>
 
-    <div class="product-categories" role="tablist">
-      <button class="category-btn active" data-category="pure-veggie" role="tab" aria-selected="true" aria-controls="pure-veggie-list">Keripik Sayur Murni <span class="en-text">Pure Veggie Crisps</span></button>
-      <button class="category-btn" data-category="coated" role="tab" aria-selected="false" aria-controls="coated-list">Varian Bertempung/Protein <span class="en-text">Coated/Protein Crisps</span></button>
-      <button class="category-btn" data-category="fruit" role="tab" aria-selected="false" aria-controls="fruit-list">Keripik Buah Murni <span class="en-text">Pure Fruit Crisps</span></button>
+        <div class="product-categories" role="tablist" aria-label="Kategori Produk">
+            <button class="category-btn active" data-category="pure-veggie" role="tab" aria-selected="true" aria-controls="pure-veggie-list">Keripik Sayur Murni <span class="en-text">Pure Veggie Crisps</span></button>
+            <button class="category-btn" data-category="coated" role="tab" aria-selected="false" aria-controls="coated-list">Varian Bertempung/Protein <span class="en-text">Coated/Protein Crisps</span></button>
+            <button class="category-btn" data-category="fruit" role="tab" aria-selected="false" aria-controls="fruit-list">Keripik Buah Murni <span class="en-text">Pure Fruit Crisps</span></button>
+        </div>
+
+        <div id="pure-veggie-list" class="product-list active" role="tabpanel" aria-labelledby="pure-veggie">
+            <h3 class="catalog-title-green"><span class="emoji">🌿</span> Keripik Sayur Murni <span class="sub-en">(Pure Veggie Crisps)</span></h3>
+            <p class="catalog-desc">*100% Sayur Murni, Vacuum Frying, tanpa adonan/tepung.</p>
+            <table class="catalog-table">
+                <thead><tr><th>Produk</th><th>Harga Ecer / 100gr</th><th>Harga Reseller / 1kg</th></tr></thead>
+                <tbody>
+                    <tr><td>Keripik Wortel<br><span class="en">Carrot Crisps</span></td><td>Rp 26.900</td><td>Rp 242.100</td></tr>
+                    <tr><td>Keripik Ubi Ungu<br><span class="en">Purple Sweet Potato Crisps</span></td><td>Rp 20.900</td><td>Rp 188.100</td></tr>
+                    <tr><td>Keripik Ubi Madu<br><span class="en">Honey Sweet Potato Crisps</span></td><td>Rp 20.900</td><td>Rp 188.100</td></tr>
+                    <tr><td>Keripik Okra<br><span class="en">Okra Crisps</span></td><td>Rp 50.900</td><td>Rp 458.100</td></tr>
+                    <tr><td>Keripik Jagung Manis<br><span class="en">Sweet Corn Crisps</span></td><td>Rp 24.900</td><td>Rp 224.100</td></tr>
+                    <tr><td>Keripik Kentang<br><span class="en">Potato Crisps</span></td><td>Rp 28.900</td><td>Rp 260.100</td></tr>
+                    <tr><td>Keripik Kentang Wedges<br><span class="en">Potato Wedges Crisps</span></td><td>Rp 32.900</td><td>Rp 296.100</td></tr>
+                    <tr><td>Keripik Edamame<br><span class="en">Edamame Crisps</span></td><td>Rp 30.900</td><td>Rp 278.100</td></tr>
+                    <tr><td>Keripik Bawang Merah<br><span class="en">Shallot Crisps</span></td><td>Rp 56.900</td><td>Rp 512.100</td></tr>
+                    <tr><td>Keripik Bawang Putih<br><span class="en">Garlic Crisps</span></td><td>Rp 54.900</td><td>Rp 494.100</td></tr>
+                    <tr><td>Keripik Buncis<br><span class="en">Green Bean Crisps</span></td><td>Rp 30.900</td><td>Rp 278.100</td></tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div id="coated-list" class="product-list" role="tabpanel" aria-labelledby="coated" style="display:none;"></div>
+        <div id="fruit-list" class="product-list" role="tabpanel" aria-labelledby="fruit" style="display:none;"></div>
     </div>
-
-    <div id="pure-veggie-list" class="product-list active" role="tabpanel">
-      <h3 class="catalog-title-green"><span class="emoji">🌿</span> Keripik Sayur Murni <span class="sub-en">(Pure Veggie Crisps)</span></h3>
-      <p class="catalog-desc">*100% Sayur Murni, Vacuum Frying, tanpa adonan/tepung.</p>
-      <table class="catalog-table">
-        <thead><tr><th>Produk</th><th>Harga Ecer / 100gr</th><th>Harga Reseller / 1kg</th></tr></thead>
-        <tbody>
-          <tr><td>Keripik Wortel<br><span class="en">Carrot Crisps</span></td><td>Rp 26.900</td><td>Rp 242.100</td></tr>
-          <tr><td>Keripik Ubi Ungu<br><span class="en">Purple Sweet Potato Crisps</span></td><td>Rp 20.900</td><td>Rp 188.100</td></tr>
-          <tr><td>Keripik Ubi Madu<br><span class="en">Honey Sweet Potato Crisps</span></td><td>Rp 20.900</td><td>Rp 188.100</td></tr>
-          <tr><td>Keripik Okra<br><span class="en">Okra Crisps</span></td><td>Rp 50.900</td><td>Rp 458.100</td></tr>
-          <tr><td>Keripik Jagung Manis<br><span class="en">Sweet Corn Crisps</span></td><td>Rp 24.900</td><td>Rp 224.100</td></tr>
-          <tr><td>Keripik Kentang<br><span class="en">Potato Crisps</span></td><td>Rp 28.900</td><td>Rp 260.100</td></tr>
-          <tr><td>Keripik Kentang Wedges<br><span class="en">Potato Wedges Crisps</span></td><td>Rp 32.900</td><td>Rp 296.100</td></tr>
-          <tr><td>Keripik Edamame<br><span class="en">Edamame Crisps</span></td><td>Rp 30.900</td><td>Rp 278.100</td></tr>
-          <tr><td>Keripik Bawang Merah<br><span class="en">Shallot Crisps</span></td><td>Rp 56.900</td><td>Rp 512.100</td></tr>
-          <tr><td>Keripik Bawang Putih<br><span class="en">Garlic Crisps</span></td><td>Rp 54.900</td><td>Rp 494.100</td></tr>
-          <tr><td>Keripik Buncis<br><span class="en">Green Bean Crisps</span></td><td>Rp 30.900</td><td>Rp 278.100</td></tr>
-        </tbody>
-      </table>
-    </div>
-
-    <div id="coated-list" class="product-list" style="display:none;" role="tabpanel">
-      <!-- Content akan di-handle JS tab switching -->
-    </div>
-
-    <div id="fruit-list" class="product-list" style="display:none;" role="tabpanel">
-      <!-- Content akan di-handle JS tab switching -->
-    </div>
-
-  </div>
 </section>
 
 <section class="bulk-order">
-  <div class="container">
-    <h2 class="section-title">💰 Skema Diskon Grosir Reseller (Tier)</h2>
-    <p class="bulk-note">Diskon dihitung otomatis berdasarkan total berat pesanan.</p>
-    <table class="tier-table">
-      <thead><tr><th>Tier</th><th>Jumlah Pembelian</th><th>Diskon</th></tr></thead>
-      <tbody>
-        <tr><td>1</td><td>1 - 9 kg</td><td class="disc-green">10% OFF</td></tr>
-        <tr><td>2</td><td>10 - 24 kg</td><td class="disc-green">15% OFF</td></tr>
-        <tr><td>3</td><td>25 - 49 kg</td><td class="disc-green">20% OFF</td></tr>
-        <tr><td>4</td><td>50 kg ke atas</td><td class="disc-red">30% OFF</td></tr>
-      </tbody>
-    </table>
-  </div>
+    <div class="container">
+        <h2 class="section-title">💰 Skema Diskon Grosir Reseller (Tier)</h2>
+        <p class="bulk-note">Diskon dihitung otomatis berdasarkan total berat pesanan.</p>
+        <table class="tier-table">
+            <thead><tr><th>Tier</th><th>Jumlah Pembelian</th><th>Diskon</th></tr></thead>
+            <tbody>
+                <tr><td>1</td><td>1 - 9 kg</td><td class="disc-green">10% OFF</td></tr>
+                <tr><td>2</td><td>10 - 24 kg</td><td class="disc-green">15% OFF</td></tr>
+                <tr><td>3</td><td>25 - 49 kg</td><td class="disc-green">20% OFF</td></tr>
+                <tr><td>4</td><td>50 kg ke atas</td><td class="disc-red">30% OFF</td></tr>
+            </tbody>
+        </table>
+    </div>
 </section>
 
 <section class="conversion-form" id="order-form">
-  <div class="container">
-    <h2 class="section-title">📩 Daftar Jadi Reseller</h2>
-    <form class="contact-form">
-      <div class="form-group">
-        <label for="name">Nama Lengkap</label>
-        <input id="name" type="text" name="name" required>
-      </div>
-      <div class="form-group">
-        <label for="whatsapp">Nomor WA</label>
-        <input id="whatsapp" type="tel" name="whatsapp" required>
-      </div>
-      <div class="form-group">
-        <label for="email">Email</label>
-        <input id="email" type="email" name="email">
-      </div>
-      <div class="form-group">
-        <label for="note">Catatan</label>
-        <textarea id="note" name="note"></textarea>
-      </div>
-      <button type="submit" class="cta-button">KIRIM</button>
-    </form>
-  </div>
+    <div class="container">
+        <h2 class="section-title">📩 Daftar Jadi Reseller</h2>
+        <form class="contact-form">
+            <div class="form-group">
+                <label for="name">Nama Lengkap</label>
+                <input type="text" id="name" name="name" required>
+            </div>
+            <div class="form-group">
+                <label for="whatsapp">Nomor WA</label>
+                <input type="tel" id="whatsapp" name="whatsapp" required>
+            </div>
+            <div class="form-group">
+                <label for="email">Email</label>
+                <input type="email" id="email" name="email">
+            </div>
+            <div class="form-group">
+                <label for="note">Catatan</label>
+                <textarea id="note" name="note"></textarea>
+            </div>
+            <button type="submit" class="cta-button">KIRIM</button>
+        </form>
+    </div>
 </section>
 
 </main>
 
 <footer>
-  <div class="container">
-    <div class="footer-brand-name">Primafood - Rilldelish</div>
-    <div class="footer-social-links">
-      <a href="https://www.facebook.com/RilldelishBatu" target="_blank">Facebook</a>
-      <a href="https://www.instagram.com/rilldelishbatu" target="_blank">Instagram</a>
-      <a href="https://www.tiktok.com/@Rilldelishbatu" target="_blank">TikTok</a>
-      <a href="https://www.youtube.com/@Rilldelishbatu" target="_blank">Youtube</a>
-      <a href="https://www.tokopedia.com/rilldelish" target="_blank">Tokopedia</a>
+    <div class="container">
+        <div class="footer-brand-name">Primafood - Rilldelish</div>
+        <div class="footer-social-links">
+            <a href="https://www.facebook.com/RilldelishBatu" target="_blank">Facebook</a>
+            <a href="https://www.instagram.com/rilldelishbatu" target="_blank">Instagram</a>
+            <a href="https://www.tiktok.com/@Rilldelishbatu" target="_blank">TikTok</a>
+            <a href="https://www.youtube.com/@Rilldelishbatu" target="_blank">Youtube</a>
+            <a href="https://www.tokopedia.com/rilldelish" target="_blank">Tokopedia</a>
+        </div>
+        <p>© 2025 Primafood. Semua Hak Dilindungi.</p>
+        <p style="font-size:0.8em;opacity:0.8;">*Gambar/visual produk hanya untuk ilustrasi. Tampilan dan kemasan produk sebenarnya dapat berbeda.</p>
     </div>
-    <p>© 2025 Primafood. Semua Hak Dilindungi.</p>
-    <p style="font-size:0.8em;opacity:0.8;">*Gambar/visual produk hanya untuk ilustrasi. Tampilan dan kemasan produk sebenarnya dapat berbeda.</p>
-  </div>
 </footer>
 
 <script src="script.js" defer></script>
