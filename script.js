@@ -1,88 +1,118 @@
-// script.js final
+<script>
+    // Konfigurasi Flash Sale
+    const FLASH_SALE_DURATION = 3600; // 1 Jam (3600 detik)
+    let isFlashSaleActive = false;
+    let flashSaleEndTime;
+    
+    // --- Fungsi Utama Timer ---
+    function startCountdownTimer() {
+        const timerElement = document.getElementById('countdown-timer');
+        const bannerElement = document.getElementById('flash-sale-banner');
+        
+        const storedEndTime = localStorage.getItem('flashSaleEndTime');
+        if (storedEndTime && parseInt(storedEndTime) > Date.now()) {
+            flashSaleEndTime = parseInt(storedEndTime);
+        } else {
+            flashSaleEndTime = Date.now() + FLASH_SALE_DURATION * 1000;
+            localStorage.setItem('flashSaleEndTime', flashSaleEndTime);
+        }
 
-document.addEventListener('DOMContentLoaded', () => {
-    // --- Tab Switching ---
-    const tabs = document.querySelectorAll('.category-btn');
-    const tabContents = document.querySelectorAll('.tab-content');
+        function updateTimer() {
+            const now = Date.now();
+            const distance = flashSaleEndTime - now;
 
-    tabs.forEach(tab => {
-        tab.addEventListener('click', (e) => {
-            e.preventDefault();
-
-            // Update active tab
-            tabs.forEach(t => {
-                t.classList.remove('active');
-                t.setAttribute('aria-selected', 'false');
-            });
-            tab.classList.add('active');
-            tab.setAttribute('aria-selected', 'true');
-
-            // Show corresponding content
-            const targetId = tab.getAttribute('aria-controls');
-            tabContents.forEach(tc => {
-                if(tc.id === targetId) {
-                    tc.style.display = 'block';
-                } else {
-                    tc.style.display = 'none';
-                }
-            });
-        });
-    });
-
-    // --- Form Handling ---
-    const form = document.querySelector('.contact-form');
-    if(form){
-        form.addEventListener('submit', (e) => {
-            e.preventDefault();
-            const name = form.querySelector('input[name="name"]').value.trim();
-            const whatsapp = form.querySelector('input[name="whatsapp"]').value.trim();
-            const email = form.querySelector('input[name="email"]').value.trim();
-            const note = form.querySelector('textarea[name="note"]').value.trim();
-
-            if(!name || !whatsapp){
-                alert('Nama dan WhatsApp wajib diisi.');
+            if (distance < 0) {
+                isFlashSaleActive = false;
+                if (bannerElement) bannerElement.style.display = 'none';
+                if (timerElement) timerElement.textContent = 'Sale Selesai!';
+                localStorage.removeItem('flashSaleEndTime');
                 return;
             }
 
-            // Simulate form submission (replace with your actual submission)
-            console.log({name, whatsapp, email, note});
-            alert('Terima kasih, data Anda telah dikirim.');
-            form.reset();
+            isFlashSaleActive = true;
+            if (bannerElement) bannerElement.style.display = 'block';
+
+            const hours = Math.floor(distance / (1000 * 60 * 60));
+            const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+            if (timerElement) {
+                timerElement.textContent = 
+                    `${String(hours).padStart(2, '0')}:${String(minutes).padStart(2, '0')}:${String(seconds).padStart(2, '0')}`;
+            }
+            setTimeout(updateTimer, 1000);
+        }
+        updateTimer();
+    }
+
+    // --- Fungsionalitas WhatsApp (FORM KLAIM DISKON) ---
+    function sendWhatsAppOrder(event) {
+        event.preventDefault();
+
+        const nama = document.getElementById('nama').value;
+        const telepon = document.getElementById('telepon').value;
+        const kota = document.getElementById('kota').value;
+
+        // Cek jika Flash Sale masih aktif saat submit
+        let flashSaleNote = isFlashSaleActive ? "\n\nMohon konfirmasi Diskon Flash Sale 5% saya (terkunci saat mendaftar)." : "";
+
+        // Format pesan WhatsApp
+        const message = `
+Halo Primafood Rilldelish! 👋
+Saya (Nama: ${nama}) telah mendaftar sebagai Reseller/Grosir via Landing Page.
+
+No. WhatsApp: ${telepon}
+Lokasi Saya: ${kota}
+
+Mohon kirimkan info langkah order selanjutnya.${flashSaleNote}
+
+Terima kasih!
+        `.trim(); 
+
+        const whatsappNumber = '628124966298'; 
+        const encodedMessage = encodeURIComponent(message);
+        const whatsappUrl = `https://api.whatsapp.com/send?phone=${whatsappNumber}&text=${encodedMessage}`;
+        
+        // ▼▼▼ KODE PIXEL EVENT 'Lead' ▼▼▼
+        if (typeof fbq === 'function') { 
+            fbq('track', 'Lead');
+        }
+        // ▲▲▲ AKHIR KODE PIXEL EVENT ▲▲▲
+        
+        window.open(whatsappUrl, '_blank');
+    }
+
+    // --- INITIALIZATION ---
+    document.addEventListener('DOMContentLoaded', function() {
+        // Submit Form
+        document.getElementById('whatsappForm').addEventListener('submit', sendWhatsAppOrder);
+        
+        // Mulai Timer Flash Sale
+        startCountdownTimer();
+
+
+        // --- Fungsionalitas Filtering Katalog Satuan ---
+        const categoryButtons = document.querySelectorAll('.category-btn');
+        const productLists = document.querySelectorAll('.product-list');
+        const buahList = document.getElementById('fruit-list');
+        const coatedList = document.getElementById('coated-list');
+        if (buahList) buahList.style.display = 'none';
+        if (coatedList) coatedList.style.display = 'none';
+
+        categoryButtons.forEach(button => {
+            button.addEventListener('click', function() {
+                const targetId = this.getAttribute('data-category');
+                categoryButtons.forEach(btn => btn.classList.remove('active'));
+                this.classList.add('active');
+                
+                productLists.forEach(list => {
+                    if (list.id === targetId + '-list') {
+                        list.style.display = 'block';
+                    } else {
+                        list.style.display = 'none';
+                    }
+                });
+            });
         });
-    }
-
-    // --- Lazy load GTM & FB Pixel after LCP ---
-    function loadTrackingScripts() {
-        // Google Tag Manager
-        const gtmScript = document.createElement('script');
-        gtmScript.src = "https://www.googletagmanager.com/gtag/js?id=G-M4C764ED4G";
-        gtmScript.async = true;
-        document.body.appendChild(gtmScript);
-
-        gtmScript.onload = () => {
-            window.dataLayer = window.dataLayer || [];
-            function gtag(){dataLayer.push(arguments);}
-            gtag('js', new Date());
-            gtag('config', 'G-M4C764ED4G', { 'anonymize_ip': true });
-        };
-
-        // Facebook Pixel
-        const fbScript = document.createElement('script');
-        fbScript.src = "https://connect.facebook.net/en_US/fbevents.js";
-        fbScript.async = true;
-        document.body.appendChild(fbScript);
-
-        fbScript.onload = () => {
-            if(typeof fbq === "function") return;
-            window.fbq = function(){window.fbq.callMethod ?
-                window.fbq.callMethod.apply(window.fbq, arguments) : window.fbq.queue.push(arguments)};
-            window.fbq.queue = [];
-            fbq('init', '203XXXXXX'); // replace with your FB Pixel ID
-            fbq('track', 'PageView');
-        };
-    }
-
-    // Load tracking after LCP (~2s)
-    setTimeout(loadTrackingScripts, 2000);
-
-});
+    });
+    </script>
