@@ -1,80 +1,58 @@
-document.addEventListener('DOMContentLoaded', function () {
-    // =========================
-    // 1) Tab Switching
-    // =========================
-    const categoryButtons = document.querySelectorAll('.category-btn');
-    const productLists = {
-        'pure-veggie': document.getElementById('pure-veggie-list'),
-        'coated': document.getElementById('coated-list'),
-        'fruit': document.getElementById('fruit-list')
-    };
+document.addEventListener("DOMContentLoaded", function () {
+    // --- Tab Switching ---
+    const categoryButtons = document.querySelectorAll(".category-btn");
+    const productLists = document.querySelectorAll(".product-list");
 
     categoryButtons.forEach(btn => {
-        btn.addEventListener('click', function () {
-            const selected = btn.dataset.category;
+        btn.addEventListener("click", () => {
+            // Remove active from buttons
+            categoryButtons.forEach(b => b.classList.remove("active"));
+            btn.classList.add("active");
 
-            // Toggle active button
-            categoryButtons.forEach(b => b.classList.remove('active'));
-            btn.classList.add('active');
+            // Hide all lists
+            productLists.forEach(list => list.classList.remove("active"));
 
-            // Show selected list
-            Object.keys(productLists).forEach(key => {
-                if (key === selected) {
-                    productLists[key].style.display = 'block';
-                    productLists[key].classList.add('active');
-                } else {
-                    productLists[key].style.display = 'none';
-                    productLists[key].classList.remove('active');
-                }
-            });
+            // Show corresponding list
+            const category = btn.dataset.category;
+            const listToShow = document.getElementById(`${category}-list`);
+            if (listToShow) listToShow.classList.add("active");
         });
     });
 
-    // =========================
-    // 2) Form Submission (basic)
-    // =========================
-    const form = document.querySelector('.contact-form');
+    // --- Form Accessibility & Validation ---
+    const form = document.querySelector(".contact-form");
     if (form) {
-        form.addEventListener('submit', function (e) {
+        // Add explicit label association for screen readers
+        form.querySelectorAll("input, textarea").forEach(input => {
+            const label = input.previousElementSibling;
+            if (label && label.tagName.toLowerCase() === "label") {
+                input.setAttribute("aria-labelledby", label.innerText.replace(/\s/g, "_"));
+            }
+        });
+
+        form.addEventListener("submit", (e) => {
             e.preventDefault();
 
-            const formData = new FormData(form);
-            const data = {};
-            formData.forEach((value, key) => data[key] = value);
+            const name = form.querySelector("input[name='name']").value.trim();
+            const whatsapp = form.querySelector("input[name='whatsapp']").value.trim();
+            const email = form.querySelector("input[name='email']").value.trim();
+            const note = form.querySelector("textarea[name='note']").value.trim();
 
-            // For demo purposes: show alert
-            alert(`Terima kasih ${data.name}! Form Anda telah terkirim.`);
+            if (!name || !whatsapp) {
+                alert("Nama dan Nomor WA wajib diisi.");
+                return;
+            }
 
+            // Example: replace this with your real form submission (AJAX/fetch)
+            console.log({
+                name,
+                whatsapp,
+                email,
+                note
+            });
+
+            alert("Terima kasih, data Anda telah dikirim.");
             form.reset();
         });
     }
-
-    // =========================
-    // 3) Lazy-load External Scripts
-    // =========================
-    function lazyLoadScript(src, callback) {
-        const s = document.createElement('script');
-        s.src = src;
-        s.async = true;
-        s.defer = true;
-        s.onload = callback || function(){};
-        document.body.appendChild(s);
-    }
-
-    // Example: GTM or FB Pixel can be lazy-loaded if needed
-    // lazyLoadScript('https://www.googletagmanager.com/gtag/js?id=G-M4C764ED4G');
-
-    // =========================
-    // 4) Accessibility: add focus outline
-    // =========================
-    const allFocusable = document.querySelectorAll('button, a, input, textarea');
-    allFocusable.forEach(el => {
-        el.addEventListener('focus', () => {
-            el.style.outline = '2px solid #27ae60';
-            el.style.outlineOffset = '2px';
-        });
-        el.addEventListener('blur', () => {
-            el.style.outline = 'none';
-        });
-    });
 });
