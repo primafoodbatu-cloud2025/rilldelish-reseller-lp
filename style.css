@@ -1,298 +1,273 @@
-/* style.css */
-
-/* -------------------
-   GLOBAL RESET & BASE
--------------------- */
+/* -------------------- */
+/* RESET & BASE STYLES  */
+/* -------------------- */
 * {
     box-sizing: border-box;
     margin: 0;
     padding: 0;
 }
 
+html {
+    font-family: 'Helvetica', sans-serif;
+    scroll-behavior: smooth;
+}
+
 body {
-    font-family: 'Helvetica', Arial, sans-serif;
     line-height: 1.6;
     color: #222;
     background-color: #fff;
-    scroll-behavior: smooth;
 }
 
 .container {
     width: 90%;
     max-width: 1200px;
     margin: 0 auto;
+    padding: 1rem 0;
 }
 
-/* -------------------
-   HERO SECTION
--------------------- */
+/* -------------------- */
+/* HEADER / HERO        */
+/* -------------------- */
 .hero-section {
-    background: linear-gradient(to right, #ffe0b2, #fff3e0);
+    background: linear-gradient(135deg, #ffb347, #ffcc33);
+    color: #111;
     text-align: center;
-    padding: 80px 20px 60px;
+    padding: 4rem 1rem;
 }
 
 .hero-section h1 {
-    font-size: 2.5rem;
-    margin-bottom: 10px;
-    color: #2d2d2d;
+    font-size: 2rem;
+    margin-bottom: 0.5rem;
 }
 
 .hero-section h2 {
-    font-size: 1.25rem;
-    font-weight: 400;
-    margin-bottom: 15px;
-    color: #555;
+    font-size: 1.2rem;
+    margin-bottom: 1rem;
 }
 
 .hero-section .sub-headline {
     font-size: 1rem;
-    margin-bottom: 25px;
-    color: #333;
+    margin-bottom: 2rem;
 }
 
-.hero-section .cta-button {
-    display: inline-block;
-    padding: 12px 30px;
-    background-color: #ff7043;
+.cta-button {
+    background-color: #008c44;
     color: #fff;
-    font-weight: bold;
     text-decoration: none;
-    border-radius: 25px;
-    transition: background 0.3s ease;
+    padding: 0.8rem 1.6rem;
+    border-radius: 8px;
+    font-weight: bold;
+    display: inline-block;
+    transition: background-color 0.3s;
 }
 
-.hero-section .cta-button:hover {
-    background-color: #ff5722;
+.cta-button:hover,
+.cta-button:focus {
+    background-color: #006e35;
+    outline: none;
 }
 
-/* -------------------
-   PRODUCT CATALOG
--------------------- */
+/* -------------------- */
+/* PRODUCT CATALOG      */
+/* -------------------- */
 .single-product-catalog {
-    padding: 60px 0;
+    padding: 2rem 0;
 }
 
 .section-title {
-    font-size: 1.8rem;
-    margin-bottom: 10px;
-    text-align: center;
-    color: #2d2d2d;
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
 }
 
 .catalog-note {
-    text-align: center;
-    font-size: 0.95rem;
-    margin-bottom: 30px;
+    font-size: 0.9rem;
+    margin-bottom: 1.5rem;
     color: #555;
 }
 
 .product-categories {
-    text-align: center;
-    margin-bottom: 30px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-bottom: 1rem;
 }
 
-.product-categories .category-btn {
-    display: inline-block;
-    margin: 5px 8px;
-    padding: 8px 18px;
-    font-size: 0.95rem;
-    border: 1px solid #ccc;
-    border-radius: 25px;
-    background-color: #f9f9f9;
+.category-btn {
+    padding: 0.6rem 1rem;
+    border: 2px solid #008c44;
+    border-radius: 6px;
+    background-color: #fff;
+    color: #008c44;
+    font-weight: bold;
     cursor: pointer;
-    transition: all 0.3s ease;
+    transition: all 0.3s;
 }
 
-.product-categories .category-btn.active,
-.product-categories .category-btn:hover {
-    background-color: #ff7043;
+.category-btn.active {
+    background-color: #008c44;
     color: #fff;
-    border-color: #ff7043;
 }
 
-.product-list {
-    display: none;
+.category-btn:focus {
+    outline: 2px dashed #222;
 }
 
-.product-list.active {
-    display: block;
-    animation: fadeIn 0.4s ease-in;
+/* Product tables */
+.catalog-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 1rem;
 }
 
-.catalog-title-green {
-    color: #388e3c;
-    margin-bottom: 5px;
-}
-
-.catalog-title-orange {
-    color: #f57c00;
-    margin-bottom: 5px;
-}
-
-.catalog-title-red {
-    color: #d32f2f;
-    margin-bottom: 5px;
-}
-
-.catalog-desc {
+.catalog-table th,
+.catalog-table td {
+    border: 1px solid #ddd;
+    padding: 0.6rem;
+    text-align: left;
     font-size: 0.95rem;
-    margin-bottom: 15px;
-    color: #555;
+    vertical-align: middle;
 }
 
-/* TABLES */
-.catalog-table,
+.catalog-table th {
+    background-color: #f8f8f8;
+    color: #111;
+}
+
+/* Product category colors */
+.catalog-title-green { color: #008c44; }
+.catalog-title-orange { color: #ff6600; }
+.catalog-title-red { color: #cc0033; }
+
+/* Emoji alignment */
+.emoji {
+    margin-right: 0.5rem;
+}
+
+/* English text smaller & gray */
+.en-text, .sub-en, .en {
+    font-size: 0.85rem;
+    color: #555;
+    display: block;
+}
+
+/* -------------------- */
+/* BULK ORDER DISCOUNT  */
+/* -------------------- */
+.bulk-order {
+    padding: 2rem 0;
+    background-color: #f3f3f3;
+}
+
 .tier-table {
     width: 100%;
     border-collapse: collapse;
-    margin-bottom: 40px;
+    margin-top: 1rem;
 }
 
-.catalog-table th,
-.catalog-table td,
 .tier-table th,
 .tier-table td {
-    border: 1px solid #ddd;
-    padding: 10px 12px;
-    text-align: left;
+    border: 1px solid #ccc;
+    padding: 0.6rem;
+    text-align: center;
     font-size: 0.95rem;
 }
 
-.catalog-table th,
-.tier-table th {
-    background-color: #f2f2f2;
-    font-weight: bold;
-}
-
-.en {
-    display: block;
-    font-size: 0.85rem;
-    color: #777;
-}
-
-/* TIER DISCOUNT COLORS */
 .disc-green {
-    color: #388e3c;
+    color: #008c44;
     font-weight: bold;
 }
 
 .disc-red {
-    color: #d32f2f;
+    color: #cc0033;
     font-weight: bold;
 }
 
-/* -------------------
-   FORM SECTION
--------------------- */
+/* -------------------- */
+/* FORM SECTION         */
+/* -------------------- */
 .conversion-form {
-    padding: 60px 0;
-    background-color: #fff8e1;
+    padding: 2rem 0;
 }
 
 .contact-form {
     max-width: 600px;
     margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
 }
 
 .form-group {
-    margin-bottom: 20px;
+    display: flex;
+    flex-direction: column;
 }
 
 .form-group label {
-    display: block;
-    margin-bottom: 6px;
-    font-weight: 500;
+    margin-bottom: 0.3rem;
+    font-weight: bold;
+    color: #222;
 }
 
 .form-group input,
 .form-group textarea {
-    width: 100%;
-    padding: 10px 12px;
-    font-size: 0.95rem;
+    padding: 0.6rem;
     border: 1px solid #ccc;
     border-radius: 6px;
-    transition: border-color 0.3s ease;
+    font-size: 1rem;
 }
 
 .form-group input:focus,
 .form-group textarea:focus {
-    border-color: #ff7043;
-    outline: none;
+    outline: 2px solid #008c44;
 }
 
+/* Submit button */
 .contact-form button.cta-button {
-    background-color: #ff7043;
-    color: #fff;
-    border: none;
-    border-radius: 25px;
-    padding: 12px 30px;
-    font-weight: bold;
-    cursor: pointer;
-    transition: background 0.3s ease;
+    align-self: flex-start;
 }
 
-.contact-form button.cta-button:hover {
-    background-color: #ff5722;
-}
-
-/* -------------------
-   FOOTER
--------------------- */
+/* -------------------- */
+/* FOOTER               */
+/* -------------------- */
 footer {
-    background-color: #2d2d2d;
+    background-color: #111;
     color: #fff;
-    padding: 40px 0 20px;
+    padding: 2rem 0;
     font-size: 0.9rem;
-    text-align: center;
-}
-
-footer a {
-    color: #ffb74d;
-    text-decoration: none;
-    margin: 0 8px;
-}
-
-footer a:hover {
-    text-decoration: underline;
 }
 
 .footer-brand-name {
     font-weight: bold;
-    margin-bottom: 10px;
+    margin-bottom: 0.5rem;
 }
 
 .footer-social-links {
-    margin-bottom: 15px;
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+    margin-bottom: 1rem;
 }
 
-/* -------------------
-   ANIMATIONS
--------------------- */
-@keyframes fadeIn {
-    from { opacity: 0; }
-    to { opacity: 1; }
+.footer-social-links a {
+    color: #fff;
+    text-decoration: none;
 }
 
-/* -------------------
-   RESPONSIVE
--------------------- */
+.footer-social-links a:hover,
+.footer-social-links a:focus {
+    text-decoration: underline;
+}
+
+/* -------------------- */
+/* RESPONSIVE            */
+/* -------------------- */
 @media (max-width: 768px) {
-    .hero-section h1 {
-        font-size: 2rem;
+    .product-categories {
+        flex-direction: column;
     }
-    .hero-section h2 {
-        font-size: 1rem;
-    }
-    .product-categories .category-btn {
-        font-size: 0.85rem;
-        padding: 6px 14px;
-    }
-    .catalog-table th,
-    .catalog-table td,
-    .tier-table th,
-    .tier-table td {
-        font-size: 0.85rem;
-        padding: 8px 10px;
+
+    .cta-button {
+        width: 100%;
+        text-align: center;
     }
 }
