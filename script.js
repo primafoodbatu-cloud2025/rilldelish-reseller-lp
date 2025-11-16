@@ -1,87 +1,118 @@
-{\rtf1\ansi\ansicpg1252\cocoartf2580
-\cocoatextscaling0\cocoaplatform0{\fonttbl\f0\fswiss\fcharset0 Helvetica;}
-{\colortbl;\red255\green255\blue255;}
-{\*\expandedcolortbl;;}
-\paperw11900\paperh16840\margl1440\margr1440\vieww11520\viewh8400\viewkind0
-\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural\partightenfactor0
+// script.js
+document.addEventListener('DOMContentLoaded', function() {
 
-\f0\fs24 \cf0 // script.js\
-document.addEventListener('DOMContentLoaded', function() \{\
-\
-    /********** CATEGORY BUTTONS SWITCH **********/\
-    const categoryButtons = document.querySelectorAll('.category-btn');\
-    const productLists = document.querySelectorAll('.product-list');\
-\
-    categoryButtons.forEach(button => \{\
-        button.addEventListener('click', () => \{\
-            const category = button.getAttribute('data-category');\
-\
-            // Hapus active di semua tombol\
-            categoryButtons.forEach(btn => btn.classList.remove('active'));\
-            // Set active pada tombol yang diklik\
-            button.classList.add('active');\
-\
-            // Tampilkan list produk sesuai kategori, sembunyikan yang lain\
-            productLists.forEach(list => \{\
-                if (list.id === category + '-list') \{\
-                    list.style.display = 'block';\
-                \} else \{\
-                    list.style.display = 'none';\
-                \}\
-            \});\
-        \});\
-    \});\
-\
-\
-    /********** FLASH SALE COUNTDOWN **********/\
-    const flashBanner = document.getElementById('flash-sale-banner');\
-    const countdownEl = document.getElementById('countdown-timer');\
-\
-    if (flashBanner && countdownEl) \{\
-        flashBanner.style.display = 'block';\
-\
-        // Durasi countdown dalam detik (contoh 1 jam = 3600 detik)\
-        let countdown = 3600;\
-\
-        const interval = setInterval(() => \{\
-            const hours = String(Math.floor(countdown / 3600)).padStart(2, '0');\
-            const minutes = String(Math.floor((countdown % 3600) / 60)).padStart(2, '0');\
-            const seconds = String(countdown % 60).padStart(2, '0');\
-\
-            countdownEl.textContent = `$\{hours\}:$\{minutes\}:$\{seconds\}`;\
-\
-            countdown--;\
-\
-            if (countdown < 0) \{\
-                clearInterval(interval);\
-                countdownEl.textContent = '00:00:00';\
-                flashBanner.style.display = 'none';\
-            \}\
-        \}, 1000);\
-    \}\
-\
-\
-    /********** FORM SUBMIT KE WHATSAPP **********/\
-    const form = document.getElementById('whatsappForm');\
-\
-    form.addEventListener('submit', function(e) \{\
-        e.preventDefault();\
-\
-        const name = document.getElementById('nama').value.trim();\
-        const phone = document.getElementById('telepon').value.trim();\
-        const city = document.getElementById('kota').value.trim();\
-\
-        if (!name || !phone || !city) \{\
-            alert('Harap isi semua data yang diperlukan!');\
-            return;\
-        \}\
-\
-        // Buat pesan WhatsApp\
-        const message = `Halo Primafood Rilldelish, saya $\{name\} dari $\{city\}. Saya berminat jadi reseller.`;\
-\
-        // Buka WhatsApp di tab baru\
-        window.open(`https://wa.me/$\{phone\}?text=$\{encodeURIComponent(message)\}`, '_blank');\
-    \});\
-\
-\});\
-}
+    /********** CATEGORY BUTTONS SWITCH **********/
+    var categoryWrapper = document.querySelector('.product-categories');
+    if (categoryWrapper) {
+        var lists = document.querySelectorAll('.product-list');
+        lists.forEach(function(list) {
+            if (!list.classList.contains('active')) list.classList.add('hidden');
+        });
+
+        categoryWrapper.addEventListener('click', function(e) {
+            var btn = e.target.closest('.category-btn');
+            if (!btn) return;
+
+            // Remove active class from all
+            categoryWrapper.querySelectorAll('.category-btn').forEach(function(b){ b.classList.remove('active'); });
+
+            // Add active to clicked
+            btn.classList.add('active');
+
+            // Show/Hide lists
+            var target = btn.dataset.category;
+            lists.forEach(function(list) {
+                if (list.id === target + '-list') {
+                    list.classList.remove('hidden');
+                    list.style.display = 'block';
+                } else {
+                    list.classList.add('hidden');
+                    list.style.display = 'none';
+                }
+            });
+        });
+    }
+
+    /********** FLASH SALE COUNTDOWN **********/
+    var FLASH_SALE_DURATION = 3600; // 1 jam
+    var flashSaleEndTime = null;
+    var flashTimer = null;
+    var isFlashSaleActive = false;
+
+    function initFlashSale() {
+        var timer = document.getElementById('countdown-timer');
+        var banner = document.getElementById('flash-sale-banner');
+
+        try {
+            var saved = localStorage.getItem('flashSaleEndTime');
+            if (saved && +saved > Date.now()) {
+                flashSaleEndTime = +saved;
+            } else {
+                flashSaleEndTime = Date.now() + FLASH_SALE_DURATION * 1000;
+                localStorage.setItem('flashSaleEndTime', flashSaleEndTime);
+            }
+        } catch (_) {
+            flashSaleEndTime = Date.now() + FLASH_SALE_DURATION * 1000;
+        }
+
+        function tick() {
+            var distance = flashSaleEndTime - Date.now();
+            if (distance <= 0) {
+                isFlashSaleActive = false;
+                if (banner) banner.style.display = 'none';
+                if (timer) timer.textContent = 'Sale Selesai!';
+                try { localStorage.removeItem('flashSaleEndTime'); } catch (_) {}
+                clearInterval(flashTimer);
+                return;
+            }
+
+            isFlashSaleActive = true;
+            if (banner) banner.style.display = 'block';
+
+            var h = Math.floor(distance / 3600000);
+            var m = Math.floor((distance % 3600000) / 60000);
+            var s = Math.floor((distance % 60000) / 1000);
+
+            if (timer) {
+                timer.textContent =
+                    ('' + h).padStart(2,'0') + ':' +
+                    ('' + m).padStart(2,'0') + ':' +
+                    ('' + s).padStart(2,'0');
+            }
+        }
+
+        tick();
+        flashTimer = setInterval(tick, 1000);
+    }
+
+    initFlashSale();
+
+    /********** WHATSAPP FORM HANDLER **********/
+    var form = document.getElementById('whatsappForm');
+    if (form) {
+        form.addEventListener('submit', function(e) {
+            e.preventDefault();
+
+            var nama = (document.getElementById('nama')?.value || '').trim();
+            var telepon = (document.getElementById('telepon')?.value || '').trim();
+            var kota = (document.getElementById('kota')?.value || '').trim();
+
+            if (!nama || !telepon) {
+                alert('Mohon isi nama dan nomor WhatsApp.');
+                return;
+            }
+
+            var msg = 'Halo Primafood Rilldelish! 👋%0A' +
+                      'Saya (Nama: ' + encodeURIComponent(nama) + ') telah mendaftar sebagai Reseller/Grosir via Landing Page.%0A%0A' +
+                      'No. WhatsApp: ' + encodeURIComponent(telepon) + '%0A' +
+                      'Lokasi Saya: ' + encodeURIComponent(kota) + '%0A%0A' +
+                      'Mohon kirimkan info langkah order selanjutnya.' +
+                      (isFlashSaleActive ? '%0A%0AMohon konfirmasi Diskon Flash Sale 5% saya (terkunci saat mendaftar).' : '');
+
+            var waUrl = 'https://api.whatsapp.com/send?phone=628124966298&text=' + msg;
+
+            window.open(waUrl, '_blank', 'noopener');
+        });
+    }
+
+});
