@@ -81,7 +81,7 @@ body {
 }
 
 .cta-button:hover {
-    background-color: #e55337; 
+    background-color: #e55337; /* Ini adalah warna yang lebih gelap dari CTA, jadi kontrasnya aman */
     transform: translateY(-2px);
 }
 
