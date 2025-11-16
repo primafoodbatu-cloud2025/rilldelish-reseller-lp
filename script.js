@@ -1,20 +1,21 @@
 // script.js
 document.addEventListener('DOMContentLoaded', () => {
-    // --- CATEGORY BUTTONS SWITCH ---
+
+    /********** CATEGORY BUTTON SWITCH **********/
     const categoryButtons = document.querySelectorAll('.category-btn');
     const productLists = document.querySelectorAll('.product-list');
 
     categoryButtons.forEach(button => {
         button.addEventListener('click', () => {
-            const targetCategory = button.getAttribute('data-category');
+            const targetCategory = button.dataset.category;
 
-            // Remove active class from buttons
+            // Update active button
             categoryButtons.forEach(btn => btn.classList.remove('active'));
             button.classList.add('active');
 
-            // Show target product list, hide others
+            // Show corresponding product list
             productLists.forEach(list => {
-                if (list.id === targetCategory + '-list') {
+                if(list.id === `${targetCategory}-list`) {
                     list.style.display = 'block';
                     list.classList.add('active');
                 } else {
@@ -25,40 +26,26 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
-    // --- FORM SUBMISSION ---
-    const contactForm = document.querySelector('.contact-form');
-
-    contactForm.addEventListener('submit', function (e) {
-        e.preventDefault();
-
-        // Simple validation (HTML5 required handles most)
-        const name = document.getElementById('name').value.trim();
-        const whatsapp = document.getElementById('whatsapp').value.trim();
-
-        if (!name || !whatsapp) {
-            alert('Harap isi nama dan nomor WA!');
-            return;
-        }
-
-        // Optional: send data via AJAX (placeholder)
-        // fetch('/submit-form', { method: 'POST', body: new FormData(contactForm) });
-
-        // Simulate success
-        alert('Terima kasih! Formulir Anda telah dikirim.');
-        contactForm.reset();
-    });
-
-    // --- OPTIONAL: Smooth scroll for CTA button ---
-    const ctaButton = document.querySelector('.cta-button[href^="#"]');
-    if (ctaButton) {
-        ctaButton.addEventListener('click', function (e) {
+    /********** FORM SUBMISSION TRACKING **********/
+    const form = document.querySelector('.contact-form');
+    if(form) {
+        form.addEventListener('submit', e => {
             e.preventDefault();
-            const targetId = this.getAttribute('href').substring(1);
-            const targetElement = document.getElementById(targetId);
-            if (targetElement) {
-                targetElement.scrollIntoView({ behavior: 'smooth' });
-            }
+
+            // Facebook Lead tracking
+            if(window.fbq) fbq('track', 'Lead');
+
+            // Optional: Google Analytics event
+            if(window.gtag) gtag('event', 'submit', {
+                'event_category': 'Form',
+                'event_label': 'Reseller Signup'
+            });
+
+            // Simulasi submit (ganti dengan AJAX atau form action Anda)
+            alert('Terima kasih! Formulir Anda telah terkirim.');
+
+            form.reset();
         });
     }
-});
 
+});
