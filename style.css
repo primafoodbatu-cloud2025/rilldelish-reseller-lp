@@ -85,6 +85,19 @@ body {
     transform: translateY(-2px);
 }
 
+.section-subtitle {
+    font-size: 1.1em;
+    color: var(--color-text-accessible);
+    text-align: center;
+    /* KUNCI PERBAIKAN: Tarik ke atas untuk merapat ke judul */
+    margin-top: -25px; 
+    margin-bottom: 30px; 
+    font-style: italic;
+    max-width: 600px; /* Agar tidak terlalu lebar di desktop */
+    margin-left: auto;
+    margin-right: auto;
+}
+
 /* ========================================= */
 /* 3. HEADER & HERO SECTION */
 /* ========================================= */
