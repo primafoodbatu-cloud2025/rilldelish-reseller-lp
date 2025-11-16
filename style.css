@@ -1,325 +1,228 @@
-/* ==========================
-   GLOBAL RESET & BASE
-   ========================== */
+/* ===== General Reset & Base ===== */
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
-
-html {
-    font-family: "Inter", "Helvetica Neue", Helvetica, Arial, sans-serif;
-    font-size: 16px;
-    scroll-behavior: smooth;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
 body {
-    background: #fff;
-    color: #111;
-    line-height: 1.6;
+  font-family: "Inter", Arial, sans-serif;
+  line-height: 1.5;
+  background-color: #fff;
+  color: #222;
+  scroll-behavior: smooth;
 }
 
-/* ==========================
-   HEADINGS
-   ========================== */
-h1, h2, h3 {
-    font-weight: 700;
-    margin-bottom: 0.5em;
-}
-
-h1 { font-size: 2rem; }
-h2 { font-size: 1.75rem; }
-h3 { font-size: 1.5rem; }
-
-/* ==========================
-   CONTAINERS
-   ========================== */
+/* ===== Container ===== */
 .container {
-    width: 90%;
-    max-width: 1200px;
-    margin: 0 auto;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 1rem;
 }
 
-/* ==========================
-   HEADER HERO
-   ========================== */
+/* ===== Headings ===== */
+h1, h2, h3 {
+  line-height: 1.2;
+  margin-bottom: 0.5rem;
+}
+
+/* ===== Hero Section ===== */
 .hero-section {
-    text-align: center;
-    padding: 4rem 1rem;
-    background: linear-gradient(180deg, #f5f9ff, #fff);
+  text-align: center;
+  padding: 3rem 1rem;
+  background: #f9f9f9;
 }
 
 .hero-section h1 {
-    color: #1a1a1a;
-    font-size: 2.5rem;
-    margin-bottom: 0.5rem;
+  font-size: 2rem;
+  color: #1a1a1a;
 }
 
 .hero-section h2 {
-    color: #333;
-    font-size: 1.5rem;
-    margin-bottom: 1rem;
+  font-size: 1.2rem;
+  color: #555;
 }
 
 .hero-section .sub-headline {
-    font-size: 1.1rem;
-    color: #555;
-    margin-bottom: 1.5rem;
+  margin: 1rem 0;
+  font-size: 1rem;
+  color: #333;
 }
 
 .cta-button {
-    display: inline-block;
-    background-color: #28a745;
-    color: #fff;
-    padding: 0.75rem 1.5rem;
-    font-size: 1.1rem;
-    font-weight: 600;
-    text-decoration: none;
-    border-radius: 12px;
-    transition: background 0.3s ease, transform 0.2s ease;
+  display: inline-block;
+  padding: 0.75rem 1.5rem;
+  background-color: #1a8917;
+  color: #fff;
+  font-weight: 600;
+  text-decoration: none;
+  border-radius: 0.5rem;
+  transition: background-color 0.3s;
 }
 
-.cta-button:focus,
 .cta-button:hover {
-    background-color: #218838;
-    transform: translateY(-2px);
-    outline: none;
+  background-color: #166d13;
 }
 
-.cta-button:active {
-    transform: translateY(0);
-}
-
-/* ==========================
-   PRODUCT CATALOG
-   ========================== */
+/* ===== Product Catalog ===== */
 .single-product-catalog {
-    padding: 3rem 0;
+  padding: 2rem 1rem;
 }
 
 .section-title {
-    text-align: center;
-    font-size: 1.8rem;
-    margin-bottom: 0.5rem;
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
 }
 
 .catalog-note {
-    text-align: center;
-    color: #555;
-    font-size: 0.95rem;
-    margin-bottom: 2rem;
+  font-size: 0.9rem;
+  margin-bottom: 1rem;
+  color: #444;
 }
 
 .product-categories {
-    text-align: center;
-    margin-bottom: 2rem;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-bottom: 1rem;
 }
 
 .category-btn {
-    background: #e9ecef;
-    border: none;
-    padding: 0.5rem 1rem;
-    margin: 0.25rem;
-    font-size: 1rem;
-    border-radius: 8px;
-    cursor: pointer;
-    transition: background 0.3s ease, color 0.3s ease;
+  padding: 0.5rem 1rem;
+  background-color: #eee;
+  border: none;
+  border-radius: 0.5rem;
+  cursor: pointer;
+  transition: background-color 0.2s;
 }
 
 .category-btn.active,
-.category-btn:focus,
-.category-btn:hover {
-    background: #28a745;
-    color: #fff;
-    outline: none;
+.category-btn:focus {
+  background-color: #1a8917;
+  color: #fff;
 }
 
-/* ==========================
-   PRODUCT LIST TABLE
-   ========================== */
+.category-btn .en-text {
+  display: block;
+  font-size: 0.8rem;
+  color: #666;
+}
+
+/* Product list tables */
 .product-list {
-    display: none;
+  display: none;
 }
 
 .product-list.active {
-    display: block;
-}
-
-.catalog-title-green { color: #198754; margin-bottom: 0.5rem; }
-.catalog-title-orange { color: #fd7e14; margin-bottom: 0.5rem; }
-.catalog-title-red { color: #dc3545; margin-bottom: 0.5rem; }
-
-.catalog-desc {
-    font-size: 0.95rem;
-    margin-bottom: 1rem;
-    color: #555;
+  display: block;
 }
 
 .catalog-table {
-    width: 100%;
-    border-collapse: collapse;
-    margin-bottom: 2rem;
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 1rem;
 }
 
 .catalog-table th,
 .catalog-table td {
-    border: 1px solid #dee2e6;
-    padding: 0.5rem 0.75rem;
-    text-align: left;
+  border: 1px solid #ddd;
+  padding: 0.5rem;
+  text-align: left;
+  font-size: 0.9rem;
 }
 
-.catalog-table th {
-    background: #f1f3f5;
-    font-weight: 600;
+.catalog-title-green { color: #1a8917; }
+.catalog-title-orange { color: #f28c28; }
+.catalog-title-red { color: #d61a3c; }
+
+.catalog-desc {
+  font-size: 0.85rem;
+  margin-bottom: 0.5rem;
+  color: #555;
 }
 
-.catalog-table td .en-text,
-.catalog-table td .en {
-    display: block;
-    font-size: 0.85rem;
-    color: #6c757d;
-}
-
-/* ==========================
-   BULK ORDER TABLE
-   ========================== */
-.bulk-order {
-    background: #f8f9fa;
-    padding: 2rem 0;
-    margin-top: 2rem;
-}
-
-.bulk-note {
-    text-align: center;
-    color: #555;
-    margin-bottom: 1rem;
-}
-
+/* Tier Table */
 .tier-table {
-    width: 100%;
-    border-collapse: collapse;
-    margin: 0 auto;
-    max-width: 600px;
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 1rem;
 }
 
 .tier-table th,
 .tier-table td {
-    border: 1px solid #dee2e6;
-    padding: 0.5rem 0.75rem;
-    text-align: center;
+  border: 1px solid #ddd;
+  padding: 0.5rem;
+  text-align: center;
+  font-size: 0.9rem;
 }
 
-.tier-table th {
-    background: #e9ecef;
-}
+.disc-green { color: #1a8917; font-weight: 600; }
+.disc-red { color: #d61a3c; font-weight: 600; }
 
-.disc-green { color: #198754; font-weight: 600; }
-.disc-red { color: #dc3545; font-weight: 600; }
-
-/* ==========================
-   CONTACT FORM
-   ========================== */
+/* Bulk Order / Form Section */
 .conversion-form {
-    padding: 3rem 0;
+  padding: 2rem 1rem;
+  background-color: #f9f9f9;
 }
 
 .contact-form {
-    max-width: 500px;
-    margin: 0 auto;
+  display: grid;
+  gap: 1rem;
+  max-width: 500px;
+  margin: 0 auto;
 }
 
-.form-group {
-    margin-bottom: 1rem;
+.contact-form label {
+  display: block;
+  font-weight: 600;
+  margin-bottom: 0.25rem;
 }
 
-label {
-    display: block;
-    font-weight: 600;
-    margin-bottom: 0.25rem;
-    color: #333;
+.contact-form input,
+.contact-form textarea {
+  width: 100%;
+  padding: 0.5rem;
+  border: 1px solid #ccc;
+  border-radius: 0.5rem;
+  font-size: 0.9rem;
 }
 
-input, textarea {
-    width: 100%;
-    padding: 0.5rem 0.75rem;
-    border-radius: 8px;
-    border: 1px solid #ced4da;
-    font-size: 1rem;
+.contact-form textarea {
+  resize: vertical;
+  min-height: 80px;
 }
 
-input:focus, textarea:focus {
-    outline: 2px solid #28a745;
-}
-
-button[type="submit"] {
-    width: 100%;
-    background: #28a745;
-    color: #fff;
-    border: none;
-    padding: 0.75rem;
-    font-size: 1.1rem;
-    font-weight: 600;
-    border-radius: 12px;
-    cursor: pointer;
-    transition: background 0.3s ease, transform 0.2s ease;
-}
-
-button[type="submit"]:hover,
-button[type="submit"]:focus {
-    background: #218838;
-    outline: none;
-    transform: translateY(-2px);
-}
-
-/* ==========================
-   FOOTER
-   ========================== */
+/* Footer */
 footer {
-    background: #f1f3f5;
-    padding: 2rem 0;
-    text-align: center;
-    font-size: 0.9rem;
-    color: #555;
+  padding: 2rem 1rem;
+  background-color: #222;
+  color: #fff;
+  text-align: center;
+  font-size: 0.85rem;
 }
 
-.footer-brand-name {
-    font-weight: 700;
-    margin-bottom: 0.5rem;
+footer a {
+  color: #1a8917;
+  margin: 0 0.25rem;
+  text-decoration: none;
 }
 
-.footer-social-links a {
-    margin: 0 0.5rem;
-    color: #198754;
-    text-decoration: none;
-    font-weight: 600;
-    transition: color 0.3s ease;
+footer a:hover {
+  text-decoration: underline;
 }
 
-.footer-social-links a:hover,
-.footer-social-links a:focus {
-    color: #155724;
-    outline: none;
+/* ===== Accessibility & Focus ===== */
+a:focus,
+button:focus,
+input:focus,
+textarea:focus {
+  outline: 2px solid #1a8917;
+  outline-offset: 2px;
 }
 
-/* ==========================
-   ACCESSIBILITY & PERFORMANCE
-   ========================== */
-a:focus, button:focus, input:focus, textarea:focus {
-    outline-offset: 2px;
-}
-
-.emoji {
-    font-size: 1.2rem;
-}
-
-/* ==========================
-   RESPONSIVE
-   ========================== */
+/* ===== Responsive ===== */
 @media (max-width: 768px) {
-    h1 { font-size: 2rem; }
-    h2 { font-size: 1.4rem; }
-    h3 { font-size: 1.2rem; }
-    .cta-button { font-size: 1rem; padding: 0.65rem 1.2rem; }
-    .product-categories { display: flex; flex-wrap: wrap; justify-content: center; }
-    .category-btn { flex: 1 1 45%; margin: 0.25rem; }
+  .product-categories {
+    flex-direction: column;
+  }
 }
