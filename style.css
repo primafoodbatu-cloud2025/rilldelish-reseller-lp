@@ -109,8 +109,8 @@ body {
     margin-top: 15px;
 }
 
-/* KOREKSI AKSESIBILITAS: Kontras H3 di Header */
-.hero-section h3 {
+/* KOREKSI AKSESIBILITAS: Mengganti H3 dengan class .sub-headline */
+.sub-headline {
     font-size: 1.2em; 
     font-weight: 600; 
     color: var(--color-cta); /* Menggunakan variabel CTA Merah Tua yang baru */
@@ -189,7 +189,6 @@ body {
 .product-list h3 span {
     color: var(--color-text-accessible);
 }
-
 
 /* 6.3. STYLING TABEL SATUAN (KOREKSI PERATAAN) */
 .catalog-table {
