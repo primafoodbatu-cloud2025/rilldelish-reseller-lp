@@ -1,50 +1,54 @@
-// script.js
-document.addEventListener('DOMContentLoaded', () => {
+document.addEventListener('DOMContentLoaded', function() {
+    "use strict";
 
-    /********** CATEGORY BUTTON SWITCH **********/
+    /********** CATEGORY BUTTONS SWITCH **********/
     const categoryButtons = document.querySelectorAll('.category-btn');
     const productLists = document.querySelectorAll('.product-list');
 
-    categoryButtons.forEach(button => {
-        button.addEventListener('click', () => {
-            const targetCategory = button.dataset.category;
+    categoryButtons.forEach(btn => {
+        btn.addEventListener('click', () => {
+            const target = btn.getAttribute('data-category');
 
             // Update active button
-            categoryButtons.forEach(btn => btn.classList.remove('active'));
-            button.classList.add('active');
+            categoryButtons.forEach(b => b.classList.remove('active'));
+            btn.classList.add('active');
 
-            // Show corresponding product list
+            // Show/hide product lists
             productLists.forEach(list => {
-                if(list.id === `${targetCategory}-list`) {
+                if(list.id === target + '-list') {
                     list.style.display = 'block';
-                    list.classList.add('active');
                 } else {
                     list.style.display = 'none';
-                    list.classList.remove('active');
                 }
             });
         });
     });
 
-    /********** FORM SUBMISSION TRACKING **********/
-    const form = document.querySelector('.contact-form');
-    if(form) {
-        form.addEventListener('submit', e => {
-            e.preventDefault();
+    /********** SMOOTH SCROLL TO FORM **********/
+    const ctaButtons = document.querySelectorAll('.cta-button[href^="#"]');
+    ctaButtons.forEach(btn => {
+        btn.addEventListener('click', e => {
+            const targetId = btn.getAttribute('href').substring(1);
+            const targetEl = document.getElementById(targetId);
+            if(targetEl) {
+                e.preventDefault();
+                targetEl.scrollIntoView({ behavior: 'smooth' });
+            }
+        });
+    });
 
-            // Facebook Lead tracking
-            if(window.fbq) fbq('track', 'Lead');
-
-            // Optional: Google Analytics event
-            if(window.gtag) gtag('event', 'submit', {
-                'event_category': 'Form',
-                'event_label': 'Reseller Signup'
-            });
-
-            // Simulasi submit (ganti dengan AJAX atau form action Anda)
-            alert('Terima kasih! Formulir Anda telah terkirim.');
-
-            form.reset();
+    /********** FORM SUBMISSION LEAD TRACKING **********/
+    const contactForm = document.querySelector('.contact-form');
+    if(contactForm) {
+        contactForm.addEventListener('submit', function(e) {
+            e.preventDefault(); // Bisa diganti jika pakai submit server
+            // Facebook Pixel Lead Event
+            if(typeof fbq === 'function') {
+                fbq('track', 'Lead');
+            }
+            // Optional: tampilkan alert/success message
+            alert('Terima kasih! Formulir Anda sudah terkirim.');
+            contactForm.reset();
         });
     }
 
