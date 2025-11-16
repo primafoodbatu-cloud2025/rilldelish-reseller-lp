@@ -3,12 +3,12 @@
 /* ========================================= */
 :root {
     /* KOREKSI AKSESIBILITAS: Warna Hijau digelapkan agar lolos kontras */
-    --color-primary: #388E3C; /* Sebelumnya #4CAF50 */
+    --color-primary: #388E3C; /* <-- Sebelumnya #4CAF50 */
     
-    --color-secondary: #ff8c00; /* Oranye/Kuning (Energi & Rasa) */
+    --color-secondary: #ff8c00; /* Oranye/Kuning (Energi & Rasa) - INI AMAN */
     
     /* KOREKSI AKSESIBILITAS: Warna CTA (Merah) digelapkan agar lolos kontras */
-    --color-cta: #C62828; /* Sebelumnya #ff6347 */
+    --color-cta: #D95333; /* <-- Sebelumnya #ff6347 (terlalu terang) */
     
     --color-text: #333333;
     --color-bg-light: #f7f7f7;
