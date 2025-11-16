@@ -1,13 +1,14 @@
 /* ========================================= */
-/* 1. VARIABEL & RESET DASAR */
+/* 1. VARIABEL & RESET DASAR (KOREKSI KONTRA) */
 /* ========================================= */
 :root {
-    /* Warna Brand Rilldelish */
-    --color-primary: #4CAF50; /* Hijau Sayur/Segar */
+    /* KOREKSI AKSESIBILITAS: Warna Hijau digelapkan agar lolos kontras */
+    --color-primary: #388E3C; /* Sebelumnya #4CAF50 */
+    
     --color-secondary: #ff8c00; /* Oranye/Kuning (Energi & Rasa) */
     
-    /* KOREKSI AKSESIBILITAS: Menggelapkan warna CTA agar kontrasnya lolos */
-    --color-cta: #D95333; /* Sebelumnya #ff6347 (terlalu terang) */
+    /* KOREKSI AKSESIBILITAS: Warna CTA (Merah) digelapkan agar lolos kontras */
+    --color-cta: #C62828; /* Sebelumnya #ff6347 */
     
     --color-text: #333333;
     --color-bg-light: #f7f7f7;
@@ -42,13 +43,14 @@ body {
     text-align: center;
     margin-bottom: 40px;
     font-size: 2.2em;
-    color: var(--color-primary);
-    border-bottom: 3px solid var(--color-secondary);
     
+    /* KOREKSI AKSESIBILITAS: Ganti warna judul utama ke hitam agar kontras tinggi */
+    color: var(--color-text); /* Sebelumnya var(--color-primary) */
+    
+    border-bottom: 3px solid var(--color-secondary);
     display: table;
     margin-left: auto;
     margin-right: auto;
-
     padding-bottom: 10px;
 }
 
@@ -79,7 +81,7 @@ body {
 }
 
 .cta-button:hover {
-    background-color: #e55337; /* Ini adalah warna yang lebih gelap dari CTA, jadi kontrasnya aman */
+    background-color: #e55337; 
     transform: translateY(-2px);
 }
 
@@ -94,7 +96,7 @@ body {
 }
 
 .hero-section h1 {
-    color: var(--color-primary);
+    color: var(--color-primary); /* Menggunakan Hijau Tua yang baru */
     font-size: 3em;
     font-weight: 800;
     line-height: 1.1;
@@ -111,7 +113,7 @@ body {
 .hero-section h3 {
     font-size: 1.2em; 
     font-weight: 600; 
-    color: var(--color-cta); /* Menggunakan variabel CTA yang sudah digelapkan */
+    color: var(--color-cta); /* Menggunakan variabel CTA Merah Tua yang baru */
     margin-top: 10px;
 }
 
@@ -133,7 +135,8 @@ body {
 
 .product-categories button {
     background-color: white;
-    border: 2px solid #ccc;
+    /* KOREKSI AKSESIBILITAS: Border tombol digelapkan */
+    border: 2px solid #999; /* Sebelumnya #ccc */
     color: #333;
     padding: 10px 18px;
     cursor: pointer;
@@ -148,7 +151,8 @@ body {
     display: block;
     font-size: 0.75em;
     font-weight: 400;
-    color: #007bff;
+    /* KOREKSI AKSESIBILITAS: Teks biru digelapkan */
+    color: #0056b3; /* Sebelumnya #007bff */
     border-top: 1px solid rgba(0, 0, 0, 0.1);
     padding-top: 5px;
     margin-top: 5px;
@@ -197,7 +201,6 @@ body {
     font-size: 0.95em;
 }
 
-/* KOREKSI: Judul Tabel Rata Tengah */
 .catalog-table th {
     padding: 12px 15px;
     border: 1px solid #eee;
@@ -207,7 +210,6 @@ body {
     text-align: center; 
 }
 
-/* KOREKSI: Data Sel Default Rata Kiri */
 .catalog-table td {
     padding: 12px 15px;
     border: 1px solid #eee;
@@ -215,7 +217,6 @@ body {
     vertical-align: top;
 }
 
-/* KOREKSI: Kolom Harga (Kolom 2 & 3) Rata Kanan */
 .catalog-table td:nth-child(2),
 .catalog-table td:nth-child(3) {
     text-align: right;
@@ -244,7 +245,7 @@ body {
 }
 
 .catalog-table td strong {
-    color: var(--color-cta); /* Menggunakan variabel CTA yang sudah digelapkan */
+    color: var(--color-cta);
     font-weight: 700;
 }
 
@@ -279,12 +280,10 @@ body {
     background-color: #fcebeb;
 }
 
-/* Pastikan setiap grup input ada jarak */
 .contact-form .form-group {
     margin-bottom: 20px;
 }
 
-/* Aturan untuk SEMUA input, select, dan textarea */
 .contact-form .form-group input,
 .contact-form .form-group select,
 .contact-form .form-group textarea {
@@ -299,7 +298,6 @@ body {
     box-sizing: border-box; 
 }
 
-/* Label Styling (memastikan label rata kiri) */
 .contact-form label {
     display: block;
     text-align: left !important;
@@ -309,20 +307,17 @@ body {
     color: var(--color-text);
 }
 
-/* Tinggi Khusus Kolom Alamat dan Keterangan */
 .contact-form textarea {
     height: 80px;
     min-height: 80px;
     resize: vertical;
 }
 
-/* Input angka kembali ke lebar penuh */
 .contact-form input[type="number"] {
     max-width: 100%;
     text-align: left;
 }
 
-/* Styling fokus */
 .contact-form .form-group input:focus,
 .contact-form .form-group select:focus,
 .contact-form .form-group textarea:focus {
@@ -334,7 +329,7 @@ body {
 /* 10. FAQ (DIHAPUS DARI CSS) */
 /* ========================================= */
 .faq-section {
-   display: none; /* Dihapus dari HTML, jadi kita sembunyikan saja */
+   display: none; 
 }
 
 
@@ -379,7 +374,6 @@ footer a:hover {
     text-decoration: underline;
 }
 
-/* Styling Link Sosial Media */
 .footer-social-links {
     margin: 20px 0;
     display: flex;
