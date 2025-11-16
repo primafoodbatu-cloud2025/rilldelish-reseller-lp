@@ -1,61 +1,80 @@
-// script.js
-document.addEventListener('DOMContentLoaded', () => {
-  // --- Tab Switching ---
-  const categoryButtons = document.querySelectorAll('.category-btn');
-  const productLists = {
-    'pure-veggie': document.getElementById('pure-veggie-list'),
-    'coated': document.getElementById('coated-list'),
-    'fruit': document.getElementById('fruit-list')
-  };
+document.addEventListener('DOMContentLoaded', function () {
+    // =========================
+    // 1) Tab Switching
+    // =========================
+    const categoryButtons = document.querySelectorAll('.category-btn');
+    const productLists = {
+        'pure-veggie': document.getElementById('pure-veggie-list'),
+        'coated': document.getElementById('coated-list'),
+        'fruit': document.getElementById('fruit-list')
+    };
 
-  categoryButtons.forEach(btn => {
-    btn.addEventListener('click', () => {
-      // Aktifkan tombol
-      categoryButtons.forEach(b => b.classList.remove('active'));
-      btn.classList.add('active');
+    categoryButtons.forEach(btn => {
+        btn.addEventListener('click', function () {
+            const selected = btn.dataset.category;
 
-      // Tampilkan list sesuai kategori
-      Object.keys(productLists).forEach(cat => {
-        if(cat === btn.dataset.category){
-          productLists[cat].style.display = 'block';
-        } else {
-          productLists[cat].style.display = 'none';
-        }
-      });
+            // Toggle active button
+            categoryButtons.forEach(b => b.classList.remove('active'));
+            btn.classList.add('active');
+
+            // Show selected list
+            Object.keys(productLists).forEach(key => {
+                if (key === selected) {
+                    productLists[key].style.display = 'block';
+                    productLists[key].classList.add('active');
+                } else {
+                    productLists[key].style.display = 'none';
+                    productLists[key].classList.remove('active');
+                }
+            });
+        });
     });
-  });
 
-  // --- Form Submission ---
-  const contactForm = document.querySelector('.contact-form');
-  contactForm.addEventListener('submit', e => {
-    e.preventDefault();
+    // =========================
+    // 2) Form Submission (basic)
+    // =========================
+    const form = document.querySelector('.contact-form');
+    if (form) {
+        form.addEventListener('submit', function (e) {
+            e.preventDefault();
 
-    const name = contactForm.name.value.trim();
-    const whatsapp = contactForm.whatsapp.value.trim();
-    const email = contactForm.email.value.trim();
-    const note = contactForm.note.value.trim();
+            const formData = new FormData(form);
+            const data = {};
+            formData.forEach((value, key) => data[key] = value);
 
-    if(!name || !whatsapp){
-      alert('Nama dan WA wajib diisi!');
-      return;
+            // For demo purposes: show alert
+            alert(`Terima kasih ${data.name}! Form Anda telah terkirim.`);
+
+            form.reset();
+        });
     }
 
-    // Track Lead event Facebook Pixel
-    if(window.fbq){
-      fbq('track', 'Lead');
+    // =========================
+    // 3) Lazy-load External Scripts
+    // =========================
+    function lazyLoadScript(src, callback) {
+        const s = document.createElement('script');
+        s.src = src;
+        s.async = true;
+        s.defer = true;
+        s.onload = callback || function(){};
+        document.body.appendChild(s);
     }
 
-    // Optional: Track submission event Google Analytics
-    if(window.gtag){
-      gtag('event', 'submit_reseller_form', {
-        event_category: 'Form',
-        event_label: 'Reseller Form'
-      });
-    }
+    // Example: GTM or FB Pixel can be lazy-loaded if needed
+    // lazyLoadScript('https://www.googletagmanager.com/gtag/js?id=G-M4C764ED4G');
 
-    // Bisa kirim ke backend / WA API
-    console.log('Form data:', {name, whatsapp, email, note});
-    alert('Terima kasih, data Anda telah dikirim!');
-    contactForm.reset();
-  });
+    // =========================
+    // 4) Accessibility: add focus outline
+    // =========================
+    const allFocusable = document.querySelectorAll('button, a, input, textarea');
+    allFocusable.forEach(el => {
+        el.addEventListener('focus', () => {
+            el.style.outline = '2px solid #27ae60';
+            el.style.outlineOffset = '2px';
+        });
+        el.addEventListener('blur', () => {
+            el.style.outline = 'none';
+        });
+    });
 });
