@@ -1,74 +1,88 @@
-// Wait until DOM is fully loaded
-document.addEventListener("DOMContentLoaded", function () {
+// script.js final
 
-    // -----------------------------
-    // 1) Product Category Tab Switching
-    // -----------------------------
-    const categoryButtons = document.querySelectorAll(".category-btn");
-    const productLists = document.querySelectorAll(".product-list");
+document.addEventListener('DOMContentLoaded', () => {
+    // --- Tab Switching ---
+    const tabs = document.querySelectorAll('.category-btn');
+    const tabContents = document.querySelectorAll('.tab-content');
 
-    categoryButtons.forEach(btn => {
-        btn.addEventListener("click", () => {
-            const target = btn.getAttribute("data-category");
+    tabs.forEach(tab => {
+        tab.addEventListener('click', (e) => {
+            e.preventDefault();
 
-            // Remove active class from all buttons
-            categoryButtons.forEach(b => b.classList.remove("active"));
-            // Add active class to clicked button
-            btn.classList.add("active");
+            // Update active tab
+            tabs.forEach(t => {
+                t.classList.remove('active');
+                t.setAttribute('aria-selected', 'false');
+            });
+            tab.classList.add('active');
+            tab.setAttribute('aria-selected', 'true');
 
-            // Show target product list, hide others
-            productLists.forEach(list => {
-                if (list.id === `${target}-list`) {
-                    list.classList.add("active");
+            // Show corresponding content
+            const targetId = tab.getAttribute('aria-controls');
+            tabContents.forEach(tc => {
+                if(tc.id === targetId) {
+                    tc.style.display = 'block';
                 } else {
-                    list.classList.remove("active");
+                    tc.style.display = 'none';
                 }
             });
         });
     });
 
-    // -----------------------------
-    // 2) Contact Form Submission (prevent default & minimal validation)
-    // -----------------------------
-    const contactForm = document.querySelector(".contact-form");
+    // --- Form Handling ---
+    const form = document.querySelector('.contact-form');
+    if(form){
+        form.addEventListener('submit', (e) => {
+            e.preventDefault();
+            const name = form.querySelector('input[name="name"]').value.trim();
+            const whatsapp = form.querySelector('input[name="whatsapp"]').value.trim();
+            const email = form.querySelector('input[name="email"]').value.trim();
+            const note = form.querySelector('textarea[name="note"]').value.trim();
 
-    contactForm.addEventListener("submit", function (e) {
-        e.preventDefault();
+            if(!name || !whatsapp){
+                alert('Nama dan WhatsApp wajib diisi.');
+                return;
+            }
 
-        const formData = new FormData(contactForm);
-        const name = formData.get("name").trim();
-        const whatsapp = formData.get("whatsapp").trim();
-        const email = formData.get("email").trim();
-        const note = formData.get("note").trim();
-
-        if (!name || !whatsapp) {
-            alert("Nama dan Nomor WA wajib diisi!");
-            return;
-        }
-
-        // Minimal feedback for demonstration (replace with AJAX/endpoint as needed)
-        alert(`Terima kasih ${name}, data Anda telah terkirim!`);
-
-        contactForm.reset();
-    });
-
-    // -----------------------------
-    // 3) Lazy-load non-critical external scripts
-    // -----------------------------
-    function loadExternalScript(src, callback) {
-        const script = document.createElement("script");
-        script.src = src;
-        script.async = true;
-        script.defer = true;
-        script.onload = callback || function () {};
-        document.body.appendChild(script);
+            // Simulate form submission (replace with your actual submission)
+            console.log({name, whatsapp, email, note});
+            alert('Terima kasih, data Anda telah dikirim.');
+            form.reset();
+        });
     }
 
-    // Load Facebook Pixel and GTM scripts after initial render
-    setTimeout(() => {
-        // GTM already async/defer in HTML; optional: load additional analytics if needed
-        // loadExternalScript("https://www.googletagmanager.com/gtag/js?id=G-M4C764ED4G");
-        // loadExternalScript("https://connect.facebook.net/en_US/fbevents.js");
-    }, 3000);
+    // --- Lazy load GTM & FB Pixel after LCP ---
+    function loadTrackingScripts() {
+        // Google Tag Manager
+        const gtmScript = document.createElement('script');
+        gtmScript.src = "https://www.googletagmanager.com/gtag/js?id=G-M4C764ED4G";
+        gtmScript.async = true;
+        document.body.appendChild(gtmScript);
+
+        gtmScript.onload = () => {
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+            gtag('config', 'G-M4C764ED4G', { 'anonymize_ip': true });
+        };
+
+        // Facebook Pixel
+        const fbScript = document.createElement('script');
+        fbScript.src = "https://connect.facebook.net/en_US/fbevents.js";
+        fbScript.async = true;
+        document.body.appendChild(fbScript);
+
+        fbScript.onload = () => {
+            if(typeof fbq === "function") return;
+            window.fbq = function(){window.fbq.callMethod ?
+                window.fbq.callMethod.apply(window.fbq, arguments) : window.fbq.queue.push(arguments)};
+            window.fbq.queue = [];
+            fbq('init', '203XXXXXX'); // replace with your FB Pixel ID
+            fbq('track', 'PageView');
+        };
+    }
+
+    // Load tracking after LCP (~2s)
+    setTimeout(loadTrackingScripts, 2000);
 
 });
