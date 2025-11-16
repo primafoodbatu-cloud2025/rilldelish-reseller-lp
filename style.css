@@ -1,26 +1,40 @@
+/* ===============================
+   VARIABLES
+=============================== */
 :root {
     --color-primary: #388E3C;
     --color-secondary: #ff8c00;
     --color-cta: #D95333;
-    --color-cta-dark: #b33c1f; /* teks hero/flash sale untuk kontras tinggi */
-    --color-text: #111; /* teks utama, kontras tinggi */
+    --color-text: #333333;
+    --color-text-light: #555555;
     --color-bg-light: #f7f7f7;
     --color-bg-mix: #e6f7ff;
-    --color-text-accessible: #555; /* katalog */
-    --color-footer-text: #eee; /* footer teks */
-    --color-footer-link: #ff8c00; /* link footer kontras tinggi */
+    --color-white: #ffffff;
 }
 
-/* RESET */
-* { margin: 0; padding: 0; box-sizing: border-box; }
+/* ===============================
+   RESET
+=============================== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
 body {
     font-family: 'Poppins', sans-serif;
     line-height: 1.6;
     color: var(--color-text);
+    background: var(--color-white);
 }
-.container { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
 
-/* TITLES */
+/* ===============================
+   TITLES
+=============================== */
 .section-title,
 .section-title-left {
     font-size: 2.2em;
@@ -41,28 +55,29 @@ body {
     display: inline-block;
 }
 
-/* BUTTON */
+/* ===============================
+   BUTTON
+=============================== */
 .cta-button {
     background: var(--color-cta);
-    color: #fff;
+    color: var(--color-white);
     padding: 15px 30px;
     font-weight: 700;
     border-radius: 8px;
     margin-top: 20px;
     display: inline-block;
     text-transform: uppercase;
-    transition: .3s;
-    box-shadow: 0 4px 6px rgba(0,0,0,.1);
+    transition: 0.3s;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
 }
 .cta-button:hover {
     background: #e55337;
     transform: translateY(-2px);
 }
-.cta-button:focus {
-    outline: 3px solid var(--color-secondary);
-}
 
-/* HERO */
+/* ===============================
+   HERO SECTION
+=============================== */
 .hero-section {
     background: var(--color-bg-light);
     padding: 100px 0;
@@ -83,56 +98,37 @@ body {
 .sub-headline {
     font-size: 1.2em;
     font-weight: 600;
-    color: var(--color-cta-dark); /* kontras tinggi */
+    color: var(--color-cta);
     margin-top: 10px;
 }
 
-/* FLASH SALE BANNER */
-#flash-sale-banner {
-    background-color: #ff9999; /* lebih gelap untuk kontras */
-    color: #660000; /* teks gelap untuk kontras tinggi */
-    padding: 15px;
-    border-radius: 8px;
-    margin-bottom: 25px;
-    border: 2px dashed #ff0000;
-    display: none;
-    will-change: opacity, transform;
-}
-
-/* KATALOG SATUAN */
-.single-product-catalog {
-    padding: 60px 0;
-    background: #f0fff0;
-}
-.single-product-catalog p,
-.product-list h3 span {
-    color: var(--color-text-accessible);
-}
-
-/* CATEGORY BUTTONS */
+/* ===============================
+   PRODUCT CATEGORIES
+=============================== */
 .product-categories {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
     gap: 10px;
+    margin-bottom: 30px;
 }
 .product-categories button {
-    background: #fff;
+    background: var(--color-white);
     border: 2px solid #999;
-    color: #333;
+    color: var(--color-text);
     padding: 10px 18px;
     cursor: pointer;
     border-radius: 20px;
     font-weight: 600;
-    transition: .3s;
-    box-shadow: 0 4px 8px rgba(0,0,0,.1);
+    transition: 0.3s;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
 }
 .product-categories button .en-text {
     display: block;
-    font-size: .75em;
+    font-size: 0.75em;
     margin-top: 10px;
     padding-top: 5px;
-    border-top: 1px solid rgba(0,0,0,.1);
+    border-top: 1px solid rgba(0,0,0,0.1);
     color: #0056b3;
 }
 .product-categories button:hover {
@@ -145,57 +141,63 @@ body {
 .product-categories button.active {
     background: #38761d;
     border-color: #38761d;
-    color: #fff;
+    color: #ffffff;
     transform: translateY(-2px);
-    box-shadow: 0 6px 10px rgba(0,0,0,.2);
+    box-shadow: 0 6px 10px rgba(0,0,0,0.2);
 }
 .product-categories button.active .en-text {
     color: #c9e6c9;
-    border-top-color: rgba(255,255,255,.3);
-}
-.product-categories button:focus {
-    outline: 3px solid var(--color-secondary);
+    border-top-color: rgba(255,255,255,0.3);
 }
 
-/* TABLE SATUAN */
+/* ===============================
+   PRODUCT LIST / TABLE
+=============================== */
+.product-list {
+    display: block;
+}
+.product-list.hidden {
+    display: none;
+}
 .catalog-table {
     width: 100%;
     margin-top: 20px;
     border-collapse: collapse;
-    background: #fff;
-    box-shadow: 0 4px 8px rgba(0,0,0,.05);
-    font-size: .95em;
+    background: var(--color-white);
+    box-shadow: 0 4px 8px rgba(0,0,0,0.05);
+    font-size: 0.95em;
 }
 .catalog-table th {
     padding: 12px 15px;
     border: 1px solid #eee;
     background: #e6ffe6;
     text-align: center;
+    color: var(--color-text);
 }
 .catalog-table td {
     padding: 12px 15px;
     border: 1px solid #eee;
     vertical-align: top;
+    color: var(--color-text-light);
 }
 .catalog-table td:nth-child(2),
 .catalog-table td:nth-child(3) {
     text-align: right;
     font-weight: 600;
-    color: #333;
     white-space: nowrap;
 }
 .catalog-table .order-btn {
     background: var(--color-cta);
-    color: #fff;
+    color: var(--color-white);
     font-weight: 600;
     padding: 6px 12px;
     border: none;
     border-radius: 5px;
-    font-size: .85em;
+    font-size: 0.85em;
     cursor: pointer;
     text-transform: uppercase;
-    transition: .3s;
-    box-shadow: 0 2px 4px rgba(0,0,0,.15);
+    transition: 0.3s;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.15);
 }
 .catalog-table .order-btn:hover {
     background: #e55337;
@@ -205,10 +207,12 @@ body {
     color: var(--color-cta);
 }
 
-/* BULK ORDER */
+/* ===============================
+   BULK ORDER TABLE
+=============================== */
 .bulk-order {
     padding: 60px 0;
-    background: #fff;
+    background: var(--color-white);
 }
 .bulk-order table {
     width: 70%;
@@ -224,7 +228,9 @@ body {
     background: #f0f0f0;
 }
 
-/* FORM */
+/* ===============================
+   FORM
+=============================== */
 .conversion-form {
     padding: 60px 0;
     background: #fcebeb;
@@ -239,14 +245,14 @@ body {
     border: 1px solid #ccc;
     border-radius: 5px;
     font-size: 1em;
-    transition: .3s;
+    transition: 0.3s;
     font-family: 'Poppins', sans-serif;
 }
 .contact-form label {
     display: block;
     font-weight: 600;
     margin-bottom: 5px;
-    font-size: .95em;
+    font-size: 0.95em;
 }
 .contact-form textarea {
     height: 80px;
@@ -254,18 +260,17 @@ body {
 }
 .contact-form :focus {
     border-color: var(--color-cta);
-    outline: 3px solid var(--color-secondary);
+    outline: none;
 }
 
-/* FAQ DIHILANGKAN */
-.faq-section { display: none; }
-
-/* FOOTER */
+/* ===============================
+   FOOTER
+=============================== */
 footer {
-    background: #333;
-    color: var(--color-footer-text);
+    background: #333333;
+    color: #ffffff;
     padding: 40px 20px;
-    font-size: .9em;
+    font-size: 0.9em;
     text-align: center;
 }
 .footer-brand-name {
@@ -274,15 +279,17 @@ footer {
     margin-bottom: 10px;
 }
 footer p {
-    color: var(--color-footer-text);
+    color: #ccc;
     margin-bottom: 5px;
     line-height: 1.5;
 }
 footer a {
-    color: var(--color-footer-link);
+    color: var(--color-cta);
     font-weight: 600;
 }
-footer a:hover { text-decoration: underline; }
+footer a:hover {
+    text-decoration: underline;
+}
 .footer-social-links {
     margin: 20px 0;
     display: flex;
@@ -292,16 +299,18 @@ footer a:hover { text-decoration: underline; }
 .footer-social-links a {
     padding: 8px 15px;
     border-radius: 20px;
-    border: 1px solid var(--color-footer-link);
-    transition: .3s;
-    font-size: .9em;
+    border: 1px solid var(--color-cta);
+    transition: 0.3s;
+    font-size: 0.9em;
 }
 .footer-social-links a:hover {
-    background: var(--color-footer-link);
-    color: #fff;
+    background: var(--color-cta);
+    color: var(--color-white);
 }
 
-/* RESPONSIVE */
+/* ===============================
+   RESPONSIVE
+=============================== */
 @media (max-width: 900px) {
     .bulk-order table { width: 100%; }
     .hero-section h1 { font-size: 2.2em; }
@@ -309,6 +318,7 @@ footer a:hover { text-decoration: underline; }
 @media (max-width: 600px) {
     .hero-section { padding: 50px 0; }
     .cta-button { padding: 12px 20px; }
-    .catalog-table { font-size: .85em; }
-    .catalog-table th, .catalog-table td { padding: 8px 10px; }
+    .catalog-table { font-size: 0.85em; }
+    .catalog-table th,
+    .catalog-table td { padding: 8px 10px; }
 }
