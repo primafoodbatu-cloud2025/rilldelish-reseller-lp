@@ -2,10 +2,13 @@
     --color-primary: #388E3C;
     --color-secondary: #ff8c00;
     --color-cta: #D95333;
-    --color-text: #333;
+    --color-cta-dark: #b33c1f; /* teks hero/flash sale untuk kontras tinggi */
+    --color-text: #111; /* teks utama, kontras tinggi */
     --color-bg-light: #f7f7f7;
     --color-bg-mix: #e6f7ff;
-    --color-text-accessible: #555;
+    --color-text-accessible: #555; /* katalog */
+    --color-footer-text: #eee; /* footer teks */
+    --color-footer-link: #ff8c00; /* link footer kontras tinggi */
 }
 
 /* RESET */
@@ -55,6 +58,9 @@ body {
     background: #e55337;
     transform: translateY(-2px);
 }
+.cta-button:focus {
+    outline: 3px solid var(--color-secondary);
+}
 
 /* HERO */
 .hero-section {
@@ -77,8 +83,20 @@ body {
 .sub-headline {
     font-size: 1.2em;
     font-weight: 600;
-    color: var(--color-cta);
+    color: var(--color-cta-dark); /* kontras tinggi */
     margin-top: 10px;
+}
+
+/* FLASH SALE BANNER */
+#flash-sale-banner {
+    background-color: #ff9999; /* lebih gelap untuk kontras */
+    color: #660000; /* teks gelap untuk kontras tinggi */
+    padding: 15px;
+    border-radius: 8px;
+    margin-bottom: 25px;
+    border: 2px dashed #ff0000;
+    display: none;
+    will-change: opacity, transform;
 }
 
 /* KATALOG SATUAN */
@@ -134,6 +152,9 @@ body {
 .product-categories button.active .en-text {
     color: #c9e6c9;
     border-top-color: rgba(255,255,255,.3);
+}
+.product-categories button:focus {
+    outline: 3px solid var(--color-secondary);
 }
 
 /* TABLE SATUAN */
@@ -233,7 +254,7 @@ body {
 }
 .contact-form :focus {
     border-color: var(--color-cta);
-    outline: none;
+    outline: 3px solid var(--color-secondary);
 }
 
 /* FAQ DIHILANGKAN */
@@ -242,7 +263,7 @@ body {
 /* FOOTER */
 footer {
     background: #333;
-    color: #fff;
+    color: var(--color-footer-text);
     padding: 40px 20px;
     font-size: .9em;
     text-align: center;
@@ -253,12 +274,12 @@ footer {
     margin-bottom: 10px;
 }
 footer p {
-    color: #ccc;
+    color: var(--color-footer-text);
     margin-bottom: 5px;
     line-height: 1.5;
 }
 footer a {
-    color: var(--color-cta);
+    color: var(--color-footer-link);
     font-weight: 600;
 }
 footer a:hover { text-decoration: underline; }
@@ -271,12 +292,12 @@ footer a:hover { text-decoration: underline; }
 .footer-social-links a {
     padding: 8px 15px;
     border-radius: 20px;
-    border: 1px solid var(--color-cta);
+    border: 1px solid var(--color-footer-link);
     transition: .3s;
     font-size: .9em;
 }
 .footer-social-links a:hover {
-    background: var(--color-cta);
+    background: var(--color-footer-link);
     color: #fff;
 }
 
