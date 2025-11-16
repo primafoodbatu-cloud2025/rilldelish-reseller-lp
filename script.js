@@ -1,21 +1,20 @@
 // script.js
-document.addEventListener('DOMContentLoaded', function() {
-
-    /********** CATEGORY BUTTONS SWITCH **********/
+document.addEventListener('DOMContentLoaded', () => {
+    // --- CATEGORY BUTTONS SWITCH ---
     const categoryButtons = document.querySelectorAll('.category-btn');
     const productLists = document.querySelectorAll('.product-list');
 
-    categoryButtons.forEach(btn => {
-        btn.addEventListener('click', () => {
-            // Remove active class from all buttons
-            categoryButtons.forEach(b => b.classList.remove('active'));
-            // Add active to clicked button
-            btn.classList.add('active');
+    categoryButtons.forEach(button => {
+        button.addEventListener('click', () => {
+            const targetCategory = button.getAttribute('data-category');
 
-            const category = btn.getAttribute('data-category');
-            // Show the corresponding product list, hide others
+            // Remove active class from buttons
+            categoryButtons.forEach(btn => btn.classList.remove('active'));
+            button.classList.add('active');
+
+            // Show target product list, hide others
             productLists.forEach(list => {
-                if(list.id === `${category}-list`) {
+                if (list.id === targetCategory + '-list') {
                     list.style.display = 'block';
                     list.classList.add('active');
                 } else {
@@ -26,41 +25,40 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
 
-    /********** SMOOTH SCROLL FOR CTA BUTTONS **********/
-    const ctaButtons = document.querySelectorAll('.cta-button');
-    ctaButtons.forEach(btn => {
-        btn.addEventListener('click', function(e) {
-            const href = this.getAttribute('href');
-            if(href && href.startsWith('#')) {
-                e.preventDefault();
-                const target = document.querySelector(href);
-                if(target) {
-                    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
-                }
-            }
-        });
+    // --- FORM SUBMISSION ---
+    const contactForm = document.querySelector('.contact-form');
+
+    contactForm.addEventListener('submit', function (e) {
+        e.preventDefault();
+
+        // Simple validation (HTML5 required handles most)
+        const name = document.getElementById('name').value.trim();
+        const whatsapp = document.getElementById('whatsapp').value.trim();
+
+        if (!name || !whatsapp) {
+            alert('Harap isi nama dan nomor WA!');
+            return;
+        }
+
+        // Optional: send data via AJAX (placeholder)
+        // fetch('/submit-form', { method: 'POST', body: new FormData(contactForm) });
+
+        // Simulate success
+        alert('Terima kasih! Formulir Anda telah dikirim.');
+        contactForm.reset();
     });
 
-    /********** FORM SUBMISSION PLACEHOLDER **********/
-    const contactForm = document.querySelector('.contact-form');
-    if(contactForm) {
-        contactForm.addEventListener('submit', function(e) {
+    // --- OPTIONAL: Smooth scroll for CTA button ---
+    const ctaButton = document.querySelector('.cta-button[href^="#"]');
+    if (ctaButton) {
+        ctaButton.addEventListener('click', function (e) {
             e.preventDefault();
-            // Simple validation example
-            const name = contactForm.querySelector('input[name="name"]').value.trim();
-            const wa = contactForm.querySelector('input[name="whatsapp"]').value.trim();
-
-            if(!name || !wa) {
-                alert('Mohon isi Nama Lengkap dan Nomor WA.');
-                return;
+            const targetId = this.getAttribute('href').substring(1);
+            const targetElement = document.getElementById(targetId);
+            if (targetElement) {
+                targetElement.scrollIntoView({ behavior: 'smooth' });
             }
-
-            // Placeholder submission action
-            alert('Terima kasih! Form Anda telah dikirim. (Implementasikan AJAX/Backend sesuai kebutuhan)');
-
-            // Optional: reset form
-            contactForm.reset();
         });
     }
-
 });
+
