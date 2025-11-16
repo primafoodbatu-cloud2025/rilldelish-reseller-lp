@@ -1,56 +1,74 @@
+// Wait until DOM is fully loaded
 document.addEventListener("DOMContentLoaded", function () {
-  // ==== Tab Switching ====
-  const tabs = document.querySelectorAll(".category-btn");
-  const tabPanels = document.querySelectorAll(".product-list");
 
-  tabs.forEach((tab) => {
-    tab.addEventListener("click", () => {
-      // Reset all tabs
-      tabs.forEach((t) => {
-        t.classList.remove("active");
-        t.setAttribute("aria-selected", "false");
-      });
-      // Reset all panels
-      tabPanels.forEach((panel) => panel.classList.remove("active"));
+    // -----------------------------
+    // 1) Product Category Tab Switching
+    // -----------------------------
+    const categoryButtons = document.querySelectorAll(".category-btn");
+    const productLists = document.querySelectorAll(".product-list");
 
-      // Activate current
-      tab.classList.add("active");
-      tab.setAttribute("aria-selected", "true");
-      const category = tab.getAttribute("data-category");
-      const panel = document.getElementById(`${category}-list`);
-      if (panel) panel.classList.add("active");
+    categoryButtons.forEach(btn => {
+        btn.addEventListener("click", () => {
+            const target = btn.getAttribute("data-category");
+
+            // Remove active class from all buttons
+            categoryButtons.forEach(b => b.classList.remove("active"));
+            // Add active class to clicked button
+            btn.classList.add("active");
+
+            // Show target product list, hide others
+            productLists.forEach(list => {
+                if (list.id === `${target}-list`) {
+                    list.classList.add("active");
+                } else {
+                    list.classList.remove("active");
+                }
+            });
+        });
     });
-  });
 
-  // ==== Form Handling ====
-  const form = document.querySelector(".contact-form");
-  if (form) {
-    form.addEventListener("submit", function (e) {
-      e.preventDefault();
-      const name = form.querySelector("#name").value.trim();
-      const whatsapp = form.querySelector("#whatsapp").value.trim();
-      const email = form.querySelector("#email").value.trim();
-      const note = form.querySelector("#note").value.trim();
+    // -----------------------------
+    // 2) Contact Form Submission (prevent default & minimal validation)
+    // -----------------------------
+    const contactForm = document.querySelector(".contact-form");
 
-      if (!name || !whatsapp) {
-        alert("Nama & Nomor WA wajib diisi!");
-        return;
-      }
+    contactForm.addEventListener("submit", function (e) {
+        e.preventDefault();
 
-      // Optional: simple validation
-      if (email && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
-        alert("Format email tidak valid!");
-        return;
-      }
+        const formData = new FormData(contactForm);
+        const name = formData.get("name").trim();
+        const whatsapp = formData.get("whatsapp").trim();
+        const email = formData.get("email").trim();
+        const note = formData.get("note").trim();
 
-      // Replace this with actual submission (Ajax, Google Sheet, API, etc.)
-      console.log({ name, whatsapp, email, note });
+        if (!name || !whatsapp) {
+            alert("Nama dan Nomor WA wajib diisi!");
+            return;
+        }
 
-      alert("Terima kasih, data Anda sudah terkirim!");
-      form.reset();
+        // Minimal feedback for demonstration (replace with AJAX/endpoint as needed)
+        alert(`Terima kasih ${name}, data Anda telah terkirim!`);
+
+        contactForm.reset();
     });
-  }
 
-  // ==== Performance Tip: Minimal DOM query caching ====
-  // All DOM queries are cached above, event delegation used
+    // -----------------------------
+    // 3) Lazy-load non-critical external scripts
+    // -----------------------------
+    function loadExternalScript(src, callback) {
+        const script = document.createElement("script");
+        script.src = src;
+        script.async = true;
+        script.defer = true;
+        script.onload = callback || function () {};
+        document.body.appendChild(script);
+    }
+
+    // Load Facebook Pixel and GTM scripts after initial render
+    setTimeout(() => {
+        // GTM already async/defer in HTML; optional: load additional analytics if needed
+        // loadExternalScript("https://www.googletagmanager.com/gtag/js?id=G-M4C764ED4G");
+        // loadExternalScript("https://connect.facebook.net/en_US/fbevents.js");
+    }, 3000);
+
 });
