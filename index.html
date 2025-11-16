@@ -9,36 +9,19 @@
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+    
+    <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap&subset=latin">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap&subset=latin" media="print" onload="this.media='all'">
+    <noscript>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap&subset=latin">
+    </noscript>
+    
+    <link rel="preload" as="image" href="logo-rilldelish.webp">
+
     <link rel="stylesheet" href="style.css"> 
-
-    <script defer>
-    !function(f,b,e,v,n,t,s)
-    {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
-    n.callMethod.apply(n,arguments):n.queue.push(arguments)};
-    if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
-    n.queue=[];t=b.createElement(e);t.async=!0;
-    t.src=v;s=b.getElementsByTagName(e)[0];
-    s.parentNode.insertBefore(t,s)}(window, document,'script',
-    'https://connect.facebook.net/en_US/fbevents.js');
     
-    fbq('init', '2037326590352817');
-    fbq('track', 'PageView');
-    </script>
-    <noscript><img height="1" width="1" style="display:none"
-    src="https://www.facebook.com/tr?id=2037326590352817&ev=PageView&noscript=1"
-    /></noscript>
     <meta name="facebook-domain-verification" content="09yu2ye8ievc775csqiqc2z2b0l6eb" />
-
-    <script async defer src="https://www.googletagmanager.com/gtag/js?id=G-M4C764ED4G"></script>
-    <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
-    
-      gtag('config', 'G-M4C764ED4G');
-    </script>
-    </head>
+</head>
 <body>
     
     <main>
@@ -242,6 +225,32 @@
         </div>
     </footer>
 
+    <script defer>
+    !function(f,b,e,v,n,t,s)
+    {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+    n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+    if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+    n.queue=[];t=b.createElement(e);t.async=!0;
+    t.src=v;s=b.getElementsByTagName(e)[0];
+    s.parentNode.insertBefore(t,s)}(window, document,'script',
+    'https://connect.facebook.net/en_US/fbevents.js');
+    
+    fbq('init', '2037326590352817');
+    fbq('track', 'PageView');
+    </script>
+    <noscript><img height="1" width="1" style="display:none"
+    src="https://www.facebook.com/tr?id=2037326590352817&ev=PageView&noscript=1"
+    /></noscript>
+    
+    <script async defer src="https://www.googletagmanager.com/gtag/js?id=G-M4C764ED4G"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+    
+        gtag('config', 'G-M4C764ED4G');
+    </script>
+    
     <script>
     // Konfigurasi Flash Sale
     const FLASH_SALE_DURATION = 3600; // 1 Jam (3600 detik)
@@ -284,7 +293,8 @@
                 timerElement.textContent = 
                     `${String(hours).padStart(2, '0')}:${String(minutes).padStart(2, '0')}:${String(seconds).padStart(2, '0')}`;
             }
-            setTimeout(updateTimer, 1000);
+            // Menggunakan setTimeout untuk update setiap 1 detik
+            setTimeout(updateTimer, 1000); 
         }
         updateTimer();
     }
