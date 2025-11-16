@@ -1,165 +1,436 @@
-/* style.css final */
+/* ========================================= */
+/* 1. VARIABEL & RESET DASAR (KOREKSI KONTRA) */
+/* ========================================= */
+:root {
+    /* KOREKSI AKSESIBILITAS: Warna Hijau digelapkan agar lolos kontras */
+    --color-primary: #388E3C; /* <-- Sebelumnya #4CAF50 */
+    
+    --color-secondary: #ff8c00; /* Oranye/Kuning (Energi & Rasa) - INI AMAN */
+    
+    /* KOREKSI AKSESIBILITAS: Warna CTA (Merah) digelapkan agar lolos kontras */
+    --color-cta: #D95333; /* <-- Sebelumnya #ff6347 (terlalu terang) */
+    
+    --color-text: #333333;
+    --color-bg-light: #f7f7f7;
+    --color-bg-mix: #e6f7ff;
 
-/* --- Reset & Base --- */
+    /* KOREKSI AKSESIBILITAS: Warna teks abu-abu yang lebih gelap (kontras tinggi) */
+    --color-text-accessible: #555; 
+}
+
 * {
-    box-sizing: border-box;
     margin: 0;
     padding: 0;
+    box-sizing: border-box; 
 }
 
 body {
-    font-family: 'Arial', sans-serif;
-    font-size: 16px;
-    line-height: 1.5;
-    color: #222;
-    background-color: #fff;
+    font-family: 'Poppins', sans-serif;
+    line-height: 1.6;
+    color: var(--color-text);
 }
 
-a {
-    text-decoration: none;
-    color: #0056b3;
-}
-
-a:hover {
-    text-decoration: underline;
-}
-
-/* --- Containers --- */
 .container {
     max-width: 1200px;
     margin: 0 auto;
-    padding: 0 1rem;
+    padding: 0 20px;
 }
 
-/* --- Headings --- */
-h1, h2, h3 {
-    color: #111;
-    margin-bottom: 0.5em;
+/* ========================================= */
+/* 2. ELEMEN UMUM (Tombol & Judul) */
+/* ========================================= */
+.section-title {
+    text-align: center;
+    margin-bottom: 40px;
+    font-size: 2.2em;
+    
+    /* KOREKSI AKSESIBILITAS: Ganti warna judul utama ke hitam agar kontras tinggi */
+    color: var(--color-text); /* Sebelumnya var(--color-primary) */
+    
+    border-bottom: 3px solid var(--color-secondary);
+    display: table;
+    margin-left: auto;
+    margin-right: auto;
+    padding-bottom: 10px;
 }
 
-/* --- Buttons --- */
-button, .cta-button {
-    cursor: pointer;
-    border: none;
-    border-radius: 8px;
-    padding: 0.75rem 1.25rem;
-    font-size: 1rem;
-    font-weight: bold;
-    transition: all 0.2s ease-in-out;
+/* Judul Rata Kiri dengan Garis Bawah */
+.section-title-left {
+    text-align: left !important;
+    margin-bottom: 10px;
+    font-size: 2.2em;
+    color: var(--color-text);
+    border-bottom: 3px solid var(--color-secondary); 
+    display: inline-block; 
+    padding-bottom: 5px;
 }
 
-/* CTA Button */
 .cta-button {
-    background-color: #FF4500; /* cukup kontras */
-    color: #fff;
+    background-color: var(--color-cta);
+    color: white !important;
+    padding: 15px 30px;
+    text-decoration: none;
+    font-weight: 700;
+    border-radius: 8px;
+    display: inline-block;
+    margin-top: 20px;
+    transition: background-color 0.3s, transform 0.2s;
+    text-transform: uppercase;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    cursor: pointer;
 }
 
 .cta-button:hover {
-    background-color: #e03e00;
+    background-color: #e55337; /* Ini adalah warna yang lebih gelap dari CTA, jadi kontrasnya aman */
+    transform: translateY(-2px);
 }
 
-/* Category buttons */
-.category-btn {
-    background-color: #f5f5f5;
-    color: #222;
-    margin-right: 0.5rem;
+/* ========================================= */
+/* 3. HEADER & HERO SECTION */
+/* ========================================= */
+.hero-section {
+    background-color: var(--color-bg-light);
+    background-size: cover;
+    padding: 100px 0;
+    text-align: center;
 }
 
-.category-btn.active {
-    background-color: #FF4500;
-    color: #fff;
+.hero-section h1 {
+    color: var(--color-primary); /* Menggunakan Hijau Tua yang baru */
+    font-size: 3em;
+    font-weight: 800;
+    line-height: 1.1;
 }
 
-.category-btn:focus {
-    outline: 3px solid #0056b3;
+.hero-section h2 {
+    color: var(--color-text);
+    font-size: 1.6em;
+    font-weight: 600;
+    margin-top: 15px;
 }
 
-/* --- Tables --- */
-table {
+/* KOREKSI AKSESIBILITAS: Mengganti H3 dengan class .sub-headline */
+.sub-headline {
+    font-size: 1.2em; 
+    font-weight: 600; 
+    color: var(--color-cta); /* Menggunakan variabel CTA Merah Tua yang baru */
+    margin-top: 10px;
+}
+
+/* ========================================= */
+/* 6. KATALOG PRODUK TUNGGAL & MIX */
+/* ========================================= */
+.single-product-catalog {
+    padding: 60px 0;
+    background-color: #f0fff0;
+}
+
+/* 6.1. STYLING TOMBOL KATEGORI (.category-btn) */
+.product-categories {
+    display: flex;
+    flex-wrap: wrap; 
+    justify-content: center;
+    gap: 10px;
+}
+
+.product-categories button {
+    background-color: white;
+    /* KOREKSI AKSESIBILITAS: Border tombol digelapkan */
+    border: 2px solid #999; /* Sebelumnya #ccc */
+    color: #333;
+    padding: 10px 18px;
+    cursor: pointer;
+    border-radius: 20px;
+    font-weight: 600;
+    transition: all 0.3s;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    line-height: 1.2;
+}
+
+.product-categories button .en-text {
+    display: block;
+    font-size: 0.75em;
+    font-weight: 400;
+    /* KOREKSI AKSESIBILITAS: Teks biru digelapkan */
+    color: #0056b3; /* Sebelumnya #007bff */
+    border-top: 1px solid rgba(0, 0, 0, 0.1);
+    padding-top: 5px;
+    margin-top: 5px;
+}
+
+.product-categories button:hover {
+    border-color: #ff8c00;
+    color: #ff8c00;
+}
+
+.product-categories button:hover .en-text {
+    color: #ff8c00;
+}
+
+.product-categories button.active {
+    background-color: #38761d;
+    color: white;
+    border-color: #38761d;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 10px rgba(0, 0, 0, 0.2);
+}
+
+.product-categories button.active .en-text {
+    color: #c9e6c9;
+    border-top: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+/* KOREKSI AKSESIBILITAS: Teks abu-abu di subjudul katalog */
+.single-product-catalog p {
+    color: var(--color-text-accessible);
+}
+
+/* KOREKSI AKSESIBILITAS: Teks abu-abu di judul H3 katalog */
+.product-list h3 span {
+    color: var(--color-text-accessible);
+}
+
+/* KOREKSI AKSESIBILITAS: Warna H3 di katalog (inline style dihapus dari HTML) */
+#pure-veggie-list h3 { color: var(--color-primary); }
+#coated-list h3 { color: var(--color-secondary); }
+#fruit-list h3 { color: var(--color-cta); }
+
+
+/* 6.3. STYLING TABEL SATUAN (KOREKSI PERATAAN) */
+.catalog-table {
     width: 100%;
     border-collapse: collapse;
-    margin-bottom: 1rem;
+    margin-top: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
+    background-color: white;
+    font-size: 0.95em;
 }
 
-th, td {
-    padding: 0.5rem;
+.catalog-table th {
+    padding: 12px 15px;
+    border: 1px solid #eee;
+    background-color: #e6ffe6;
+    color: var(--color-text);
+    font-weight: 600;
+    text-align: center; 
+}
+
+.catalog-table td {
+    padding: 12px 15px;
+    border: 1px solid #eee;
     text-align: left;
+    vertical-align: top;
 }
 
-.disc-green {
-    color: #fff;
-    background-color: #28a745;
-    font-weight: bold;
-    text-align: center;
+.catalog-table td:nth-child(2),
+.catalog-table td:nth-child(3) {
+    text-align: right;
+    font-weight: 600;
+    color: #333;
+    white-space: nowrap;
 }
 
-.disc-red {
-    color: #fff;
-    background-color: #dc3545;
-    font-weight: bold;
-    text-align: center;
+.catalog-table .order-btn {
+    background-color: var(--color-cta);
+    color: white;
+    font-weight: 600;
+    padding: 6px 12px;
+    border: none;
+    border-radius: 5px;
+    text-transform: uppercase;
+    font-size: 0.85em;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.2s;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.15);
 }
 
-/* --- Form --- */
-.contact-form {
-    display: flex;
-    flex-direction: column;
-    gap: 1rem;
-    margin-top: 1rem;
+.catalog-table .order-btn:hover {
+    background-color: #e55337;
+    transform: translateY(-1px);
+}
+
+.catalog-table td strong {
+    color: var(--color-cta);
+    font-weight: 700;
+}
+
+/* ========================================= */
+/* 7. SKEMA DISKON GROSIR (BULK ORDER) */
+/* ========================================= */
+.bulk-order {
+    padding: 60px 0;
+    background-color: white;
+}
+
+.bulk-order table {
+    width: 70%;
+    margin: 0 auto 30px auto;
+}
+
+.bulk-order th, .bulk-order td {
+    border: 1px solid #ddd;
+    padding: 12px;
+}
+
+.bulk-order th {
+    background-color: #f0f0f0;
+    color: var(--color-text);
+}
+
+/* ========================================= */
+/* 9. FORM PENDAFTARAN (ORDER CEPAT) */
+/* ========================================= */
+.conversion-form {
+    padding: 60px 0;
+    background-color: #fcebeb;
+}
+
+.contact-form .form-group {
+    margin-bottom: 20px;
+}
+
+.contact-form .form-group input,
+.contact-form .form-group select,
+.contact-form .form-group textarea {
+    width: 100%; 
+    padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 1em;
+    transition: border-color 0.3s;
+    font-family: 'Poppins', sans-serif;
+    min-height: 48px;
+    box-sizing: border-box; 
 }
 
 .contact-form label {
-    font-weight: bold;
-    margin-bottom: 0.25rem;
+    display: block;
+    text-align: left !important;
+    font-weight: 600;
+    margin-bottom: 5px;
+    font-size: 0.95em;
+    color: var(--color-text);
 }
 
-.contact-form input,
 .contact-form textarea {
-    padding: 0.5rem;
-    border: 1px solid #ccc;
-    border-radius: 6px;
-    width: 100%;
-    font-size: 1rem;
+    height: 80px;
+    min-height: 80px;
+    resize: vertical;
 }
 
-.contact-form input:focus,
-.contact-form textarea:focus {
-    border-color: #FF4500;
+.contact-form input[type="number"] {
+    max-width: 100%;
+    text-align: left;
+}
+
+.contact-form .form-group input:focus,
+.contact-form .form-group select:focus,
+.contact-form .form-group textarea:focus {
+    border-color: var(--color-cta);
     outline: none;
 }
 
-/* --- Tabs & Tab content --- */
-.tab-content {
-    display: none;
-    margin-top: 1rem;
+/* ========================================= */
+/* 10. FAQ (DIHAPUS DARI CSS) */
+/* ========================================= */
+.faq-section {
+   display: none; 
 }
 
-.tab-content.active {
-    display: block;
-}
 
-/* --- Footer --- */
+/* ========================================= */
+/* 11. FOOTER (REVISI DETAIL) */
+/* ========================================= */
 footer {
-    background-color: #222;
-    color: #fff;
-    padding: 1rem 0;
+    background-color: #333;
+    color: white;
+    padding: 40px 20px;
+    font-size: 0.9em;
     text-align: center;
-    font-size: 0.9rem;
+}
+
+/* KOREKSI AKSESIBILITAS: Mengganti <h4> dengan <p> */
+.footer-brand-name {
+    font-size: 1.2em;
+    color: white;
+    margin-bottom: 10px;
+    font-weight: 600;
+}
+
+footer p {
+    color: #ccc;
+    margin-bottom: 5px;
+    line-height: 1.5;
+}
+
+/* KOREKSI AKSESIBILITAS: Teks copyright di footer */
+footer p[style*="font-size: 0.8em"] {
+    color: #aaa !important; 
+    opacity: 0.8;
 }
 
 footer a {
-    color: #FFD700; /* cukup kontras */
-    margin: 0 0.5rem;
+    color: var(--color-cta); 
+    text-decoration: none;
+    font-weight: 600;
 }
 
 footer a:hover {
-    color: #fff;
+    text-decoration: underline;
 }
 
-/* --- Responsive --- */
-@media (max-width: 768px) {
-    .category-btn {
-        display: block;
-        margin-bottom: 0.5rem;
+.footer-social-links {
+    margin: 20px 0;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 10px;
+}
+
+.footer-social-links a {
+    display: inline-block;
+    padding: 8px 15px;
+    margin: 0 5px;
+    border: 1px solid var(--color-cta);
+    border-radius: 20px;
+    transition: background-color 0.3s, color 0.3s;
+    font-size: 0.9em;
+}
+
+.footer-social-links a:hover {
+    background-color: var(--color-cta);
+    color: white;
+    text-decoration: none;
+}
+
+
+/* ========================================= */
+/* 12. MEDIA QUERIES (RESPONSIVITAS) */
+/* ========================================= */
+@media (max-width: 900px) {
+    .bulk-order table {
+        width: 100%;
+    }
+
+    .hero-section h1 {
+        font-size: 2.2em;
+    }
+}
+
+@media (max-width: 600px) {
+    .hero-section {
+        padding: 50px 0;
+    }
+
+    .cta-button {
+        padding: 12px 20px;
+    }
+    
+    .catalog-table {
+        font-size: 0.85em; /* Perkecil font tabel di HP */
+    }
+
+    .catalog-table th, .catalog-table td {
+        padding: 8px 10px; /* Perkecil padding tabel di HP */
     }
 }
