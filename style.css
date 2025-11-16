@@ -54,6 +54,20 @@ body {
     padding-bottom: 10px;
 }
 
+/* KODE BARU: Untuk sub-judul yang rapat (memperbaiki spasi) */
+.section-subtitle {
+    font-size: 1.1em;
+    color: var(--color-text-accessible);
+    text-align: center;
+    /* KUNCI PERBAIKAN: Tarik ke atas untuk merapat ke judul */
+    margin-top: -25px; 
+    margin-bottom: 30px; 
+    font-style: italic;
+    max-width: 600px; /* Agar tidak terlalu lebar di desktop */
+    margin-left: auto;
+    margin-right: auto;
+}
+
 /* Judul Rata Kiri dengan Garis Bawah */
 .section-title-left {
     text-align: left !important;
@@ -85,21 +99,8 @@ body {
     transform: translateY(-2px);
 }
 
-.section-subtitle {
-    font-size: 1.1em;
-    color: var(--color-text-accessible);
-    text-align: center;
-    /* KUNCI PERBAIKAN: Tarik ke atas untuk merapat ke judul */
-    margin-top: -25px; 
-    margin-bottom: 30px; 
-    font-style: italic;
-    max-width: 600px; /* Agar tidak terlalu lebar di desktop */
-    margin-left: auto;
-    margin-right: auto;
-}
-
 /* ========================================= */
-/* 3. HEADER & HERO SECTION */
+/* 3. HEADER & HERO SECTION (KOREKSI SPASI) */
 /* ========================================= */
 .hero-section {
     background-color: var(--color-bg-light);
@@ -113,13 +114,15 @@ body {
     font-size: 3em;
     font-weight: 800;
     line-height: 1.1;
+    margin-bottom: 10px; /* KOREKSI: Merapatkan jarak H1 ke H2 */
 }
 
 .hero-section h2 {
     color: var(--color-text);
-    font-size: 1.6em;
-    font-weight: 600;
-    margin-top: 15px;
+    font-size: 1.4em; /* Disesuaikan dengan HTML */
+    font-weight: 500; /* Disesuaikan dengan HTML */
+    margin-top: 10px; /* KOREKSI: Merapatkan jarak H2 ke H1 */
+    margin-bottom: 10px; /* KOREKSI: Merapatkan jarak H2 ke H3 */
 }
 
 /* KOREKSI AKSESIBILITAS: Mengganti H3 dengan class .sub-headline */
@@ -127,7 +130,15 @@ body {
     font-size: 1.2em; 
     font-weight: 600; 
     color: var(--color-cta); /* Menggunakan variabel CTA Merah Tua yang baru */
-    margin-top: 10px;
+    margin-top: 10px; /* KOREKSI: Merapatkan jarak H3 ke H2 */
+    margin-bottom: 15px; /* KOREKSI: Jarak ke paragraf di bawahnya */
+}
+
+/* KOREKSI: Aturan baru untuk paragraf 'Cek Price List...' */
+.hero-section p {
+    margin-top: 15px; /* KOREKSI: Merapatkan jarak p ke H3 */
+    margin-bottom: 0; /* KOREKSI: Menghapus jarak bawah sebelum tombol CTA */
+    color: var(--color-text-accessible);
 }
 
 /* ========================================= */
@@ -193,20 +204,50 @@ body {
     border-top: 1px solid rgba(255, 255, 255, 0.3);
 }
 
+/* KOREKSI: Menambah jarak dari tombol kategori */
+.product-list {
+    margin-top: 30px; 
+}
+
 /* KOREKSI AKSESIBILITAS: Teks abu-abu di subjudul katalog */
-.single-product-catalog p {
+.single-product-catalog .catalog-note { /* Target paragraf di bawah H2 */
     color: var(--color-text-accessible);
 }
 
 /* KOREKSI AKSESIBILITAS: Teks abu-abu di judul H3 katalog */
-.product-list h3 span {
-    color: var(--color-text-accessible);
+.product-list h3 span.sub-en {
+    color: white;
+    opacity: 0.8;
+    font-weight: 400;
+    font-size: 0.8em;
 }
 
-/* KOREKSI AKSESIBILITAS: Warna H3 di katalog (inline style dihapus dari HTML) */
-#pure-veggie-list h3 { color: var(--color-primary); }
-#coated-list h3 { color: var(--color-secondary); }
-#fruit-list h3 { color: var(--color-cta); }
+.product-list .catalog-desc {
+    color: var(--color-text-accessible);
+    font-size: 0.9em;
+    margin-bottom: 15px;
+}
+
+/* KOREKSI AKSESIBILITAS & DESAIN: Warna H3 di katalog (rata tengah & background) */
+.product-list h3 {
+    border-bottom: none; /* Hapus garis bawah lama */
+    padding: 12px 15px; /* Beri padding */
+    text-align: center; /* Buat rata tengah */
+    border-radius: 8px; /* Beri sudut melengkung */
+    font-size: 1.3em; /* Sedikit perbesar font */
+    margin-bottom: 15px; /* Jarak ke paragraf deskripsi */
+    color: white; /* Buat semua teks judul utama jadi putih */
+}
+
+#pure-veggie-list h3 { 
+    background-color: var(--color-primary); /* Hijau Tua */
+}
+#coated-list h3 { 
+    background-color: var(--color-secondary); /* Oranye */
+}
+#fruit-list h3 { 
+    background-color: var(--color-cta); /* Merah Tua */
+}
 
 
 /* 6.3. STYLING TABEL SATUAN (KOREKSI PERATAAN) */
@@ -235,31 +276,18 @@ body {
     vertical-align: top;
 }
 
+/* KOREKSI AKSESIBILITAS: Teks biru di tabel */
+.catalog-table .en {
+    color: #0056b3; /* Sebelumnya #007bff */
+    font-size: 0.8em;
+}
+
 .catalog-table td:nth-child(2),
 .catalog-table td:nth-child(3) {
     text-align: right;
     font-weight: 600;
     color: #333;
     white-space: nowrap;
-}
-
-.catalog-table .order-btn {
-    background-color: var(--color-cta);
-    color: white;
-    font-weight: 600;
-    padding: 6px 12px;
-    border: none;
-    border-radius: 5px;
-    text-transform: uppercase;
-    font-size: 0.85em;
-    cursor: pointer;
-    transition: background-color 0.3s, transform 0.2s;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.15);
-}
-
-.catalog-table .order-btn:hover {
-    background-color: #e55337;
-    transform: translateY(-1px);
 }
 
 .catalog-table td strong {
@@ -288,6 +316,14 @@ body {
 .bulk-order th {
     background-color: #f0f0f0;
     color: var(--color-text);
+}
+
+/* KOREKSI AKSESIBILITAS: Teks abu-abu di sub-judul Skema Diskon */
+.bulk-order .bulk-note {
+    color: var(--color-text-accessible);
+    text-align: center; 
+    font-size: 1.1em; 
+    margin-bottom: 30px;
 }
 
 /* ========================================= */
