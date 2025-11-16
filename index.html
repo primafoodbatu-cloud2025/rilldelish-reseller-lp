@@ -9,7 +9,11 @@
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://connect.facebook.net">
+    <link rel="preconnect" href="https://www.googletagmanager.com">
+
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=optional" rel="stylesheet">
+    
     <link rel="stylesheet" href="style.css"> 
 
     <script defer>
@@ -44,29 +48,23 @@
     <main>
 
         <header class="hero-section">
-            <div class="container">
-                
-                <img src="logo-rilldelish.webp" alt="Logo Rilldelish" style="max-width: 150px; margin-bottom: 20px;" width="150" height="150" fetchpriority="high" loading="eager">
-                
+            <div class="container">                
+                <img src="logo-rilldelish.webp" alt="Logo Rilldelish" style="max-width: 150px; margin-bottom: 20px;" width="150" height="150" fetchpriority="high">                
                 <h1>JADI RESELLER RESMI PRIMAFOOD</h1>
-                <h2 style="font-size: 1.4em; font-weight: 500;">(Merk : Rilldelish | Metode Vacuum Frying | 0% MSG | 0% Pengawet | 40% Lebih Rendah Lemak)</h2>
-                
+                <h2 style="font-size: 1.4em; font-weight: 500;">(Merk : Rilldelish | Metode Vacuum Frying | 0% MSG | 0% Pengawet | 40% Lebih Rendah Lemak)</h2>               
                 <p class="sub-headline">Dapatkan Harga Pabrik & Diskon Grosir Bertingkat s/d 30%!</p>
-
-                <p style="margin-top: 20px;">Cek Price List Lengkap Produk Rilldelish di Tabel Di Bawah Ini Sekarang.</p>
-                
+                <p style="margin-top: 20px;">Cek Price List Lengkap Produk Rilldelish di Tabel Di Bawah Ini Sekarang.</p>            
                 <a href="#order-form" class="cta-button">SAYA BERMINAT JADI RESELLER</a>
             </div>
         </header>
 
         <section class="single-product-catalog">
             <div class="container">
-                <h2 class="section-title">🛒 Price List Terbuka Rilldelish (Harga Jual Eceran)</h2>
-                <p style="text-align: center; margin-bottom: 40px; font-style: italic; font-size: 1.1em; color: #555;">
+                <h2 class="section-title">🛒 Price List Terbuka Rilldelish (Harga Jual Eceran)</h2>                
+                <p class="section-subtitle">
                     Kami transparan. Harga di bawah adalah harga Eceran (HET). Diskon Grosir/Reseller Anda dihitung dari harga ini (Lihat Tabel Diskon di bawah).
                 </p>
-
-                <div class="product-categories">
+            <div class="product-categories">
                     <button class="category-btn active" data-category="pure-veggie">
                         Keripik Sayur Murni 
                         <span class="en-text">Pure Veggie Crisps</span>
@@ -79,9 +77,9 @@
                         Keripik Buah Murni
                         <span class="en-text">Pure Fruit Crisps</span>
                     </button>
-                </div>
+            </div>
 
-                <div id="pure-veggie-list" class="product-list active">
+            <div id="pure-veggie-list" class="product-list active">
                     <h3 class="catalog-title-green"><span class="emoji">🌿</span> Keripik Sayur Murni <span class="sub-en">(Pure Veggie Crisps)</span></h3>
                     <p class="catalog-desc">*100% Sayur Murni (Vacuum Frying), tanpa adonan/tepung.</p>
                     <table class="catalog-table">
@@ -149,7 +147,7 @@
         <section class="bulk-order">
             <div class="container">
                 <h2 class="section-title">💰 Skema Diskon Grosir Reseller (Tier)</h2>
-                <p style="text-align: center; font-size: 1.1em; margin-bottom: 30px;">Diskon Anda dihitung otomatis berdasarkan total berat (KG) pesanan Anda. (Berlaku kemasan grosir tanpa stiker).</p>
+                <p class="section-subtitle">Diskon Anda dihitung otomatis berdasarkan total berat (KG) pesanan Anda. (Berlaku kemasan grosir tanpa stiker).</p>
 
                 <table style="width: 80%; margin: 0 auto; border-collapse: collapse; text-align: center;">
                     <thead style="background-color: #ffe4b5;">
@@ -171,19 +169,16 @@
 
         <section id="order-form" class="conversion-form">
             <div class="container" style="max-width: 600px;">
-                <h2 class="section-title">🎁 Daftar Reseller & Kunci Diskon Anda!</h2>
-                
+                <h2 class="section-title">🎁 Daftar Reseller & Kunci Diskon Anda!</h2>                
                 <div id="flash-sale-banner" style="background-color: #ffcccc; color: #cc0000; padding: 15px; border-radius: 8px; margin-bottom: 25px; border: 2px dashed #ff0000; display: none;">
                     <p style="font-weight: 700; font-size: 1.1em;">
                         ⚡ DAFTAR SEKARANG & KUNCI DISKON TAMBAHAN 5% (FLASH SALE)!
                     </p>
                     <p>Waktu Tersisa: <span id="countdown-timer" style="font-weight: 800; color: #cc0000; font-size: 1.4em;">00:00:00</span></p>
-                </div>
-                
-                <p style="font-size: 1.1em; margin-bottom: 30px;">
+                </div>                
+                <p class="section-subtitle" style="font-style: normal !important;">
                     Isi data singkat di bawah ini. Tim kami akan segera menghubungi Anda via WhatsApp untuk konfirmasi diskon dan info order.
                 </p>
-
                 <form id="whatsappForm" class="contact-form">
                     <div class="form-group">
                         <label for="nama">Nama Anda *</label>
@@ -196,13 +191,11 @@
                     <div class="form-group">
                         <label for="kota">Kota/Kabupaten *</label>
                         <input type="text" id="kota" name="kota" placeholder="Contoh: Surabaya / Jakarta Selatan" required>
-                    </div>
-                    
+                    </div>                    
                     <button type="submit" class="cta-button" style="width: 100%; background-color: #cc0000;">SAYA BERMINAT JADI RESELLER</button>
                 </form>
             </div>
         </section>
-
         </main>
 
     <footer>
