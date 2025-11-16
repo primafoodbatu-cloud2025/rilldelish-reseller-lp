@@ -5,7 +5,10 @@
     /* Warna Brand Rilldelish */
     --color-primary: #4CAF50; /* Hijau Sayur/Segar */
     --color-secondary: #ff8c00; /* Oranye/Kuning (Energi & Rasa) */
-    --color-cta: #D95333; /* KOREKSI KONTRA: Merah/CTA yang lebih gelap */
+    
+    /* KOREKSI AKSESIBILITAS: Menggelapkan warna CTA agar kontrasnya lolos */
+    --color-cta: #D95333; /* Sebelumnya #ff6347 (terlalu terang) */
+    
     --color-text: #333333;
     --color-bg-light: #f7f7f7;
     --color-bg-mix: #e6f7ff;
@@ -112,29 +115,6 @@ body {
     margin-top: 10px;
 }
 
-/* Styling Kutipan Ahli di Hero Section */
-.expert-quote-hero {
-    background: rgba(255, 255, 255, 0.85);
-    color: var(--color-primary);
-    padding: 15px 25px;
-    margin: 25px auto;
-    max-width: 75%;
-    border-left: 5px solid var(--color-secondary);
-    font-style: italic;
-    font-size: 1.1em;
-    border-radius: 4px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-}
-
-.expert-quote-hero cite {
-    display: block;
-    margin-top: 10px;
-    font-size: 0.9em;
-    font-style: normal;
-    font-weight: 600;
-    color: #333;
-}
-
 /* ========================================= */
 /* 6. KATALOG PRODUK TUNGGAL & MIX */
 /* ========================================= */
@@ -194,20 +174,6 @@ body {
 .product-categories button.active .en-text {
     color: #c9e6c9;
     border-top: 1px solid rgba(255, 255, 255, 0.3);
-}
-
-/* 6.2. STYLING SUBTITLE KATALOG */
-.section-subtitle-left {
-    text-align: left !important;
-    font-size: 1.1em;
-    margin-bottom: 15px;
-}
-
-.section-subtitle-left span {
-    color: var(--color-primary) !important;
-    border-bottom: 3px solid var(--color-cta) !important;
-    display: inline-block;
-    padding-bottom: 5px;
 }
 
 /* KOREKSI AKSESIBILITAS: Teks abu-abu di subjudul katalog */
@@ -278,7 +244,7 @@ body {
 }
 
 .catalog-table td strong {
-    color: #ff6347;
+    color: var(--color-cta); /* Menggunakan variabel CTA yang sudah digelapkan */
     font-weight: 700;
 }
 
@@ -367,7 +333,9 @@ body {
 /* ========================================= */
 /* 10. FAQ (DIHAPUS DARI CSS) */
 /* ========================================= */
-/* .faq-section { ... } (Kode sengaja dihapus) */
+.faq-section {
+   display: none; /* Dihapus dari HTML, jadi kita sembunyikan saja */
+}
 
 
 /* ========================================= */
@@ -441,26 +409,12 @@ footer a:hover {
 /* 12. MEDIA QUERIES (RESPONSIVITAS) */
 /* ========================================= */
 @media (max-width: 900px) {
-    .research-proof > .container > div,
-    .package-mix .container > div {
-        flex-direction: column;
-        gap: 20px;
-    }
-
-    .mix-card {
-        width: 100%;
-    }
-
     .bulk-order table {
         width: 100%;
     }
 
     .hero-section h1 {
         font-size: 2.2em;
-    }
-    
-    .bulk-order table {
-        width: 100%;
     }
 }
 
@@ -473,32 +427,11 @@ footer a:hover {
         padding: 12px 20px;
     }
     
-    /* Perbaikan Form Dinamis di Mobile */
-    .form-group-inline {
-        flex-direction: column;
-        align-items: stretch;
-        gap: 0;
-    }
-    
-    .form-group-inline .form-group,
-    .form-group-inline > div:last-child {
-        width: 100% !important;
-        margin-top: 10px;
-        text-align: left !important;
-    }
-    
-    .remove-product-btn {
-        width: 100%; 
-        margin-top: 10px !important;
-    }
-    
-    .form-group-inline > div:last-child {
-        align-items: flex-start;
+    .catalog-table {
+        font-size: 0.85em; /* Perkecil font tabel di HP */
     }
 
-    /* KOREKSI: Perataan Struk di Mobile */
-    .struk-label {
-        width: 50% !important; /* Beri ruang lebih di mobile */
-        min-width: 0 !important;
+    .catalog-table th, .catalog-table td {
+        padding: 8px 10px; /* Perkecil padding tabel di HP */
     }
 }
