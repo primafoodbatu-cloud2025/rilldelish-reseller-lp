@@ -242,6 +242,7 @@ body {
     color: white; 
 }
 
+/* KOREKSI: Padding di header tabel dikurangi untuk memperkecil tinggi baris */
 #pure-veggie-list h3 { 
     background-color: var(--color-primary); /* Hijau Tua */
 }
@@ -264,7 +265,7 @@ body {
 }
 
 .catalog-table th {
-    padding: 12px 15px;
+    padding: 8px 15px; /* KOREKSI FINAL: Mengurangi tinggi baris header tabel */
     border: 1px solid #eee;
     background-color: #e6ffe6;
     color: var(--color-text);
@@ -281,7 +282,7 @@ body {
 
 /* KOREKSI AKSESIBILITAS: Teks biru di tabel */
 .catalog-table .en {
-    color: #0056b3; /* Sebelumnya #007bff */
+    color: #0056b3; 
     font-size: 0.8em;
 }
 
@@ -419,6 +420,7 @@ footer p {
     line-height: 1.5;
 }
 
+/* KOREKSI AKSESIBILITAS: Teks copyright di footer */
 footer p[style*="font-size: 0.8em"] {
     color: #aaa !important; 
     opacity: 0.8;
@@ -467,7 +469,6 @@ footer a:hover {
         width: 100%;
     }
 
-    /* KOREKSI SPASI HERO: Merapatkan jarak antar judul di Tablet */
     .hero-section h1 {
         font-size: 2.2em;
     }
