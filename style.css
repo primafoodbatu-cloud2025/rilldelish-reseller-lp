@@ -62,7 +62,7 @@ body {
     margin-top: -25px; 
     margin-bottom: 30px; 
     font-style: italic;
-    max-width: 600px; /* Agar tidak terlalu lebar di desktop */
+    max-width: 600px; 
     margin-left: auto;
     margin-right: auto;
 }
@@ -490,10 +490,10 @@ footer a:hover {
     }
 
     .catalog-table {
-        font-size: 0.85em; /* Perkecil font tabel di HP */
+        font-size: 0.75em; /* Perkecil font tabel di HP (lebih agresif) */
     }
 
     .catalog-table th, .catalog-table td {
-        padding: 8px 10px; /* Perkecil padding tabel di HP */
+        padding: 6px 4px; /* Padding minimal (lebih agresif) */
     }
 }
