@@ -191,14 +191,6 @@ body {
     color: #ff8c00;
 }
 
-.product-categories button.active {
-    background-color: #38761d;
-    color: white;
-    border-color: #38761d;
-    transform: translateY(-2px);
-    box-shadow: 0 6px 10px rgba(0, 0, 0, 0.2);
-}
-
 .product-categories button.active .en-text {
     color: #c9e6c9;
     border-top: 1px solid rgba(255, 255, 255, 0.3);
@@ -242,7 +234,6 @@ body {
     color: white; 
 }
 
-/* KOREKSI: Padding di header tabel dikurangi untuk memperkecil tinggi baris */
 #pure-veggie-list h3 { 
     background-color: var(--color-primary); /* Hijau Tua */
 }
@@ -260,7 +251,6 @@ body {
     border-collapse: collapse;
     margin-top: 20px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
-    background-color: white;
     font-size: 0.95em;
 }
 
