@@ -15,7 +15,7 @@
     --color-bg-mix: #e6f7ff;
 
     /* KOREKSI AKSESIBILITAS: Warna teks abu-abu yang lebih gelap (kontras tinggi) */
-    --color-text-accessible: #444; /* Near-Black untuk teks subtitle/keterangan */
+    --color-text-accessible: #141414; /* Near-Black untuk teks subtitle/keterangan */
 }
 
 * {
