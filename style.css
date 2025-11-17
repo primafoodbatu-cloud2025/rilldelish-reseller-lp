@@ -10,7 +10,7 @@
     /* KOREKSI AKSESIBILITAS: Merah CTA digelapkan untuk contrast ratio AMAN (8.87:1) */
     --color-cta: #CC0000; /* Merah Aman */
     
-    --color-text: #333333;
+    --color-text: #050505;
     --color-bg-light: #f7f7f7;
     --color-bg-mix: #e6f7ff;
 
