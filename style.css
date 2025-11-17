@@ -3,12 +3,12 @@
 /* ========================================= */
 :root {
     /* KOREKSI AKSESIBILITAS: Warna Hijau digelapkan agar lolos kontras */
-    --color-primary: #388E3C; /* Hijau Sayur/Segar */
+    --color-primary: #388E3C; /* <-- Sebelumnya #4CAF50 */
     
-    --color-secondary: #ff8c00; /* Oranye/Kuning (Energi & Rasa) */
+    --color-secondary: #ff8c00; /* Oranye/Kuning (Energi & Rasa) - INI AMAN */
     
     /* KOREKSI AKSESIBILITAS: Warna CTA (Merah) digelapkan agar lolos kontras */
-    --color-cta: #D95333; 
+    --color-cta: #D95333; /* <-- Sebelumnya #ff6347 (terlalu terang) */
     
     --color-text: #333333;
     --color-bg-light: #f7f7f7;
@@ -62,9 +62,20 @@ body {
     margin-top: -25px; 
     margin-bottom: 30px; 
     font-style: italic;
-    max-width: 600px; 
+    max-width: 600px; /* Agar tidak terlalu lebar di desktop */
     margin-left: auto;
     margin-right: auto;
+}
+
+/* Judul Rata Kiri dengan Garis Bawah */
+.section-title-left {
+    text-align: left !important;
+    margin-bottom: 10px;
+    font-size: 2.2em;
+    color: var(--color-text);
+    border-bottom: 3px solid var(--color-secondary); 
+    display: inline-block; 
+    padding-bottom: 5px;
 }
 
 .cta-button {
@@ -83,7 +94,7 @@ body {
 }
 
 .cta-button:hover {
-    background-color: #e55337; 
+    background-color: #e55337; /* Ini adalah warna yang lebih gelap dari CTA, jadi kontrasnya aman */
     transform: translateY(-2px);
 }
 
@@ -99,7 +110,7 @@ body {
 
 /* KOREKSI SPASI HERO: Merapatkan jarak antar judul */
 .hero-section h1 {
-    color: var(--color-primary); 
+    color: var(--color-primary); /* Menggunakan Hijau Tua yang baru */
     font-size: 3em;
     font-weight: 800;
     line-height: 1.1;
@@ -108,8 +119,8 @@ body {
 
 .hero-section h2 {
     color: var(--color-text);
-    font-size: 1.4em; 
-    font-weight: 500; 
+    font-size: 1.4em; /* Disesuaikan dengan HTML */
+    font-weight: 500; /* Disesuaikan dengan HTML */
     margin-top: 5px; /* Rapat */
     margin-bottom: 5px; /* Rapat */
     line-height: 1.3;
@@ -268,14 +279,18 @@ body {
     vertical-align: top;
 }
 
-/* Teks biru di tabel */
+/* KOREKSI AKSESIBILITAS: Teks biru di tabel */
 .catalog-table .en {
-    color: #0056b3; 
+    color: #0056b3; /* Sebelumnya #007bff */
     font-size: 0.8em;
 }
 
+/* KOREKSI FINAL: Target Kolom 2 sampai 6 untuk Rata Kanan */
 .catalog-table td:nth-child(2),
-.catalog-table td:nth-child(3) {
+.catalog-table td:nth-child(3),
+.catalog-table td:nth-child(4),
+.catalog-table td:nth-child(5),
+.catalog-table td:nth-child(6) {
     text-align: right;
     font-weight: 600;
     color: #333;
@@ -404,7 +419,6 @@ footer p {
     line-height: 1.5;
 }
 
-/* KOREKSI AKSESIBILITAS: Teks copyright di footer */
 footer p[style*="font-size: 0.8em"] {
     color: #aaa !important; 
     opacity: 0.8;
@@ -453,6 +467,7 @@ footer a:hover {
         width: 100%;
     }
 
+    /* KOREKSI SPASI HERO: Merapatkan jarak antar judul di Tablet */
     .hero-section h1 {
         font-size: 2.2em;
     }
