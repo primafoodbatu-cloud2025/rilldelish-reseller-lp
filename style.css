@@ -174,12 +174,12 @@ body {
 .sub-en {
     font-size: 0.8em;
     font-weight: 400;
-    color: #6a6a6a; /* Darker gray - Contrast 6.22:1 on white */
+    color: #171717; /* Darker gray - Contrast 6.22:1 on white */
 }
 
 .catalog-desc {
     font-style: italic;
-    color: #777;
+    color: #1c1c1c;
     margin-bottom: 20px;
 }
 
