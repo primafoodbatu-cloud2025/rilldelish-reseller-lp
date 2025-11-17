@@ -112,7 +112,7 @@ body {
 
 .section-subtitle {
     font-size: 1em;
-    color: #777;
+    color: #bd0000;
     margin-bottom: 30px;
 }
 
@@ -122,7 +122,7 @@ body {
 }
 
 .category-btn {
-    background-color: #850000;
+    background-color: #f0f0f0;
     color: var(--color-text-accessible); /* Text color AMAN (6.22:1) */
     border: 1px solid #ddd;
     padding: 10px 15px;
