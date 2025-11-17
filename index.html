@@ -111,7 +111,7 @@
                 </div>
 
                 <div id="pure-veggie-list" class="product-list active">
-                    <h3 class="catalog-title-green"><span style="font-size: 1.2em;">🌿</span> Keripik Sayur Murni <span style="font-size: 0.8em; font-weight: 400; color: #555;">(Pure Veggie Crisps)</span></h3>
+                    <h3 class="catalog-title-green"><span style="font-size: 1.2em;">🌿</span> Keripik Sayur Murni <span class="sub-en">(Pure Veggie Crisps)</span></h3>
                     <p class="catalog-desc">*100% Sayur Murni (Vacuum Frying), tanpa adonan/tepung.</p>
                     <table class="catalog-table">
                         <thead>
@@ -135,7 +135,7 @@
                 </div>
 
                 <div id="coated-list" class="product-list" style="display: none;">
-                    <h3 class="catalog-title-orange"><span style="font-size: 1.2em;">💪</span> Varian Bertempung/Protein <span style="font-size: 0.8em; font-weight: 400; color: #555;">(Coated/Protein Crisps)</span></h3>
+                    <h3 class="catalog-title-orange"><span style="font-size: 1.2em;">💪</span> Varian Bertempung/Protein <span class="sub-en">(Coated/Protein Crisps)</span></h3>
                     <p class="catalog-desc">*Menggunakan adonan khusus (misal: tepung singkong) untuk tekstur maksimal. Diproses *Vacuum Frying*.</p>
                     <table class="catalog-table">
                         <thead>
@@ -156,7 +156,7 @@
                 </div>
 
                 <div id="fruit-list" class="product-list" style="display: none;">
-                    <h3 class="catalog-title-red"><span style="font-size: 1.2em;">🍓</span> Keripik Buah Murni <span style="font-size: 0.8em; font-weight: 400; color: #555;">(Pure Fruit Crisps)</span></h3>
+                    <h3 class="catalog-title-red"><span style="font-size: 1.2em;">🍓</span> Keripik Buah Murni <span class="sub-en">(Pure Fruit Crisps)</span></h3>
                     <p class="catalog-desc">*100% Buah Murni (Vacuum Frying), tanpa tambahan gula/adonan.</p>
                     <table class="catalog-table">
                         <thead>
@@ -206,28 +206,28 @@
                     Isi data singkat di bawah ini. Tim kami akan segera menghubungi Anda via WhatsApp untuk konfirmasi diskon dan info order.
                 </p>
 
-                <div id="flash-sale-banner" style="background-color: #ffcccc; color: #cc0000; padding: 15px; border-radius: 8px; margin-bottom: 25px; border: 2px dashed #ff0000; display: none;">
+                <div id="flash-sale-banner" class="flash-sale-banner-fixed" style="display: none;">
                     <p style="font-weight: 700; font-size: 1.1em;">
                         ⚡ DAFTAR SEKARANG & KUNCI DISKON TAMBAHAN 5% (FLASH SALE)!
                     </p>
-                    <p>Waktu Tersisa: <span id="countdown-timer" style="font-weight: 800; color: #cc0000; font-size: 1.4em;">00:00:00</span></p>
+                    <p>Waktu Tersisa: <span id="countdown-timer">00:00:00</span></p>
                 </div>
 
                 <form id="whatsappForm" class="contact-form">
                     <div class="form-group">
                         <label for="nama">Nama Anda *</label>
-                        <input type="text" id="nama" name="nama" placeholder="Tuliskan Nama Lengkap Anda" required>
+                        <input type="text" id="nama" name="nama" placeholder="Tuliskan Nama Lengkap Anda" required aria-label="Nama Anda">
                     </div>
                     <div class="form-group">
                         <label for="telepon">No. WhatsApp Aktif *</label>
-                        <input type="tel" id="telepon" name="telepon" placeholder="Contoh: 08123456789 (Untuk kami kirim konfirmasi)" required>
+                        <input type="tel" id="telepon" name="telepon" placeholder="Contoh: 08123456789 (Untuk kami kirim konfirmasi)" required aria-label="Nomor WhatsApp Aktif">
                     </div>
                     <div class="form-group">
                         <label for="kota">Kota/Kabupaten *</label>
-                        <input type="text" id="kota" name="kota" placeholder="Contoh: Surabaya / Jakarta Selatan" required>
+                        <input type="text" id="kota" name="kota" placeholder="Contoh: Surabaya / Jakarta Selatan" required aria-label="Kota atau Kabupaten">
                     </div>
                     
-                    <button type="submit" class="cta-button" style="width: 100%; background-color: #cc0000;">SAYA BERMINAT JADI RESELLER</button>
+                    <button type="submit" class="cta-button submit-cta" style="width: 100%;">SAYA BERMINAT JADI RESELLER</button>
                 </form>
             </div>
         </section>
@@ -240,12 +240,12 @@
             
             <p class="footer-brand-name">Primafood Batu - Produsen Keripik Rilldelish</p>
             
-            <p style="margin: 10px 0; color: #ccc;">
+            <p class="footer-address">
                 Alamat Pabrik/Kantor:<br>
                 Jl. Sumbergondo No. 28, Bumiaji, Kota Batu, Jawa Timur 65335
             </p>
             
-            <p style="margin: 10px 0;">
+            <p class="footer-contact">
                 <strong>Kontak Reseller (WhatsApp):</strong> 
                 <a href="https://wa.me/628124966298?text=Halo%20Primafood%20Rilldelish%2C%20saya%20sudah%20melihat%20Landing%20Page%20Reseller%20dan%20tertarik%20untuk%20info%20lebih%20lanjut." target="_blank">0812-4966-298</a>
             </p>
@@ -258,10 +258,10 @@
                 <a href="https://www.tokopedia.com/rilldelish" target="_blank">Tokopedia (Rilldelish)</a>
             </div>
             
-            <p style="font-size: 0.8em; margin-top: 20px; color: #555; opacity: 0.8;">
+            <p class="footer-copyright">
                 © 2025 Primafood. Semua Hak Dilindungi.
                 <br>
-                <span style="font-style: italic; font-size: 0.9em;">*Gambar/visual produk hanya untuk ilustrasi. Tampilan dan kemasan produk sebenarnya dapat bervariasi.</span>
+                <span class="footer-note">*Gambar/visual produk hanya untuk ilustrasi. Tampilan dan kemasan produk sebenarnya dapat bervariasi.</span>
             </p>
         </div>
     </footer>
@@ -362,36 +362,36 @@ Terima kasih!
         // --- Fungsionalitas Filtering Katalog Satuan ---
         const categoryButtons = document.querySelectorAll('.category-btn');
         const productLists = document.querySelectorAll('.product-list');
-        const buahList = document.getElementById('fruit-list');
-        const coatedList = document.getElementById('coated-list');
-        
-        // Sembunyikan list yang tidak aktif saat pertama dimuat
-        if (buahList) buahList.style.display = 'none';
-        if (coatedList) coatedList.style.display = 'none';
+        const defaultListId = 'pure-veggie-list'; // Default list
+
+        // Fungsi untuk mengelola tampilan list
+        function updateProductList(activeId) {
+            productLists.forEach(list => {
+                list.style.display = list.id === activeId ? 'block' : 'none';
+            });
+        }
+
+        // Tampilkan default list saat dimuat
+        updateProductList(defaultListId);
 
         // Tambahkan event listener ke setiap tombol
         categoryButtons.forEach(button => {
             button.addEventListener('click', function() {
-                const targetId = this.getAttribute('data-category');
+                const targetId = this.getAttribute('data-category') + '-list';
                 
                 // Hapus 'active' dari semua tombol, tambahkan ke yang diklik
                 categoryButtons.forEach(btn => btn.classList.remove('active'));
                 this.classList.add('active');
                 
-                // Tampilkan list yang sesuai, sembunyikan yang lain
-                productLists.forEach(list => {
-                    if (list.id === targetId + '-list') {
-                        list.style.display = 'block';
-                    } else {
-                        list.style.display = 'none';
-                    }
-                });
+                // Tampilkan list yang sesuai
+                updateProductList(targetId);
             });
         });
     });
     </script>
 </body>
 </html>
+
 
 
 
