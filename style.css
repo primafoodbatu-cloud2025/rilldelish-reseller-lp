@@ -13,7 +13,6 @@
     --color-text: #333333;
     --color-bg-light: #f7f7f7;
     --color-bg-mix: #e6f7ff;
-
     /* KOREKSI AKSESIBILITAS: Warna teks abu-abu yang lebih gelap (kontras tinggi) */
     --color-text-accessible: #555; 
 }
