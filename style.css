@@ -72,8 +72,10 @@ body {
     background-color: var(--color-bg-light);
     background-size: cover;
     padding: 100px 0;
-    text-align: center;
+    text-align: center; /* KOREKSI: Memastikan semua konten rata tengah */
 }
+
+/* KOREKSI FINAL SPASI HERO: Merapatkan jarak antar judul */
 .hero-section h1 {
     color: var(--color-primary); 
     font-size: 3em;
@@ -81,6 +83,7 @@ body {
     line-height: 1.1;
     margin-bottom: 3px; 
 }
+
 .hero-section h2 {
     color: var(--color-text);
     font-size: 1.4em; 
@@ -89,6 +92,8 @@ body {
     margin-bottom: 5px; 
     line-height: 1.2;
 }
+
+/* KOREKSI AKSESIBILITAS: Mengganti H3 dengan class .sub-headline */
 .sub-headline {
     font-size: 1.2em; 
     font-weight: 600; 
@@ -97,6 +102,8 @@ body {
     margin-top: 5px; 
     margin-bottom: 10px; 
 }
+
+/* KOREKSI: Aturan baru untuk paragraf 'Cek Price List...' */
 .hero-section p {
     margin-top: 10px; 
     margin-bottom: 0; 
