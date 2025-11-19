@@ -67,7 +67,8 @@ body {
     transform: translateY(-2px);
 }
 
-/* 3. HEADER & HERO SECTION (KOREKSI SPASI RAPAT)
+/* 3. HEADER & HERO SECTION (KOREKSI FONT, SPASI RAPAT, & ALIGNMENT) */
+/* ========================================= */
 .hero-section {
     background-color: var(--color-bg-light);
     background-size: cover;
@@ -78,19 +79,21 @@ body {
 /* KOREKSI FINAL SPASI HERO: Merapatkan jarak antar judul */
 .hero-section h1 {
     color: var(--color-primary); 
-    font-size: 3em;
+    font-size: 2.2em; /* KOREKSI FONT: Dikecilkan dari 3em agar muat satu baris */
     font-weight: 800;
     line-height: 1.1;
-    margin-bottom: 3px; 
+    margin-bottom: 3px; /* Rapat */
+    text-align: center; /* KOREKSI ALIGNMENT: Memastikan centering */
 }
 
 .hero-section h2 {
     color: var(--color-text);
     font-size: 1.4em; 
     font-weight: 500; 
-    margin-top: 5px; 
-    margin-bottom: 5px; 
-    line-height: 1.2;
+    margin-top: 5px; /* Rapat */
+    margin-bottom: 5px; /* Rapat */
+    line-height: 1.2; /* Lebih Rapat */
+    text-align: center; /* KOREKSI ALIGNMENT: Memastikan centering */
 }
 
 /* KOREKSI AKSESIBILITAS: Mengganti H3 dengan class .sub-headline */
@@ -101,6 +104,7 @@ body {
     line-height: 1.2; 
     margin-top: 5px; 
     margin-bottom: 10px; 
+    text-align: center; /* KOREKSI ALIGNMENT: Memastikan centering */
 }
 
 /* KOREKSI: Aturan baru untuk paragraf 'Cek Price List...' */
@@ -109,6 +113,7 @@ body {
     margin-bottom: 0; 
     color: var(--color-text-accessible);
     line-height: 1.2; 
+    text-align: center; /* KOREKSI ALIGNMENT: Memastikan centering */
 }
 
 /* 6. KATALOG PRODUK TUNGGAL & MIX (KOREKSI BUTTON & SUBTITLE) */
