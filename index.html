@@ -3,16 +3,18 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
     <meta http-equiv="Content-Security-Policy" content="default-src 'self' https:; script-src 'self' 'unsafe-inline' 'unsafe-eval' https://www.googletagmanager.com https://connect.facebook.net https://www.google-analytics.com https://googleads.g.doubleclick.net https://www.googleadservices.com https://www.google.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; img-src 'self' data: https: https://googleads.g.doubleclick.net https://www.google.com https://www.googleadservices.com; font-src 'self' data: https://fonts.gstatic.com;">
     
     <title>Reseller Rilldelish - Primafood</title>
     <meta name="description" content="Jadi Reseller Resmi Primafood Rilldelish. Vacuum Frying, 100% natural. Dapatkan harga pabrik & diskon grosir hingga 30%.">
-    
     <meta name="facebook-domain-verification" content="09yu2ye8ievc775csqiqc2z2b0l6eb" />
 
-    <link rel="icon" href="favicon-32x32.png" sizes="32x32">
+    <link rel="icon" href="favicon.png" sizes="32x32">
     <link rel="icon" href="favicon-192x192.png" sizes="192x192">
-    <link rel="apple-touch-icon" href="apple-touch-icon.png"> <meta property="og:title" content="Reseller Resmi Rilldelish - Harga Pabrik Primafood">
+    <link rel="apple-touch-icon" href="apple-touch-icon.png">
+
+    <meta property="og:title" content="Reseller Resmi Rilldelish - Harga Pabrik Primafood">
     <meta property="og:description" content="Daftar jadi reseller keripik sehat (0% MSG) Primafood. Dapatkan harga pabrik & diskon grosir bertingkat s/d 30%. Lihat price list di sini.">
     <meta property="og:image" content="https://reseller.rilldelish.my.id/OG-Image.jpg">
     <meta property="og:url" content="https://reseller.rilldelish.my.id">
@@ -36,19 +38,156 @@
         "addressCountry": "ID"
       }
     }
-   </script>
+    </script>
     
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-
-    <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" media="print" onload="this.media='all'">
+    <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" media="print" onload="this.media='all'">
     <noscript>
-        <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap">
     </noscript>
+
     <link rel="preconnect" href="https://connect.facebook.net">        
     <link rel="preconnect" href="https://www.googletagmanager.com">   
-    <link rel="stylesheet" href="style.css">
+    
+    <style>
+        :root {
+            --color-primary: #2E7D32; 
+            --color-secondary: #ff8c00;
+            --color-cta: #CC0000;
+            --color-text: #333333;
+            --color-bg-light: #f7f7f7;
+            --color-bg-mix: #e6f7ff;
+            --color-text-accessible: #444444;
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: 'Poppins', sans-serif;
+            line-height: 1.6;
+            color: var(--color-text);
+            background-color: #f9f9f9;
+        }
+        .container { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
+        
+        /* HEADER & HERO */
+        .hero-section {
+            background-color: var(--color-bg-light);
+            background-size: cover;
+            padding: 60px 0;
+            text-align: center; 
+        }
+        .hero-section h1 {
+            color: var(--color-primary); font-size: 2.2em; font-weight: 800; line-height: 1.1; margin-bottom: 10px; 
+        }
+        .hero-section h2, .hero-sub-h2 {
+            color: var(--color-text); font-size: 1.4em; font-weight: 500; margin-top: 5px; margin-bottom: 5px; line-height: 1.2; 
+        }
+        .sub-headline {
+            font-size: 1.2em; font-weight: 600; color: var(--color-cta); line-height: 1.2; margin-top: 15px; margin-bottom: 10px; text-align: center; 
+        }
+        .hero-section p {
+            margin-top: 10px; margin-bottom: 0; color: var(--color-text-accessible); line-height: 1.2; 
+        }
+
+        /* TOMBOL & JUDUL */
+        .section-title {
+            text-align: center; margin-bottom: 20px; margin-top: 40px; font-size: 2.2em;
+            color: var(--color-text); border-bottom: 3px solid var(--color-secondary);
+            display: table; margin-left: auto; margin-right: auto; padding-bottom: 10px;
+        }
+        .section-subtitle {
+            font-size: 1.1em; color: var(--color-text-accessible); text-align: center;
+            margin-bottom: 30px; font-style: italic; max-width: 700px; margin-left: auto; margin-right: auto;
+        }
+        .cta-button, .button {
+            background-color: var(--color-cta); color: white !important; padding: 15px 30px;
+            text-decoration: none; font-weight: 700; border-radius: 8px; display: inline-block;
+            margin-top: 20px; transition: background-color 0.3s, transform 0.2s;
+            text-transform: uppercase; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); cursor: pointer; border: none;
+        }
+        .cta-button:hover, .button:hover { background-color: #e55337; transform: translateY(-2px); }
+        .button.grosir { background-color: var(--color-primary); }
+        .button.reseller { background-color: #d32f2f; }
+
+        /* PAKET USAHA (FLEXBOX) */
+        .cta-section { display: flex; gap: 20px; justify-content: center; margin-top: 30px; flex-wrap: wrap; }
+        .cta-block {
+            flex: 1; min-width: 300px; padding: 25px; border: 1px solid #ddd;
+            border-radius: 12px; background: white; text-align: center;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.05); transition: transform 0.3s; position: relative;
+        }
+        .cta-block:hover { transform: translateY(-5px); box-shadow: 0 10px 20px rgba(0,0,0,0.1); }
+        .cta-block ul { text-align: left; padding-left: 20px; margin-bottom: 20px; }
+        .cta-block .button { width: 100%; box-sizing: border-box; display: block; }
+
+        /* KATALOG & TABEL */
+        .single-product-catalog { padding: 60px 0; background-color: #f0fff0; }
+        .product-categories { display: flex; flex-wrap: wrap; justify-content: center; gap: 10px; margin-bottom: 30px; }
+        .category-btn {
+            background-color: white; border: 2px solid #999; color: #333;
+            padding: 10px 20px; cursor: pointer; border-radius: 25px; font-weight: 600;
+            transition: all 0.3s; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        .category-btn.active {
+            background-color: var(--color-primary); color: white; border-color: var(--color-primary);
+            transform: translateY(-2px); box-shadow: 0 6px 10px rgba(0, 0, 0, 0.2);
+        }
+        .product-list { margin-top: 30px; }
+        .product-list h3 {
+            padding: 12px 15px; text-align: center; border-radius: 8px; font-size: 1.3em;
+            margin-bottom: 15px; color: white; 
+        }
+        .catalog-title-green { background-color: var(--color-primary); }
+        .catalog-title-orange { background-color: var(--color-secondary); }
+        .catalog-title-red { background-color: var(--color-cta); }
+        
+        .catalog-table {
+            width: 100%; border-collapse: collapse; margin-top: 20px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05); font-size: 0.95em; background: white;
+        }
+        .catalog-table th {
+            padding: 12px 15px; border: 1px solid #eee; background-color: #e6ffe6;
+            color: var(--color-text); font-weight: 600; text-align: center; 
+        }
+        .catalog-table td { padding: 12px 15px; border: 1px solid #eee; text-align: left; }
+        .catalog-table td:nth-child(n+2) { text-align: right; white-space: nowrap; }
+
+        /* FORM */
+        .conversion-form { padding: 60px 0; background-color: #fcebeb; }
+        .form-group { margin-bottom: 20px; text-align: left; }
+        .form-group label { display: block; font-weight: 600; margin-bottom: 5px; color: var(--color-text); }
+        .form-group input {
+            width: 100%; padding: 12px; border: 1px solid #ccc; border-radius: 5px;
+            font-size: 1em; box-sizing: border-box; font-family: 'Poppins', sans-serif;
+        }
+        .form-group input:focus { border-color: var(--color-cta); outline: none; }
+
+        /* FOOTER (ACCESSIBLE & TOUCH FRIENDLY) */
+        footer { background-color: #1a1a1a; color: #ffffff; padding: 50px 20px 30px; font-size: 0.95em; text-align: center; }
+        .footer-brand-name { font-size: 1.3em; margin-bottom: 15px; font-weight: 700; color: #2E7D32; text-shadow: 0px 0px 1px #000; }
+        footer p { color: #eeeeee; margin-bottom: 10px; line-height: 1.6; }
+        footer a { color: #ffcc00; text-decoration: none; font-weight: 600; }
+        .footer-social-links { margin: 25px 0; display: flex; flex-wrap: wrap; justify-content: center; gap: 15px; }
+        .footer-social-links a {
+            display: inline-block; padding: 12px 20px; margin: 5px; border: 1px solid #ffffff;
+            background-color: rgba(255, 255, 255, 0.1); border-radius: 50px; color: #ffffff !important;
+            font-size: 0.95em; min-width: 48px; min-height: 48px; display: flex; align-items: center;
+            justify-content: center; transition: all 0.3s;
+        }
+        .footer-social-links a:hover { background-color: var(--color-primary); border-color: var(--color-primary); transform: translateY(-3px); }
+        .footer-copyright { margin-top: 30px; border-top: 1px solid #444; padding-top: 20px; font-size: 0.85em; color: #bbb; }
+
+        /* RESPONSIVE */
+        @media (max-width: 900px) { .hero-section h1 { font-size: 2.2em; } }
+        @media (max-width: 600px) {
+            .cta-section { flex-direction: column; }
+            .hero-section { padding: 40px 0; }
+            .hero-section h1 { font-size: 1.8em; }
+            .catalog-table { font-size: 0.75em; }
+            .catalog-table th, .catalog-table td { padding: 6px 4px; }
+        }
+    </style>
 
     <script async defer src="https://www.googletagmanager.com/gtag/js?id=G-M4C764ED4G"></script>
     <script>
@@ -498,6 +637,7 @@ Terima kasih!
     </script>
 </body>
 </html>
+
 
 
 
