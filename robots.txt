@@ -1,4 +1,3 @@
 User-agent: *
 Allow: /
-
 Sitemap: https://reseller.rilldelish.my.id/sitemap.xml
