@@ -74,19 +74,21 @@
             --color-text-accessible: #444444;
         }
         * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
         body {
             font-family: 'Poppins', sans-serif;
             line-height: 1.6;
             color: var(--color-text);
             background-color: #f9f9f9;
-            text-align: center; /* Default text align center */
+            text-align: center;
+            padding-bottom: 60px; /* Space for floating button */
         }
         .container { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
         
         /* HEADER & HERO */
         .hero-section {
             background-color: var(--color-bg-light);
-            padding: 60px 0;
+            padding: 50px 0 30px 0; /* Jarak bawah dirapatkan */
         }
         .hero-section h1 {
             color: var(--color-primary); font-size: 2.2em; font-weight: 800; line-height: 1.1; margin-bottom: 10px; 
@@ -103,23 +105,32 @@
 
         /* TOMBOL & JUDUL */
         .section-title {
-            margin-bottom: 20px; margin-top: 40px; font-size: 2.2em;
-            color: var(--color-text); border-bottom: 3px solid var(--color-secondary);
-            display: inline-block; padding-bottom: 10px;
+            margin-bottom: 10px; /* Dirapatkan */
+            margin-top: 40px; 
+            font-size: 2.2em;
+            color: var(--color-text); 
+            border-bottom: 3px solid var(--color-secondary);
+            display: inline-block; 
+            padding-bottom: 5px;
         }
         .section-subtitle {
             font-size: 1.1em; color: var(--color-text-accessible);
-            margin-bottom: 30px; font-style: italic; max-width: 700px; margin-left: auto; margin-right: auto;
+            margin-bottom: 30px; margin-top: 5px; /* Dirapatkan */
+            font-style: italic; max-width: 700px; margin-left: auto; margin-right: auto;
         }
         .cta-button, .button {
             background-color: var(--color-cta); color: white !important; padding: 15px 30px;
             text-decoration: none; font-weight: 700; border-radius: 8px; display: inline-block;
-            margin-top: 20px; transition: background-color 0.3s, transform 0.2s;
+            margin-top: 15px; transition: background-color 0.3s, transform 0.2s;
             text-transform: uppercase; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); cursor: pointer; border: none;
         }
         .cta-button:hover, .button:hover { background-color: #b71c1c; transform: translateY(-2px); }
         .button.grosir { background-color: var(--color-primary); }
         .button.reseller { background-color: #d32f2f; }
+        .btn-outline { 
+            background: transparent; border: 2px solid var(--color-primary); color: var(--color-primary) !important; 
+        }
+        .btn-outline:hover { background: var(--color-primary); color: white !important; }
 
         /* PAKET USAHA (FLEXBOX) */
         .cta-section { display: flex; gap: 20px; justify-content: center; margin-top: 30px; flex-wrap: wrap; }
@@ -132,179 +143,170 @@
         .cta-block ul { text-align: left; padding-left: 20px; margin-bottom: 20px; }
         .cta-block .button { width: 100%; box-sizing: border-box; display: block; }
 
-        /* --- PERBAIKAN 1 & 2: CATALOG & TOMBOL KATEGORI --- */
+        /* TOMBOL KATEGORI (DIBUAT SAMA RATA & MENONJOL) */
         .product-categories {
             display: flex;
             justify-content: center;
-            gap: 10px;
+            gap: 15px;
             margin-bottom: 30px;
-            flex-wrap: wrap;
+            flex-wrap: nowrap; /* Diusahakan satu baris di desktop */
         }
         .category-btn {
-            padding: 10px 20px;
+            flex: 1; /* Lebar sama */
+            min-width: 150px;
+            padding: 15px 10px;
             border: 2px solid #ddd;
             background-color: white;
-            border-radius: 50px;
+            border-radius: 8px;
             font-family: inherit;
-            font-weight: 600;
+            font-weight: 700;
             color: #555;
             cursor: pointer;
-            transition: all 0.3s ease;
+            transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
         }
         .category-btn:hover {
+            transform: scale(1.05); /* Menonjol saat hover */
+            box-shadow: 0 8px 15px rgba(0,0,0,0.15);
             border-color: var(--color-primary);
             color: var(--color-primary);
+            z-index: 2;
         }
         .category-btn.active {
             background-color: var(--color-primary);
             color: white;
             border-color: var(--color-primary);
+            box-shadow: 0 4px 10px rgba(46, 125, 50, 0.3);
         }
 
-        /* Styling Tabel Catalog */
+        /* STYLING TABEL (ELEGAN & KONTRAS) */
         .catalog-table {
             width: 100%;
             border-collapse: collapse;
             font-size: 0.95em;
             background-color: white;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.08);
             margin-bottom: 30px;
+            border: 2px solid var(--color-primary); /* Bingkai Jelas */
+            border-radius: 8px; /* Rounded corners trick requires overflow hidden on container */
         }
         .catalog-table th, .catalog-table td {
-            border: 1px solid #ddd;
+            border: 1px solid #ccc; /* Garis sel */
             padding: 12px 10px;
             text-align: center;
         }
         .catalog-table th {
-            background-color: #f4f4f4;
-            color: #333;
+            background-color: var(--color-primary);
+            color: white;
             font-weight: 700;
             vertical-align: middle;
+            border-bottom: 3px solid #1b5e20;
         }
+        /* Zebra Striping Tegas */
         .catalog-table tr:nth-child(even) {
-            background-color: #fcfcfc;
+            background-color: #eafceb; /* Hijau muda kontras */
         }
-        /* Judul Section per Kategori */
+        .catalog-table tr:hover {
+            background-color: #fffde7; /* Kuning tipis saat hover baris */
+        }
+        
         .catalog-title-green { color: var(--color-primary); margin: 20px 0 15px 0; text-align: left; border-left: 5px solid var(--color-primary); padding-left: 10px; }
         .catalog-title-orange { color: var(--color-secondary); margin: 20px 0 15px 0; text-align: left; border-left: 5px solid var(--color-secondary); padding-left: 10px; }
         .catalog-title-red { color: var(--color-cta); margin: 20px 0 15px 0; text-align: left; border-left: 5px solid var(--color-cta); padding-left: 10px; }
 
-
-        /* --- PERBAIKAN 3: FORM RESELLER --- */
-        .conversion-form {
-            background-color: #e6f7ff; 
-            padding: 50px 0;
-        }
+        /* FORM RESELLER */
+        .conversion-form { background-color: #e6f7ff; padding: 50px 0; }
         .contact-form {
-            background: white;
-            padding: 30px;
-            border-radius: 15px;
-            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
-            max-width: 600px;
-            margin: 0 auto;
+            background: white; padding: 30px; border-radius: 15px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1); max-width: 600px; margin: 0 auto;
         }
-        .form-group {
-            margin-bottom: 20px;
-            text-align: left;
-        }
-        .form-group label {
-            display: block;
-            margin-bottom: 8px;
-            font-weight: 600;
-            color: #444;
-        }
+        .form-group { margin-bottom: 20px; text-align: left; }
+        .form-group label { display: block; margin-bottom: 8px; font-weight: 600; color: #444; }
         .form-group input {
-            width: 100%;
-            padding: 15px;
-            border: 1px solid #ccc;
-            border-radius: 8px;
-            font-size: 1em;
-            font-family: inherit;
-            transition: border 0.3s;
+            width: 100%; padding: 15px; border: 1px solid #ccc;
+            border-radius: 8px; font-size: 1em; font-family: inherit; transition: border 0.3s;
         }
-        .form-group input:focus {
-            border-color: var(--color-primary);
-            outline: none;
-            box-shadow: 0 0 5px rgba(46, 125, 50, 0.3);
-        }
-        .submit-cta {
-            width: 100%;
-            font-size: 1.1em;
-            margin-top: 10px;
-        }
+        .form-group input:focus { border-color: var(--color-primary); outline: none; box-shadow: 0 0 5px rgba(46, 125, 50, 0.3); }
+        .submit-cta { width: 100%; font-size: 1.1em; margin-top: 10px; }
 
-        /* --- PERBAIKAN 4: FOOTER --- */
+        /* COD SECTION */
+        .cod-section {
+            background: linear-gradient(135deg, #fff3e0 0%, #ffffff 100%);
+            padding: 40px 0;
+            border-top: 1px solid #ffe0b2;
+            border-bottom: 1px solid #ffe0b2;
+        }
+        .marketplace-logos img {
+            height: 40px; margin: 0 10px; opacity: 0.8; transition: opacity 0.3s;
+        }
+        .marketplace-logos img:hover { opacity: 1; }
+
+        /* SEO SECTION */
+        .seo-article {
+            background-color: #f4f4f4; padding: 50px 0; text-align: left; font-size: 0.9em; color: #666;
+        }
+        .seo-article h3 { color: #333; margin-bottom: 10px; }
+        .seo-article p { margin-bottom: 15px; }
+
+        /* FOOTER 3 KOLOM */
         .site-footer {
-            background-color: #1a1a1a;
-            color: #eee;
-            padding: 50px 20px;
-            font-size: 0.9em;
-            text-align: center;
-            margin-top: 0;
+            background-color: #1a1a1a; color: #eee; padding: 60px 0 30px; font-size: 0.9em; text-align: left;
         }
-        .footer-brand-name { font-weight: 700; margin-bottom: 10px; font-size: 1.1em; }
-        .footer-address { color: #ccc; line-height: 1.6; margin-bottom: 20px; }
-        .footer-contact { margin-bottom: 30px; font-size: 1.1em; }
-        .footer-contact a { color: #4caf50; text-decoration: none; font-weight: bold; }
+        .footer-row {
+            display: flex; flex-wrap: wrap; justify-content: space-between; gap: 40px;
+        }
+        .footer-col { flex: 1; min-width: 280px; }
         
-        .footer-col.map-col {
-            max-width: 500px;
-            margin: 0 auto 30px auto;
-        }
         .footer-heading {
-            display: block;
-            font-size: 1.2em;
-            color: #ff8c00;
-            margin-bottom: 15px;
-            font-weight: 700;
-        }
-        .map-container-small {
-            width: 100%;
-            height: 200px;
-            border: 2px solid #444;
-            border-radius: 8px;
-            overflow: hidden;
-            margin-bottom: 5px;
+            font-size: 1.2em; color: #ff8c00; margin-bottom: 20px; font-weight: 700;
+            border-bottom: 2px solid #444; padding-bottom: 10px; display: inline-block;
         }
         
-        /* Sosial Media Links */
-        .footer-social-links {
-            display: flex;
-            justify-content: center;
-            flex-wrap: wrap;
-            gap: 15px;
-            margin-bottom: 30px;
+        /* Footer Links List */
+        .footer-links { list-style: none; padding: 0; }
+        .footer-links li { margin-bottom: 10px; }
+        .footer-links a { color: #ccc; text-decoration: none; transition: color 0.3s; }
+        .footer-links a:hover { color: #ff8c00; padding-left: 5px; }
+
+        /* Map styling */
+        .map-container-small {
+            width: 100%; height: 180px; border: 2px solid #444; border-radius: 8px; overflow: hidden; margin-top: 15px;
         }
-        .footer-social-links a {
-            color: #fff;
-            background-color: #333;
-            padding: 8px 15px;
-            border-radius: 4px;
-            text-decoration: none;
-            border: 1px solid #444;
-            transition: all 0.3s;
-            font-size: 0.9em;
+        .map-link-text {
+            display: block; font-size: 0.9em; margin-top: 8px; text-decoration: none; font-weight: bold;
+            color: #ff3333; /* Ganti warna biru jadi Merah Kontras */
+            background: #ffe6e6; padding: 5px; text-align: center; border-radius: 4px;
         }
-        .footer-social-links a:hover {
-            background-color: var(--color-secondary);
-            color: #000;
-            border-color: var(--color-secondary);
-        }
+        .map-link-text:hover { background: #ffcccc; }
 
         .footer-copyright {
-            margin-top: 30px;
-            padding-top: 20px;
-            border-top: 1px solid #333;
-            color: #777;
-            font-size: 0.8em;
+            margin-top: 40px; padding-top: 20px; border-top: 1px solid #333;
+            color: #777; font-size: 0.8em; text-align: center; width: 100%;
         }
+
+        /* FLOATING WA */
+        .floating-wa {
+            position: fixed; bottom: 20px; right: 20px;
+            background-color: #25D366; color: white;
+            padding: 12px 20px; border-radius: 50px;
+            font-weight: bold; font-size: 1em;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+            text-decoration: none; z-index: 1000;
+            display: flex; align-items: center; gap: 8px;
+            transition: transform 0.3s;
+            border: 2px solid white;
+        }
+        .floating-wa:hover { transform: translateY(-3px); background-color: #128C7E; }
+        .floating-wa img { width: 24px; height: 24px; }
 
         /* RESPONSIVE */
         @media (max-width: 600px) {
             .cta-section { flex-direction: column; }
             .hero-section h1 { font-size: 1.8em; }
-            .catalog-table th, .catalog-table td { font-size: 0.85em; padding: 8px 4px; }
-            .category-btn { width: 100%; margin-bottom: 5px; } /* Tombol kategori jadi full width di HP */
+            .product-categories { flex-direction: column; gap: 10px; }
+            .catalog-table th, .catalog-table td { font-size: 0.8em; padding: 8px 4px; }
+            .footer-row { flex-direction: column; }
+            .site-footer { text-align: left; }
         }
     </style>
     
@@ -330,6 +332,11 @@
     <noscript><img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=2037326590352817&ev=PageView&noscript=1" /></noscript>
 </head>
 <body>
+   
+   <a href="https://wa.me/6285735785319?text=Halo%20Admin,%20saya%20mau%20tanya%20tentang%20Reseller%20Rilldelish" class="floating-wa" target="_blank">
+       <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WA Logo"> Hubungi Admin
+   </a>
+
    <main>
     <header class="hero-section">
         <div class="container">        
@@ -340,7 +347,11 @@
             
             <p class="sub-headline" style="margin-top: 15px;">Bergabunglah dengan Primafood Rilldelish. Produsen Keripik Vacuum Frying Terpercaya di Kota Batu.</p>
             
-            <a href="#pilihan-paket" class="cta-button">LIHAT PAKET USAHA</a>
+            <div style="margin-top: 20px;">
+                <a href="#pilihan-paket" class="cta-button">LIHAT PAKET USAHA</a>
+                <br>
+                <a href="https://grosir.rilldelish.my.id/katalog" class="button btn-outline" style="margin-top: 10px; padding: 10px 20px; font-size: 0.9em;">Lihat Katalog Lengkap</a>
+            </div>
         </div>
     </header>
 
@@ -481,18 +492,18 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <tr><td>Keripik Wortel</td><td>Rp 20.800</td><td>Rp 187.200</td><td>Rp 176.800</td><td>Rp 166.400</td><td>Rp 156.000</td></tr>
-                        <tr><td>Keripik Ubi Ungu</td><td>Rp 16.000</td><td>Rp 144.000</td><td>Rp 136.000</td><td>Rp 128.000</td><td>Rp 120.000</td></tr>
-                        <tr><td>Keripik Ubi Madu</td><td>Rp 16.000</td><td>Rp 144.000</td><td>Rp 136.000</td><td>Rp 128.000</td><td>Rp 120.000</td></tr>
-                        <tr><td>Keripik Okra</td><td>Rp 40.000</td><td>Rp 360.000</td><td>Rp 340.000</td><td>Rp 320.000</td><td>Rp 300.000</td></tr>
-                        <tr><td>Keripik Jagung Manis</td><td>Rp 19.200</td><td>Rp 172.800</td><td>Rp 163.200</td><td>Rp 153.600</td><td>Rp 144.000</td></tr>
-                        <tr><td>Keripik Labu Madu</td><td>Rp 16.000</td><td>Rp 144.000</td><td>Rp 136.000</td><td>Rp 128.000</td><td>Rp 120.000</td></tr>
-                        <tr><td>Keripik Kentang</td><td>Rp 22.400</td><td>Rp 201.600</td><td>Rp 190.400</td><td>Rp 179.200</td><td>Rp 168.000</td></tr>
-                        <tr><td>Keripik Kentang Wedges</td><td>Rp 25.600</td><td>Rp 230.400</td><td>Rp 217.600</td><td>Rp 204.800</td><td>Rp 192.000</td></tr>
-                        <tr><td>Keripik Bawang Merah</td><td>Rp 44.800</td><td>Rp 403.200</td><td>Rp 380.800</td><td>Rp 358.400</td><td>Rp 336.000</td></tr>
-                        <tr><td>Keripik Bawang Putih</td><td>Rp 48.000</td><td>Rp 432.000</td><td>Rp 408.000</td><td>Rp 384.000</td><td>Rp 360.000</td></tr>
-                        <tr><td>Keripik Buncis</td><td>Rp 24.000</td><td>Rp 216.000</td><td>Rp 204.000</td><td>Rp 192.000</td><td>Rp 180.000</td></tr>
-                        <tr><td>Keripik Edamame</td><td>Rp 24.000</td><td>Rp 216.000</td><td>Rp 204.000</td><td>Rp 192.000</td><td>Rp 180.000</td></tr>
+                        <tr><td>Keripik Wortel</td><td>Rp 22.800</td><td>Rp 187.200</td><td>Rp 176.800</td><td>Rp 166.400</td><td>Rp 156.000</td></tr>
+                        <tr><td>Keripik Ubi Ungu</td><td>Rp 18.000</td><td>Rp 144.000</td><td>Rp 136.000</td><td>Rp 128.000</td><td>Rp 120.000</td></tr>
+                        <tr><td>Keripik Ubi Madu</td><td>Rp 18.000</td><td>Rp 144.000</td><td>Rp 136.000</td><td>Rp 128.000</td><td>Rp 120.000</td></tr>
+                        <tr><td>Keripik Okra</td><td>Rp 42.000</td><td>Rp 360.000</td><td>Rp 340.000</td><td>Rp 320.000</td><td>Rp 300.000</td></tr>
+                        <tr><td>Keripik Jagung Manis</td><td>Rp 21.200</td><td>Rp 172.800</td><td>Rp 163.200</td><td>Rp 153.600</td><td>Rp 144.000</td></tr>
+                        <tr><td>Keripik Labu Madu</td><td>Rp 18.000</td><td>Rp 144.000</td><td>Rp 136.000</td><td>Rp 128.000</td><td>Rp 120.000</td></tr>
+                        <tr><td>Keripik Kentang</td><td>Rp 24.400</td><td>Rp 201.600</td><td>Rp 190.400</td><td>Rp 179.200</td><td>Rp 168.000</td></tr>
+                        <tr><td>Keripik Kentang Wedges</td><td>Rp 27.600</td><td>Rp 230.400</td><td>Rp 217.600</td><td>Rp 204.800</td><td>Rp 192.000</td></tr>
+                        <tr><td>Keripik Bawang Merah</td><td>Rp 46.800</td><td>Rp 403.200</td><td>Rp 380.800</td><td>Rp 358.400</td><td>Rp 336.000</td></tr>
+                        <tr><td>Keripik Bawang Putih</td><td>Rp 50.000</td><td>Rp 432.000</td><td>Rp 408.000</td><td>Rp 384.000</td><td>Rp 360.000</td></tr>
+                        <tr><td>Keripik Buncis</td><td>Rp 26.000</td><td>Rp 216.000</td><td>Rp 204.000</td><td>Rp 192.000</td><td>Rp 180.000</td></tr>
+                        <tr><td>Keripik Edamame</td><td>Rp 26.000</td><td>Rp 216.000</td><td>Rp 204.000</td><td>Rp 192.000</td><td>Rp 180.000</td></tr>
                     </tbody>
                 </table>
                 </div>
@@ -520,15 +531,15 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <tr><td>Keripik Gedebog Pisang</td><td>Rp 13.600</td><td>Rp 122.400</td><td>Rp 115.600</td><td>Rp 108.800</td><td>Rp 102.000</td></tr>
-                        <tr><td>Keripik Bawang Bombay</td><td>Rp 20.800</td><td>Rp 187.200</td><td>Rp 176.800</td><td>Rp 166.400</td><td>Rp 156.000</td></tr>
-                        <tr><td>Keripik Cabe Besar</td><td>Rp 22.400</td><td>Rp 201.600</td><td>Rp 190.400</td><td>Rp 179.200</td><td>Rp 168.000</td></tr>
-                        <tr><td>Keripik Cabe Rawit</td><td>Rp 22.400</td><td>Rp 201.600</td><td>Rp 190.400</td><td>Rp 179.200</td><td>Rp 168.000</td></tr>
-                        <tr><td>Keripik Paprika</td><td>Rp 22.400</td><td>Rp 201.600</td><td>Rp 190.400</td><td>Rp 179.200</td><td>Rp 168.000</td></tr>
-                        <tr><td>Keripik Jamur Tiram</td><td>Rp 17.600</td><td>Rp 158.400</td><td>Rp 149.600</td><td>Rp 140.800</td><td>Rp 132.000</td></tr>
-                        <tr><td>Keripik Jamur Kuping</td><td>Rp 19.200</td><td>Rp 172.800</td><td>Rp 163.200</td><td>Rp 153.600</td><td>Rp 144.000</td></tr>
-                        <tr><td>Keripik Bunga Kol</td><td>Rp 20.800</td><td>Rp 187.200</td><td>Rp 176.800</td><td>Rp 166.400</td><td>Rp 156.000</td></tr>
-                        <tr><td>Keripik Brokoli</td><td>Rp 19.200</td><td>Rp 172.800</td><td>Rp 163.200</td><td>Rp 153.600</td><td>Rp 144.000</td></tr>
+                        <tr><td>Keripik Gedebog Pisang</td><td>Rp 15.600</td><td>Rp 122.400</td><td>Rp 115.600</td><td>Rp 108.800</td><td>Rp 102.000</td></tr>
+                        <tr><td>Keripik Bawang Bombay</td><td>Rp 22.800</td><td>Rp 187.200</td><td>Rp 176.800</td><td>Rp 166.400</td><td>Rp 156.000</td></tr>
+                        <tr><td>Keripik Cabe Besar</td><td>Rp 24.400</td><td>Rp 201.600</td><td>Rp 190.400</td><td>Rp 179.200</td><td>Rp 168.000</td></tr>
+                        <tr><td>Keripik Cabe Rawit</td><td>Rp 24.400</td><td>Rp 201.600</td><td>Rp 190.400</td><td>Rp 179.200</td><td>Rp 168.000</td></tr>
+                        <tr><td>Keripik Paprika</td><td>Rp 24.400</td><td>Rp 201.600</td><td>Rp 190.400</td><td>Rp 179.200</td><td>Rp 168.000</td></tr>
+                        <tr><td>Keripik Jamur Tiram</td><td>Rp 19.600</td><td>Rp 158.400</td><td>Rp 149.600</td><td>Rp 140.800</td><td>Rp 132.000</td></tr>
+                        <tr><td>Keripik Jamur Kuping</td><td>Rp 21.200</td><td>Rp 172.800</td><td>Rp 163.200</td><td>Rp 153.600</td><td>Rp 144.000</td></tr>
+                        <tr><td>Keripik Bunga Kol</td><td>Rp 22.800</td><td>Rp 187.200</td><td>Rp 176.800</td><td>Rp 166.400</td><td>Rp 156.000</td></tr>
+                        <tr><td>Keripik Brokoli</td><td>Rp 21.200</td><td>Rp 172.800</td><td>Rp 163.200</td><td>Rp 153.600</td><td>Rp 144.000</td></tr>
                     </tbody>
                 </table>
                 </div>
@@ -556,12 +567,12 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <tr><td>Keripik Pisang</td><td>Rp 16.000</td><td>Rp 144.000</td><td>Rp 136.000</td><td>Rp 128.000</td><td>Rp 120.000</td></tr>
-                        <tr><td>Keripik Apel</td><td>Rp 16.000</td><td>Rp 144.000</td><td>Rp 136.000</td><td>Rp 128.000</td><td>Rp 120.000</td></tr>
-                        <tr><td>Keripik Nangka</td><td>Rp 24.000</td><td>Rp 216.000</td><td>Rp 204.000</td><td>Rp 192.000</td><td>Rp 180.000</td></tr>
-                        <tr><td>Keripik Strawberry</td><td>Rp 80.000</td><td>Rp 720.000</td><td>Rp 680.000</td><td>Rp 640.000</td><td>Rp 600.000</td></tr>
-                        <tr><td>Keripik Buah Naga</td><td>Rp 35.200</td><td>Rp 316.800</td><td>Rp 299.200</td><td>Rp 281.600</td><td>Rp 264.000</td></tr>
-                        <tr><td>Keripik Mangga</td><td>Rp 22.400</td><td>Rp 201.600</td><td>Rp 190.400</td><td>Rp 179.200</td><td>Rp 168.000</td></tr>
+                         <tr><td>Keripik Pisang</td><td>Rp 18.000</td><td>Rp 144.000</td><td>Rp 136.000</td><td>Rp 128.000</td><td>Rp 120.000</td></tr>
+                        <tr><td>Keripik Apel</td><td>Rp 18.000</td><td>Rp 144.000</td><td>Rp 136.000</td><td>Rp 128.000</td><td>Rp 120.000</td></tr>
+                        <tr><td>Keripik Nangka</td><td>Rp 26.000</td><td>Rp 216.000</td><td>Rp 204.000</td><td>Rp 192.000</td><td>Rp 180.000</td></tr>
+                        <tr><td>Keripik Strawberry</td><td>Rp 82.000</td><td>Rp 720.000</td><td>Rp 680.000</td><td>Rp 640.000</td><td>Rp 600.000</td></tr>
+                        <tr><td>Keripik Buah Naga</td><td>Rp 37.200</td><td>Rp 316.800</td><td>Rp 299.200</td><td>Rp 281.600</td><td>Rp 264.000</td></tr>
+                        <tr><td>Keripik Mangga</td><td>Rp 24.400</td><td>Rp 201.600</td><td>Rp 190.400</td><td>Rp 179.200</td><td>Rp 168.000</td></tr>
                     </tbody>
                 </table>
                 </div>
@@ -569,6 +580,20 @@
         </div>
     </section>
     
+    <section class="cod-section">
+        <div class="container">
+            <h2 class="section-title" style="margin-top: 0;">Takut Ketipu? Bisa COD! 🛡️</h2>
+            <p class="section-subtitle">
+                Kami menyediakan opsi transaksi aman melalui Marketplace kesayangan Anda.<br>
+                Bayar saat barang sampai (Cash On Delivery).
+            </p>
+            <div style="display: flex; justify-content: center; align-items: center; gap: 20px; flex-wrap: wrap;">
+                <a href="https://shopee.co.id/rilldelish" target="_blank" class="button" style="background: #EE4D2D; margin-top: 0;">Order via Shopee</a>
+                <a href="https://www.tokopedia.com/rilldelish" target="_blank" class="button" style="background: #42B549; margin-top: 0;">Order via Tokopedia</a>
+            </div>
+        </div>
+    </section>
+
     <section id="order-form" class="conversion-form">
         <div class="container" style="max-width: 600px;">
             <h2 class="section-title">🎁 Daftar Reseller Sekarang!</h2>
@@ -600,24 +625,35 @@
             </form>
         </div>
     </section>
+
+    <section class="seo-article">
+        <div class="container">
+            <h2 style="margin-bottom: 20px; font-size: 1.5em; color: #333;">Mengapa Memilih Bisnis Keripik Sayur dan Buah?</h2>
+            
+            <h3>Trend Hidup Sehat</h3>
+            <p>Masyarakat Indonesia semakin sadar akan pentingnya pola makan sehat. Keripik sayur dan buah Rilldelish diproses menggunakan teknologi Vacuum Frying suhu rendah, menjaga nutrisi tanpa menghilangkan rasa enak.</p>
+            
+            <h3>Peluang Usaha Modal Kecil</h3>
+            <p>Menjadi agen snack kiloan tidak harus mahal. Dengan paket reseller mulai dari pembelian 5kg, Anda sudah bisa mendapatkan harga grosir pabrik. Cocok untuk ibu rumah tangga, mahasiswa, atau karyawan yang ingin penghasilan tambahan.</p>
+            
+            <h3>Produsen Terpercaya dari Kota Batu</h3>
+            <p>Primafood berlokasi di Kota Batu, Jawa Timur, pusatnya hasil tani berkualitas. Kami menjamin pasokan bahan baku segar untuk setiap keripik yang kami produksi.</p>
+        </div>
+    </section>
+
    </main>
 
     <footer class="site-footer">
         <div class="container">
-            <img src="logo-primafood.webp" alt="Logo Primafood Batu (Produsen)" style="max-width: 100px; margin-bottom: 15px; background-color: white; border-radius: 50%;" width="100" height="100">
-            <p class="footer-brand-name">Primafood - Produsen Keripik Sayur dan Buah Rilldelish</p>
-            <p class="footer-address">
-                Alamat Kantor Pemasaran:<br>
-                Jl. Raya Sumbergondo No.28, Sumbergondo,<br>
-                        Kec. Bumiaji, Kota Batu, Jawa Timur 65335.<br><br>
-                <span style="color: #aaa; font-size: 0.9em;">Buka: Senin - Sabtu (08.00 - 20.00)</span>
-            </p>
-            <p class="footer-contact">
-                <strong>Kontak Reseller (WhatsApp):</strong> 
-                <a href="https://wa.me/6285735785319?text=Halo%20Primafood%20Rilldelish%2C%20saya%20sudah%20melihat%20Landing%20Page%20Reseller%20dan%20tertarik%20untuk%20info%20lebih%20lanjut." target="_blank">0812-4966-298</a>
-            </p>
-            <div id="lokasi" class="footer-col map-col">
-                    <h3 class="footer-heading">🗺️ Peta Google</h3>
+            <div class="footer-row">
+                <div class="footer-col">
+                     <img src="logo-primafood.webp" alt="Logo Primafood Batu" style="max-width: 80px; margin-bottom: 10px; background-color: white; border-radius: 50%;" width="80" height="80">
+                     <h3 class="footer-heading" style="display:block; border:none; margin-bottom:5px;">Primafood Rilldelish</h3>
+                     <p class="footer-address">
+                        <strong>Produsen Keripik Sayur & Buah</strong><br>
+                        Jl. Raya Sumbergondo No.28, Sumbergondo, Kec. Bumiaji, Kota Batu, Jawa Timur 65335.<br>
+                        <span style="color: #aaa; font-size: 0.9em;">Buka: Senin - Sabtu (08.00 - 20.00)</span>
+                    </p>
                     <div class="map-container-small">
                         <iframe 
                             src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3952.60791102221!2d112.52812811083032!3d-7.831255692157205!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e787fc3b7339d23%3A0xa193454399aa9ab2!2sPrimafood%20-%20Produsen%20Keripik%20Sayur%20dan%20Buah%20Rilldelish!5e0!3m2!1sid!2sid!4v1764495593611!5m2!1sid!2sid" 
@@ -627,17 +663,35 @@
                     </div>
                     <a href="https://maps.app.goo.gl/J8EMo7VebSzEWAmv9" target="_blank" class="map-link-text">Buka di Google Maps App ↗</a>
                 </div>
-            <div class="footer-social-links">
-                <a href="https://www.facebook.com/RilldelishBatu" target="_blank">Facebook</a>
-                <a href="https://www.instagram.com/rilldelishbatu" target="_blank">Instagram</a>
-                <a href="https://www.tiktok.com/@Rilldelishbatu" target="_blank">TikTok</a>
-                <a href="https://www.youtube.com/@Rilldelishbatu" target="_blank">Youtube</a>
-                <a href="https://www.tokopedia.com/rilldelish" target="_blank">Tokopedia</a>
+
+                <div class="footer-col">
+                    <h3 class="footer-heading">Navigasi Cepat</h3>
+                    <ul class="footer-links">
+                        <li><a href="https://rilldelish.my.id/">🏠 Website Utama</a></li>
+                        <li><a href="https://grosir.rilldelish.my.id/katalog">📦 Katalog Lengkap</a></li>
+                        <li><a href="#pilihan-paket">💼 Paket Usaha</a></li>
+                        <li><a href="#pure-veggie-list">🥕 Pricelist Sayur</a></li>
+                        <li><a href="#fruit-list">🍎 Pricelist Buah</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-col">
+                    <h3 class="footer-heading">Hubungi Kami</h3>
+                    <p style="margin-bottom: 15px;">Butuh bantuan cepat? Chat admin kami sekarang.</p>
+                    <a href="https://wa.me/6285735785319" class="button" style="background: #25D366; width: 100%; text-align: center; margin-top:0; margin-bottom: 20px;">Chat WhatsApp</a>
+                    
+                    <h3 class="footer-heading" style="font-size: 1em; border: none; margin-bottom: 10px;">Ikuti Media Sosial:</h3>
+                    <div style="display: flex; gap: 10px; flex-wrap: wrap;">
+                        <a href="https://www.facebook.com/RilldelishBatu" target="_blank" style="color:white;">Facebook</a> |
+                        <a href="https://www.instagram.com/rilldelishbatu" target="_blank" style="color:white;">Instagram</a> |
+                        <a href="https://www.tiktok.com/@Rilldelishbatu" target="_blank" style="color:white;">TikTok</a>
+                    </div>
+                </div>
             </div>
+
             <p class="footer-copyright">
-                © 2025 Primafood. Semua Hak Dilindungi.
-                <br>
-                <span class="footer-note">*Gambar/visual produk hanya untuk ilustrasi. Tampilan dan kemasan produk sebenarnya dapat bervariasi.</span>
+                © 2025 Primafood. Semua Hak Dilindungi.<br>
+                <a href="https://rilldelish.my.id/" style="color: #555; text-decoration: none;">Rilldelish Official Site</a>
             </p>
         </div>
     </footer>
