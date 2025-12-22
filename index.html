@@ -132,32 +132,179 @@
         .cta-block ul { text-align: left; padding-left: 20px; margin-bottom: 20px; }
         .cta-block .button { width: 100%; box-sizing: border-box; display: block; }
 
-        /* FOOTER BARU (SAMA DENGAN INDEX & KATALOG) */
-        .site-footer {
-            background-color: #1a1a1a; color: #eee; padding: 50px 20px; font-size: 0.9em; text-align: left; margin-top: 50px;
+        /* --- PERBAIKAN 1 & 2: CATALOG & TOMBOL KATEGORI --- */
+        .product-categories {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            margin-bottom: 30px;
+            flex-wrap: wrap;
         }
-        .footer-row { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 30px; }
-        .footer-col { flex: 1; min-width: 250px; }
-        .footer-heading { font-size: 1.2em; color: #ff8c00; margin-bottom: 15px; border-bottom: 1px solid #333; display: inline-block; font-weight: 700; }
-        .footer-address { color: #fff; line-height: 1.6; }
-        .footer-address strong { color: #ffcc80; }
-        .map-container-small { width: 100%; height: 150px; border: 2px solid #444; border-radius: 6px; overflow: hidden; }
-        .map-link-text { display: block; font-size: 0.8em; color: #aaa; margin-top: 5px; text-decoration: none; }
-        .action-buttons { display: flex; gap: 10px; margin-bottom: 15px; }
-        .btn-flat { flex: 1; text-align: center; padding: 10px; border-radius: 4px; text-decoration: none; color: white; font-weight: 600; background: #333; }
-        .wa-btn { background-color: #075e54; } .tokped-btn { background-color: #037539; }
-        .social-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
-        .social-box { display: block; text-align: center; padding: 8px; background: #333; color: #ccc; text-decoration: none; border-radius: 4px; border: 1px solid #444; }
-        .footer-copyright { text-align: center; margin-top: 30px; padding-top: 15px; border-top: 1px solid #333; color: #777; font-size: 0.8em; }
+        .category-btn {
+            padding: 10px 20px;
+            border: 2px solid #ddd;
+            background-color: white;
+            border-radius: 50px;
+            font-family: inherit;
+            font-weight: 600;
+            color: #555;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        .category-btn:hover {
+            border-color: var(--color-primary);
+            color: var(--color-primary);
+        }
+        .category-btn.active {
+            background-color: var(--color-primary);
+            color: white;
+            border-color: var(--color-primary);
+        }
+
+        /* Styling Tabel Catalog */
+        .catalog-table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 0.95em;
+            background-color: white;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            margin-bottom: 30px;
+        }
+        .catalog-table th, .catalog-table td {
+            border: 1px solid #ddd;
+            padding: 12px 10px;
+            text-align: center;
+        }
+        .catalog-table th {
+            background-color: #f4f4f4;
+            color: #333;
+            font-weight: 700;
+            vertical-align: middle;
+        }
+        .catalog-table tr:nth-child(even) {
+            background-color: #fcfcfc;
+        }
+        /* Judul Section per Kategori */
+        .catalog-title-green { color: var(--color-primary); margin: 20px 0 15px 0; text-align: left; border-left: 5px solid var(--color-primary); padding-left: 10px; }
+        .catalog-title-orange { color: var(--color-secondary); margin: 20px 0 15px 0; text-align: left; border-left: 5px solid var(--color-secondary); padding-left: 10px; }
+        .catalog-title-red { color: var(--color-cta); margin: 20px 0 15px 0; text-align: left; border-left: 5px solid var(--color-cta); padding-left: 10px; }
+
+
+        /* --- PERBAIKAN 3: FORM RESELLER --- */
+        .conversion-form {
+            background-color: #e6f7ff; 
+            padding: 50px 0;
+        }
+        .contact-form {
+            background: white;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        .form-group {
+            margin-bottom: 20px;
+            text-align: left;
+        }
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+            color: #444;
+        }
+        .form-group input {
+            width: 100%;
+            padding: 15px;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            font-size: 1em;
+            font-family: inherit;
+            transition: border 0.3s;
+        }
+        .form-group input:focus {
+            border-color: var(--color-primary);
+            outline: none;
+            box-shadow: 0 0 5px rgba(46, 125, 50, 0.3);
+        }
+        .submit-cta {
+            width: 100%;
+            font-size: 1.1em;
+            margin-top: 10px;
+        }
+
+        /* --- PERBAIKAN 4: FOOTER --- */
+        .site-footer {
+            background-color: #1a1a1a;
+            color: #eee;
+            padding: 50px 20px;
+            font-size: 0.9em;
+            text-align: center;
+            margin-top: 0;
+        }
+        .footer-brand-name { font-weight: 700; margin-bottom: 10px; font-size: 1.1em; }
+        .footer-address { color: #ccc; line-height: 1.6; margin-bottom: 20px; }
+        .footer-contact { margin-bottom: 30px; font-size: 1.1em; }
+        .footer-contact a { color: #4caf50; text-decoration: none; font-weight: bold; }
+        
+        .footer-col.map-col {
+            max-width: 500px;
+            margin: 0 auto 30px auto;
+        }
+        .footer-heading {
+            display: block;
+            font-size: 1.2em;
+            color: #ff8c00;
+            margin-bottom: 15px;
+            font-weight: 700;
+        }
+        .map-container-small {
+            width: 100%;
+            height: 200px;
+            border: 2px solid #444;
+            border-radius: 8px;
+            overflow: hidden;
+            margin-bottom: 5px;
+        }
+        
+        /* Sosial Media Links */
+        .footer-social-links {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 15px;
+            margin-bottom: 30px;
+        }
+        .footer-social-links a {
+            color: #fff;
+            background-color: #333;
+            padding: 8px 15px;
+            border-radius: 4px;
+            text-decoration: none;
+            border: 1px solid #444;
+            transition: all 0.3s;
+            font-size: 0.9em;
+        }
+        .footer-social-links a:hover {
+            background-color: var(--color-secondary);
+            color: #000;
+            border-color: var(--color-secondary);
+        }
+
+        .footer-copyright {
+            margin-top: 30px;
+            padding-top: 20px;
+            border-top: 1px solid #333;
+            color: #777;
+            font-size: 0.8em;
+        }
 
         /* RESPONSIVE */
         @media (max-width: 600px) {
             .cta-section { flex-direction: column; }
             .hero-section h1 { font-size: 1.8em; }
-            .footer-row { flex-direction: column; }
-            .site-footer { text-align: center; } /* Footer tengah di HP */
-            .footer-col { min-width: 100%; }
-            .social-grid { grid-template-columns: 1fr 1fr; }
+            .catalog-table th, .catalog-table td { font-size: 0.85em; padding: 8px 4px; }
+            .category-btn { width: 100%; margin-bottom: 5px; } /* Tombol kategori jadi full width di HP */
         }
     </style>
     
@@ -185,11 +332,11 @@
 <body>
    <main>
     <header class="hero-section">
-        <div class="container">       
-            <img src="logo-rilldelish.webp" alt="Logo Rilldelish" style="max-width: 150px; margin-bottom: 20px;" width="150" height="150" fetchpriority="high">       
+        <div class="container">        
+            <img src="logo-rilldelish.webp" alt="Logo Rilldelish" style="max-width: 150px; margin-bottom: 20px;" width="150" height="150" fetchpriority="high">        
             
             <h1>PELUANG USAHA SNACK SEHAT & VIRAL 2025</h1>
-            <h2 class="hero-sub-h2">(Modal Minim | Repeat Order Tinggi | Tanpa Ribet Packing)</h2>       
+            <h2 class="hero-sub-h2">(Modal Minim | Repeat Order Tinggi | Tanpa Ribet Packing)</h2>        
             
             <p class="sub-headline" style="margin-top: 15px;">Bergabunglah dengan Primafood Rilldelish. Produsen Keripik Vacuum Frying Terpercaya di Kota Batu.</p>
             
@@ -453,10 +600,10 @@
             </form>
         </div>
     </section>
-</main>
+   </main>
 
-    <footer>
-        <div class="container" style="text-align: center;">
+    <footer class="site-footer">
+        <div class="container">
             <img src="logo-primafood.webp" alt="Logo Primafood Batu (Produsen)" style="max-width: 100px; margin-bottom: 15px; background-color: white; border-radius: 50%;" width="100" height="100">
             <p class="footer-brand-name">Primafood - Produsen Keripik Sayur dan Buah Rilldelish</p>
             <p class="footer-address">
@@ -481,11 +628,11 @@
                     <a href="https://maps.app.goo.gl/J8EMo7VebSzEWAmv9" target="_blank" class="map-link-text">Buka di Google Maps App ↗</a>
                 </div>
             <div class="footer-social-links">
-                <a href="https://www.facebook.com/RilldelishBatu" target="_blank">Facebook (Rilldelish)</a>
-                <a href="https://www.instagram.com/rilldelishbatu" target="_blank">Instagram (Rilldelish)</a>
-                <a href="https://www.tiktok.com/@Rilldelishbatu" target="_blank">TikTok (Rilldelish)</a>
-                <a href="https://www.youtube.com/@Rilldelishbatu" target="_blank">Youtube (Rilldelish)</a>
-                <a href="https://www.tokopedia.com/rilldelish" target="_blank">Tokopedia (Rilldelish)</a>
+                <a href="https://www.facebook.com/RilldelishBatu" target="_blank">Facebook</a>
+                <a href="https://www.instagram.com/rilldelishbatu" target="_blank">Instagram</a>
+                <a href="https://www.tiktok.com/@Rilldelishbatu" target="_blank">TikTok</a>
+                <a href="https://www.youtube.com/@Rilldelishbatu" target="_blank">Youtube</a>
+                <a href="https://www.tokopedia.com/rilldelish" target="_blank">Tokopedia</a>
             </div>
             <p class="footer-copyright">
                 © 2025 Primafood. Semua Hak Dilindungi.
@@ -618,36 +765,3 @@ Terima kasih!
     </script>
 </body>
 </html>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
